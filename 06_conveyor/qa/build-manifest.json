@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "workerHash": "2fbb498a94c364631a1125a2bdbe45739f82d78b6441d7cac36872558873f8b5",
+  "modules": {
+    "vendor/three.min.js": "9274bbcec8d96168626c732b5d31c775aa8cfb7eaa0599bec0c175908a2c1ce2",
+    "vendor/OrbitControls.js": "02bb4ade710f3e607329e37a21f098bc3ac70eb6e33daf8a65e79f4db785e7b2",
+    "src/model.js": "59e2cbce21afd222143b929cf4cc5c2ef6c2b39409787b3053ceba032a156eb6",
+    "src/engine.js": "4b04a4b1fbb91d67d64137037f2f60b6d497263cb84515186438eb2273438330",
+    "src/io.js": "bafdb03615898deaafe138eb9a48639e2d997e2ae86ea76bc663a4d89d9a8d13",
+    "src/scene.js": "1121afc8e15e94862dfe591c0f1293806fbe0bbc1e55d215e5978bf5ff35d461",
+    "src/app.js": "9a0a741bc77bc2798aa42f905e5b756434758f59a5229060758068250bd41c13"
+  },
+  "bytes": 769499,
+  "htmlHash": "528afbb9d7cd77200c6c1be2035580a2fd7bf913252c0417846d62e31bfdfe28"
+}

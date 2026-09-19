@@ -1,0 +1,31 @@
+✔ motion kernel: triangular, trapezoidal and end points (0.6339ms)
+✔ continuous line uses pitch headway, not entire travel as a server (20.438ms)
+✔ zero demand and empty buffers conserve zero cargo (2.0521ms)
+✔ every layout has route conservation and finite buffers (85.412ms)
+✔ slow output blocks upstream and its capacity is independently bounded (2.4143ms)
+✔ ZPA stop-start zones have lower headway capacity and remain a pipeline (12.7771ms)
+✔ shared device IDs serialize several junctions (6.3453ms)
+✔ scheduled stop freezes edge progress, blocks ingress and resumes (11.1028ms)
+✔ downstream stop timing during a transfer preserves reservations (4.7712ms)
+✔ initial partial and full buffer drain with no invented arrivals (1.659ms)
+✔ seeded Poisson is deterministic and does not use Math.random (49.7655ms)
+✔ incremental model and batch results are identical (24.7545ms)
+✔ history import and exact releases include zero-rate routes (0.8192ms)
+✔ project round trip, units, missing data, NaN and incompatible loads (0.7744ms)
+✔ unconnected physical crossing is rejected (0.1582ms)
+✔ mixed cargo results retain separate handling units and split ratios (14.9014ms)
+✔ integration ports and events have scoped IDs without pretending live coupling (14.4745ms)
+✔ HTML and spreadsheet exports escape user content (26.4099ms)
+✔ initial cargo validates the entire downstream route (0.1793ms)
+✔ warmup clips time-weighted occupancy and excludes end-boundary throughput (0.3419ms)
+✔ duplicate lanes and overlapping node positions are rejected (0.1987ms)
+✔ priority and alternating merge policies change queue arbitration (5.3994ms)
+✔ varied mixed layouts, stops and seeds preserve capacity and cargo (57.742ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 462.9816

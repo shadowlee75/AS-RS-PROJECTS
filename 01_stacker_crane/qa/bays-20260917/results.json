@@ -1,0 +1,40 @@
+{
+  "checks": 17,
+  "passed": [
+    "single 106 x 14 calculates every cell and conserves jobs",
+    "single 106 x 14 FEM resolves actual cells",
+    "double 106 x 14 calculates every cell and conserves jobs",
+    "double 106 x 14 FEM resolves actual cells",
+    "200 Bays accepted",
+    "invalid Bays and total cell limit still rejected",
+    "deployed input allows 1-200 Bays",
+    "106 Bays accepted in UI with correct single capacity",
+    "double-deep capacity uses all 106 Bays",
+    "3D includes every cell and labels the last Bay",
+    "last rear cell can be selected",
+    "motion preview reaches Bay 106",
+    "saved project retains 106 Bays and 14 levels",
+    "above-limit error clearly states 200",
+    "maximum Bay count renders all labels",
+    "saved 106-Bay project reloads",
+    "no JavaScript errors or external requests"
+  ],
+  "errors": [],
+  "network": [],
+  "results": [
+    {
+      "rackDepth": "single",
+      "cells": 2968,
+      "theory": 90.28223941989847,
+      "sc": 51.02325575149551,
+      "dc": 79.74990481254166
+    },
+    {
+      "rackDepth": "double",
+      "cells": 5936,
+      "theory": 85.9702469646471,
+      "sc": 53.023255751495455,
+      "dc": 83.7499048125429
+    }
+  ]
+}

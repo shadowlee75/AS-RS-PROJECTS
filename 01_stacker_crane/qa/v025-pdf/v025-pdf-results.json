@@ -1,0 +1,32 @@
+{
+  "checks": [
+    "PDF report action is visible alongside Markdown export",
+    "stale unapplied calculations cannot be exported",
+    "v025-default: tables and figures fit the report width",
+    "default report identifies missing factors and unrun simulation",
+    "cover total theoretical capacity equals the model",
+    "report has selectable Korean tables, six motion graphs and specified 110 mm sequence",
+    "PDF save button invokes native print without printing app controls",
+    "PDF toolbar is hidden by print CSS",
+    "v025-complete-fem: tables and figures fit the report width",
+    "completed simulation, both STCs, applied centers and outside coordinates are included",
+    "completed report matches current calculated SC and DC results",
+    "v025-partial: tables and figures fit the report width",
+    "partial simulation is explicitly labeled and unchecked graphs omitted",
+    "report metadata is escaped and cannot execute markup",
+    "v025-long: tables and figures fit the report width",
+    "long metadata and all twelve STCs are retained",
+    "PDF action and options fit mobile width",
+    "no JavaScript errors or runtime network requests"
+  ],
+  "errors": [],
+  "requests": [],
+  "reportFiles": [
+    "v025-default.pdf",
+    "v025-complete-fem.pdf",
+    "v025-partial.pdf",
+    "v025-long.pdf"
+  ],
+  "browser": "138.0.3351.95",
+  "testedAt": "2026-09-10T06:52:53.232Z"
+}

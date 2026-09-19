@@ -1,0 +1,67 @@
+{
+  "scope": "Comparison of saved JSON with company screenshot; input conditions are not identical.",
+  "company": {
+    "sc": {
+      "move": 54.900000000000006,
+      "fork": 31.4,
+      "total": 86.30000000000001,
+      "idealPalletsPerHour": 41.71494785631518,
+      "displayedPalletsPerHour": 35.5,
+      "efficiency": {
+        "inferredPercent": 85.10138888888889,
+        "roundingIntervalPercent": [
+          84.93229166666667,
+          85.270625
+        ]
+      }
+    },
+    "dc": {
+      "move": 80.7,
+      "fork": 62.8,
+      "total": 143.5,
+      "idealPalletsPerHour": 50.174216027874564,
+      "displayedPalletsPerHour": 42.7,
+      "efficiency": {
+        "inferredPercent": 85.10347222222222,
+        "roundingIntervalPercent": [
+          84.97420138888889,
+          85.23281250000002
+        ]
+      }
+    }
+  },
+  "current": {
+    "sc": {
+      "move": 46.292500000000004,
+      "position": 1,
+      "fork": 15.116601048851672,
+      "control": 0.5,
+      "total": 62.90910104885168,
+      "idealPalletsPerHour": 57.22542430235081
+    },
+    "dc": {
+      "move": 68.04416666666668,
+      "fork": 30.233202097703344,
+      "position": 1.5,
+      "control": 0.5,
+      "total": 100.27736876437002,
+      "idealPalletsPerHour": 71.8008468782067
+    },
+    "forkCycleSeconds": 7.558300524425836,
+    "correctionFactor": null,
+    "scAtAssumed85Percent": 48.64161065699819,
+    "dcAtAssumed85Percent": 61.03071984647569
+  },
+  "difference": {
+    "scCompanyMinusCurrentSeconds": 23.390898951148316,
+    "dcCompanyMinusCurrentSeconds": 43.222631235629976,
+    "scCurrentIdealOverCompanyDisplayedPercent": 61.19837831648116,
+    "dcCurrentIdealOverCompanyDisplayedPercent": 68.15186622530842
+  },
+  "sensitivity": {
+    "note": "Only stroke changed to 2.58 m; this does not reproduce company inputs.",
+    "forkCycleSeconds": 12.158300524425837,
+    "sc": 72.10910104885167,
+    "dc": 118.67736876437003
+  }
+}

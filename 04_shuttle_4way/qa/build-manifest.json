@@ -1,0 +1,27 @@
+{
+  "version": "0.1.0",
+  "modules": {
+    "three.min": "9274bbcec8d96168626c732b5d31c775aa8cfb7eaa0599bec0c175908a2c1ce2",
+    "OrbitControls": "02bb4ade710f3e607329e37a21f098bc3ac70eb6e33daf8a65e79f4db785e7b2",
+    "motion": "cb5781cd5dbf8e8823a18e564514db2860dc376866d7a410bf36d7dba417a6cd",
+    "model": "9e3b3cd9521d7439d6953cf1035d875186959e91eb1cc1c459243799229c3dc0",
+    "engine": "6e98ab6dcc2d4b510e9c978fa801755069e7e3886f22a2c7b0e40099c351dee7",
+    "view": "7392d1d9ba4ed11f16de89dab109381d81b729a28b2ebc050d461c60b3273a72",
+    "report": "f7db83769fda03540326501e54cdd445474daf77a8bd9bad2a754c03ae202863",
+    "scene": "5491a0bbd7215db0f6e69552b117f82dfb9021624643b3dd6d216389453630e4",
+    "blender-models": "70ef9480b7efd182019284360ee73b9d2910aa0adae7497ec428cb556cb63c5a",
+    "app": "0ff7cc485ad49b3d4ec2bc9feaa9ab166522bf3daf78135993b83e4d95249305"
+  },
+  "sources": {
+    "three.min": "vendor/three.min.js",
+    "OrbitControls": "vendor/OrbitControls.js",
+    "motion": "src/motion.js",
+    "model": "src/model.js",
+    "engine": "src/engine.js",
+    "view": "src/view.js",
+    "report": "src/report.js",
+    "scene": "src/scene.js",
+    "blender-models": "src/blender-models.js",
+    "app": "src/app.js"
+  }
+}

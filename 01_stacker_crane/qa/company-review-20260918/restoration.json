@@ -1,0 +1,85 @@
+{
+  "version": "0.3.2",
+  "verified": [
+    {
+      "file": "01_stacker_crane\\src\\motion.js",
+      "sha256": "528d0c36456ce12f19bad22df80ecacc10b61feb6c6bdfbb5d0482f765c08abe",
+      "bytes": 8637
+    },
+    {
+      "file": "01_stacker_crane\\src\\model.js",
+      "sha256": "d8f5916d534b1e9fefd6a1f4418a6d3a0f736f22e722120b0aae249ac0954705",
+      "bytes": 31446
+    },
+    {
+      "file": "01_stacker_crane\\src\\engine.js",
+      "sha256": "6be7b63d0f4af249cb232efcc94ae69dd520fa357b77838d145d0274026416fd",
+      "bytes": 23839
+    },
+    {
+      "file": "01_stacker_crane\\src\\template.html",
+      "sha256": "8da74e4d775076e59b97d591f5f88469b41bfc50c9d53d3bad56aeeff47cb898",
+      "bytes": 36748
+    },
+    {
+      "file": "01_stacker_crane\\src\\style.css",
+      "sha256": "56b05741821304ee490feca2c48cb58d735dafc9f9d73668b2b2766cb1a9f68d",
+      "bytes": 22918
+    },
+    {
+      "file": "01_stacker_crane\\src\\charts.js",
+      "sha256": "264b099adeedc0bb4f7abb0612aa7fe52bf27c8802218738759f1083d9a70dd2",
+      "bytes": 11732
+    },
+    {
+      "file": "01_stacker_crane\\src\\scene.js",
+      "sha256": "49694f4d5c7c6edc39100589b43c0effb5219489faf705af20d4cab80649cab9",
+      "bytes": 18839
+    },
+    {
+      "file": "01_stacker_crane\\src\\report.js",
+      "sha256": "7f314d250166453ab5342da3251a706be6d953e87be6be3b0afd953cd72eacc6",
+      "bytes": 16558
+    },
+    {
+      "file": "01_stacker_crane\\src\\app.js",
+      "sha256": "46457030c6a5107542016c131b889d03a714c43108d39857ed2350f27b85dc8e",
+      "bytes": 56866
+    },
+    {
+      "file": "01_stacker_crane\\src\\print.js",
+      "sha256": "b4d41853ef3be90ef1154f9d9ab41bf9834c74ff432e125a97128a69abe36012",
+      "bytes": 25013
+    },
+    {
+      "file": "01_stacker_crane\\src\\help.js",
+      "sha256": "d25645f987eed781a6eb9a9678fc162543eeab962ea0677eecd6fa05aa6ffb90",
+      "bytes": 54399
+    },
+    {
+      "file": "01_stacker_crane\\src\\blender-models.js",
+      "sha256": "f626eeecb820740a519f81c6707b8727a650e79031aa597caefc0d0f26ce3294",
+      "bytes": 708330
+    },
+    {
+      "file": "01_stacker_crane\\package.json",
+      "sha256": "b1d19b2990bb5501d6d2392ac159b8de4fccd5fad0c94577d0fcb32717148513",
+      "bytes": 404
+    },
+    {
+      "file": "스태커크레인_실행.html",
+      "sha256": "9ecaaf79bccbffeef7353d50af0e60a253ed0a65c327e80253cf68e439aeda3c",
+      "bytes": 1646693
+    },
+    {
+      "file": "스태커크레인_사용매뉴얼.md",
+      "sha256": "9c9db82c6147767fc9431660ece603895e2a8564636f8580e529fd98202e20d2",
+      "bytes": 45518
+    },
+    {
+      "file": "스태커크레인_사용매뉴얼.html",
+      "sha256": "0e4c4557cca08670b0b74a3c2dff68e8d6a864ffbbe471c544b1db1783dd0a04",
+      "bytes": 996336
+    }
+  ]
+}

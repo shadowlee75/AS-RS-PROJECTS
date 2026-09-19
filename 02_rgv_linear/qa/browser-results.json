@@ -1,0 +1,33 @@
+{
+  "browser": "138.0.3351.95",
+  "checks": [
+    "offline startup and four KPI cards",
+    "speed conversion m/min → m/s",
+    "speed unit preserves throughput",
+    "distance converts 60m → 60000mm",
+    "station coordinates also convert",
+    "distance conversion preserves calculation",
+    "ideal factors populate corrected capacity",
+    "detailed transfer subtracts included overhead",
+    "handling mode switch preserves totals",
+    "field help works",
+    "saved project uses SI units",
+    "invalid geometry blocks stale results",
+    "project import restores state",
+    "simulation playback advances",
+    "simulation completes with conservation",
+    "completed CSV has actual records",
+    "three motion charts",
+    "PDF preview contains metadata, escaped project, graphs and simulation",
+    "twenty common-seed policy trials finish",
+    "Tandem shows two vehicles and conserved cargo",
+    "experiment cancellation restores UI",
+    "CSV history accepted without double peak",
+    "mobile page fits viewport",
+    "worker-unavailable sliced fallback completes",
+    "no JavaScript errors or runtime HTTP requests"
+  ],
+  "errors": [],
+  "requests": [],
+  "testedAt": "2026-09-11T03:03:26.276Z"
+}

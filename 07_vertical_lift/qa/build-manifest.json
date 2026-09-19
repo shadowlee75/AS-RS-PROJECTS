@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "workerHash": "83a90e32d24abfb2e5b36345528f8ef5fa7f5f6c1da72839cdff2f2c0ecdc920",
+  "modules": {
+    "vendor/three.min.js": "9274bbcec8d96168626c732b5d31c775aa8cfb7eaa0599bec0c175908a2c1ce2",
+    "vendor/OrbitControls.js": "02bb4ade710f3e607329e37a21f098bc3ac70eb6e33daf8a65e79f4db785e7b2",
+    "src/motion.js": "cf4842f7e98ba315e984972cc897872d02ac14885c7c6217279853b00add97f0",
+    "src/model.js": "780c2c29c6e3f54e2042daef28fe42f23f42a034ecf70ea34710f09d8210bd90",
+    "src/engine.js": "172032aa760eb55b2e2c57736ebc7322c7c0762e8145f7d5d362a5a3aa83090f",
+    "src/xlsx.js": "83ba7018462f0af6167ef76b2753346f9deeb9b03f55b16ad7dde41f263866c6",
+    "src/io.js": "13fff6867f28407fbf8131c0a91a19c3104e9ab5c208ecf1af3bb1756fb1e0bc",
+    "src/scene.js": "6a4c65fb5862f0dbf1a3f44bbfc43e6dd42e49f6b34bac13b4fbf26ca49f438a",
+    "src/app.js": "092a5603a36f9f3f42c9b2054d1744b718de7583bc5ee24c5db4de99b8925c22"
+  },
+  "bytes": 788075,
+  "htmlHash": "de546e6bdda5a72c95ee345625499f1aeda66c135374e694f2eed79cb192f774"
+}

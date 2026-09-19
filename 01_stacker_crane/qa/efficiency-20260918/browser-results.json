@@ -1,0 +1,27 @@
+{
+  "checks": 20,
+  "passed": [
+    "new field is visible in an open section and uses percent",
+    "target utilization explains its separate purpose",
+    "editing efficiency marks results stale",
+    "85% visibly corrects hourly throughput",
+    "efficiency leaves cycle times unchanged",
+    "legacy factors disabled and direct efficiency sensitivity shown",
+    "JSON saves 85 percent",
+    "Markdown shows applied efficiency and target distinction",
+    "target utilization does not rescale corrected throughput",
+    "ratio entered as percentage is rejected with a field error",
+    "100% equals theoretical capacity",
+    "saved project reloads efficiency and corrections",
+    "PDF preview states applied 85% and correct formula",
+    "print tables fit report width",
+    "legacy import keeps coefficients and no direct override",
+    "85% replaces rather than multiplies legacy factors",
+    "clearing efficiency restores old coefficients",
+    "legacy preset clears direct override",
+    "manual explains direct efficiency",
+    "no browser errors or network requests"
+  ],
+  "errors": [],
+  "network": []
+}

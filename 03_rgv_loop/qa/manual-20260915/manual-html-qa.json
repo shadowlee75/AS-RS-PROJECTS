@@ -1,0 +1,18 @@
+{
+  "desktop": {
+    "chapters": 14,
+    "toc": 14,
+    "images": true,
+    "overflow": false,
+    "missingAnchors": 0
+  },
+  "mobile": {
+    "chapters": 14,
+    "toc": 14,
+    "images": true,
+    "overflow": false,
+    "missingAnchors": 0
+  },
+  "zoom": true,
+  "errors": []
+}

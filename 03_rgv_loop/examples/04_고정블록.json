@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "rgv-loop/project@1",
+  "deviceType": "rgv_loop",
+  "moduleVersion": "0.1.0",
+  "kernelVersion": "1.0.0",
+  "units": {
+    "distance": "m",
+    "speed": "m/s",
+    "time": "s",
+    "acceleration": "m/s²"
+  },
+  "config": {
+    "name": "고정 블록 제어",
+    "horizontal": 60,
+    "vertical": 25,
+    "radius": 1.2,
+    "direction": "forward",
+    "distanceUnit": "m",
+    "speedUnit": "m/min",
+    "unit": "PLT",
+    "vehicles": 8,
+    "carLength": 1.8,
+    "gap": 0.5,
+    "batchSize": 1,
+    "emptyV": 2,
+    "emptyA": 0.6,
+    "emptyD": 0.6,
+    "loadedV": 1.666666666667,
+    "loadedA": 0.5,
+    "loadedD": 0.5,
+    "curveV": 0.75,
+    "creepDistance": 0,
+    "creepV": 0.15,
+    "position": 0.5,
+    "interlock": 0.5,
+    "signal": 0,
+    "control": 0.3,
+    "handlingMode": "total",
+    "peak": 1.2,
+    "targetUtil": 0.8,
+    "A": 1,
+    "Ew": 1,
+    "etaMode": "beta",
+    "beta": 0.04,
+    "gamma": 2,
+    "basis": "assumption",
+    "basisNote": "예시 β=0.04. 현장 실측으로 검증되지 않은 설계 가정.",
+    "analysisMode": "od",
+    "dispatch": "nearest",
+    "parking": "circulate",
+    "controlMode": "block",
+    "blocks": 24,
+    "reaction": 0.2,
+    "hours": 0.5,
+    "warmup": 3,
+    "seed": 20260911,
+    "arrival": "takt",
+    "jitter": 0.1,
+    "timeStep": 0.1,
+    "demandMode": "rate",
+    "profile": [],
+    "history": [],
+    "zones": [],
+    "stations": [
+      {
+        "id": "P1",
+        "name": "입고 1",
+        "s": 10.652,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P2",
+        "name": "입고 2",
+        "s": 49.711,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D1",
+        "name": "출고 1",
+        "s": 97.647,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D2",
+        "name": "출고 2",
+        "s": 138.091,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      }
+    ],
+    "ods": [
+      {
+        "id": "OD1",
+        "from": "P1",
+        "to": "D1",
+        "rate": 30
+      },
+      {
+        "id": "OD2",
+        "from": "P1",
+        "to": "D2",
+        "rate": 30
+      },
+      {
+        "id": "OD3",
+        "from": "P2",
+        "to": "D1",
+        "rate": 30
+      },
+      {
+        "id": "OD4",
+        "from": "P2",
+        "to": "D2",
+        "rate": 30
+      }
+    ]
+  }
+}

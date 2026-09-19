@@ -1,0 +1,21 @@
+{
+  "version": "0.2.1",
+  "checks": [
+    "100stations-8hours.xlsx imports successfully",
+    "All 100 stations and 50 OD rows are retained",
+    "Hour input allows 24 and preserves 8",
+    "100 station ports render in real 3D",
+    "Full 8-hour run completes with conserved cargo",
+    "200stations-24hours.xlsx imports successfully",
+    "200 stations and 24-hour configuration calculate",
+    "All station markers remain and overlapping 2D names are reduced",
+    "200 station ports render without losing IDs",
+    "Grouped error names all missing IDs and explains hour input",
+    "Error does not overwrite previous input or simulation",
+    "Error report remains compact",
+    "Large configuration can be exported again",
+    "No JavaScript errors or external requests"
+  ],
+  "errors": [],
+  "requests": []
+}

@@ -1,0 +1,107 @@
+{
+  "date": "2026-09-14",
+  "graphicsVersion": "1.0.0",
+  "blenderVersion": "4.5.13 LTS",
+  "checks": [
+    "Blender .blend, GLB and exported mesh SHA256 match generated manifest",
+    "GLB v2 header and Blender exporter provenance validated",
+    "Nine named Blender assets: index ranges, finite positions and unit normals validated",
+    "Four calculation engines and original scene modules match pre-change SHA256",
+    "Four deployables parse and embed matching Blender model module before app startup"
+  ],
+  "apps": [
+    {
+      "app": "stacker",
+      "folder": "01_stacker_crane",
+      "html": "스태커크레인_실행.html",
+      "models": [
+        "stacker_base",
+        "stacker_mast",
+        "stacker_carriage",
+        "stacker_fork",
+        "cargo_pallet"
+      ],
+      "htmlBytes": 1602067,
+      "htmlSHA256": "f34ec8d66208e71601a03d005d334727c47372a1f3b2f5f0c99c102bcc011dfe",
+      "calculationAndOriginalSceneUnchanged": true,
+      "modules": 12,
+      "shipcheck": "SHIPCHECK: 45 invariant groups passed on extracted deployment modules; 12 script blocks parse. No external runtime scripts or styles."
+    },
+    {
+      "app": "linear",
+      "folder": "02_rgv_linear",
+      "html": "직선RGV_실행.html",
+      "models": [
+        "rgv_linear",
+        "cargo_pallet"
+      ],
+      "htmlBytes": 1529310,
+      "htmlSHA256": "d94f0683bb876da192134f01a609e7e0f366adc81045b8a71f6892737514ae18",
+      "calculationAndOriginalSceneUnchanged": true,
+      "modules": 10,
+      "shipcheck": "SHIPCHECK {\"invariantGroups\":36,\"sceneInvariantGroups\":7,\"inlineModules\":10,\"sha256Matched\":true,\"seededOnly\":true,\"noExternalRuntime\":true}"
+    },
+    {
+      "app": "loop",
+      "folder": "03_rgv_loop",
+      "html": "LoopRGV_실행.html",
+      "models": [
+        "rgv_loop",
+        "cargo_pallet"
+      ],
+      "htmlBytes": 1506675,
+      "htmlSHA256": "83407a555a4d452672a8e0c2ca04b9cb3f8355e02db21b18624917b2c89185a7",
+      "calculationAndOriginalSceneUnchanged": true,
+      "modules": 10,
+      "shipcheck": "SHIPCHECK 39 groups, 10 inline modules, SHA256 matched."
+    },
+    {
+      "app": "shuttle",
+      "folder": "04_shuttle_4way",
+      "html": "셔틀_실행.html",
+      "models": [
+        "shuttle",
+        "lift",
+        "cargo_pallet"
+      ],
+      "htmlBytes": 1570533,
+      "htmlSHA256": "6a1d28f1fc5b86e814f3ce7353a18ccfae7cfef11a016867f521b10300be16a8",
+      "calculationAndOriginalSceneUnchanged": true,
+      "modules": 10,
+      "shipcheck": "SHIPCHECK 39 groups, 10 inline modules, SHA256 matched."
+    }
+  ],
+  "browser": [
+    {
+      "app": "stacker",
+      "source": "Blender 4.5.13 LTS",
+      "aligned": true,
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "app": "linear",
+      "source": "Blender 4.5.13 LTS",
+      "aligned": true,
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "app": "loop",
+      "source": "Blender 4.5.13 LTS",
+      "aligned": true,
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "app": "shuttle",
+      "source": "Blender 4.5.13 LTS",
+      "aligned": true,
+      "errors": [],
+      "externalRequests": []
+    }
+  ],
+  "loopBrowserChecks": 40,
+  "shuttleBrowserChecks": 34,
+  "linearSceneChecks": 19
+}

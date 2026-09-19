@@ -1,0 +1,5 @@
+{
+  "name": "agv-amr-flow-studio", "version": "0.3.0", "private": true,
+  "scripts": {"build": "node scripts/build.js", "test": "node tests/invariants.js", "serve": "node scripts/serve.js"},
+  "engines": {"node": ">=18"}
+}

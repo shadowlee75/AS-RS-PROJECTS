@@ -1,0 +1,2 @@
+'use strict';
+const http=require('node:http'),fs=require('node:fs'),path=require('node:path'),port=Number(process.env.CONVEYOR_PORT||8766),file=path.resolve(__dirname,'../../컨베이어_실행.html');http.createServer((req,res)=>{if(req.url==='/'||req.url==='/index.html'){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});fs.createReadStream(file).pipe(res);}else if(req.url==='/favicon.ico'){res.writeHead(204);res.end();}else{res.writeHead(404);res.end('Not found');}}).listen(port,'127.0.0.1',()=>console.log('Conveyor: http://127.0.0.1:'+port));

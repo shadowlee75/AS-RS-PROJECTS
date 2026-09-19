@@ -1,0 +1,27 @@
+{
+  "source": "..\\..\\2. Loop RGV\\loop-rgv-calculator(2).html",
+  "sha256": "b6d990714ae7dd723bf90576344430c897163830c40120a5f653fdb7a2a23b19",
+  "sourceFunctions": "defaults + mpm/forward/weightedDistances/derive (direct extraction)",
+  "dFixed": 10.459259259259264,
+  "rows": [
+    {
+      "distance": 10.458,
+      "legacySeconds": 11.830355555555556,
+      "legacyContinuousSeconds": 21.51032359896105,
+      "physicalSeconds": 20.81841111111112
+    },
+    {
+      "distance": 10.46,
+      "legacySeconds": 21.511555555555557,
+      "legacyContinuousSeconds": 21.511555555555557,
+      "physicalSeconds": 20.819611111111122
+    }
+  ],
+  "emptyDistance": {
+    "legacyN1": 89.85232236861549,
+    "legacyN8": 11.231540296076936,
+    "newN1": 89.85232236861549,
+    "newN8": 89.85232236861549
+  },
+  "note": "신규 선도는 동일 속도·가감속에 마지막 1.2m 중속, 마지막 0.8m 저속이라는 공간 제한을 적용. 레거시 7구간과 해석이 다르므로 동일 시간 일치는 요구하지 않음. 기존 Python 35건은 소스가 없어 실행하지 않음."
+}

@@ -1,0 +1,26 @@
+{
+  "checks": [
+    "reported 180-in-m/s input is rejected with units and explicit conversion guidance",
+    "invalid speed field is identified and focused",
+    "invalid speed is not silently changed",
+    "unit switch clears stale error and preserves physical values",
+    "minute-unit validation uses 0.06–1200 m/min and the actual displayed input",
+    "180 m/min calculates successfully and matches 3 m/s",
+    "speed hint shows both the selected range and equivalent speed",
+    "saved project keeps SI values and minute display preference",
+    "vx uses its own converted limit and highlights the correct field",
+    "vy uses its own converted limit and highlights the correct field",
+    "vf uses its own converted limit and highlights the correct field",
+    "all axes accept their exact lower bound in m/min",
+    "all axes accept their exact upper bound in m/min",
+    "empty/zero/negative speed remains invalid: \"\"",
+    "empty/zero/negative speed remains invalid: \"0\"",
+    "empty/zero/negative speed remains invalid: \"-1\"",
+    "repeated unit switches preserve throughput and inputs",
+    "speed help remains inside mobile layout",
+    "no browser errors or network requests"
+  ],
+  "errors": [],
+  "network": [],
+  "testedAt": "2026-09-10T00:06:03.883Z"
+}

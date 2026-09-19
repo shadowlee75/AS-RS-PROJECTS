@@ -1,0 +1,33 @@
+{
+  "checks": [
+    "default inputs are 180/60/36 m/min and auto rack heights",
+    "default actual first/top heights preserve the old rack",
+    "live height hint shows the resulting top",
+    "custom geometry applies without an error",
+    "applied height table matches independently calculated Y values",
+    "2D rack level labels use actual height positions",
+    "project saves explicit heights and SI speeds with m/min display",
+    "downloaded report shows real heights and m/min speeds",
+    "both STCs render all 192 cells at actual Y coordinates",
+    "all 3D level labels align with the four transfer heights",
+    "selected STC 1 level 1 highlights correct height",
+    "selected STC 2 level 4 highlights correct height",
+    "all STCs play using actual engine poses",
+    "live 3D speeds are numerically converted to m/min",
+    "phase table reports the first level lift distance and minute peak speeds",
+    "velocity graph scales its signed Y ticks to m/min",
+    "graph playback values use the same trajectory with x60 velocity conversion",
+    "optional m/s switch preserves physical values and updates graph units",
+    "unreachable top height is rejected and pitch input highlighted",
+    "FEM application retains custom actual heights",
+    "JSON reload restores geometry and minute inputs",
+    "one-level rack at floor height renders with padded label textures",
+    "one-level rack at maximum height is accepted and rendered",
+    "new geometry controls and table fit the mobile layout",
+    "offline run has no browser errors or network requests"
+  ],
+  "errors": [],
+  "network": [],
+  "browser": "138.0.3351.95",
+  "testedAt": "2026-09-10T00:27:00.888Z"
+}

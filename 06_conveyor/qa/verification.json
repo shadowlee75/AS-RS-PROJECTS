@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "runAt": "2026-09-15T07:45:20.588Z",
+  "node": "v24.18.1",
+  "testStatus": "PASS",
+  "layouts": {
+    "straight": {
+      "configHash": "a201744b",
+      "demand": 600,
+      "upper": 900,
+      "measuredRate": 600,
+      "totalCompleted": 590,
+      "backlog": 0,
+      "wip": 10,
+      "conservation": true
+    },
+    "merge": {
+      "configHash": "d157dc70",
+      "demand": 700,
+      "upper": 900,
+      "measuredRate": 700.3636363636364,
+      "totalCompleted": 688,
+      "backlog": 0,
+      "wip": 12,
+      "conservation": true
+    },
+    "split": {
+      "configHash": "3c4cef08",
+      "demand": 700,
+      "upper": 960,
+      "measuredRate": 701.4545454545455,
+      "totalCompleted": 689,
+      "backlog": 0,
+      "wip": 11,
+      "conservation": true
+    },
+    "cross": {
+      "configHash": "27ea68d9",
+      "demand": 880,
+      "upper": 900,
+      "measuredRate": 879.2727272727273,
+      "totalCompleted": 865,
+      "backlog": 0,
+      "wip": 15,
+      "conservation": true
+    },
+    "h": {
+      "configHash": "257a0cbf",
+      "demand": 800,
+      "upper": 923.0769230769231,
+      "measuredRate": 800.7272727272727,
+      "totalCompleted": 784,
+      "backlog": 0,
+      "wip": 16,
+      "conservation": true
+    },
+    "u": {
+      "configHash": "da2b48d0",
+      "demand": 600,
+      "upper": 900,
+      "measuredRate": 600,
+      "totalCompleted": 576,
+      "backlog": 0,
+      "wip": 24,
+      "conservation": true
+    },
+    "loop": {
+      "configHash": "4abf83b5",
+      "demand": 500,
+      "upper": 900,
+      "measuredRate": 499.6363636363636,
+      "totalCompleted": 481,
+      "backlog": 0,
+      "wip": 19,
+      "conservation": true
+    }
+  },
+  "performance": {
+    "scenario": "cross / 20,000 requests / 1 hour",
+    "elapsedMs": 41.41960000000006,
+    "eventCount": 26401,
+    "generated": 20000,
+    "conservation": true,
+    "items": 20000
+  }
+}

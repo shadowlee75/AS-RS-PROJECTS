@@ -1,0 +1,126 @@
+{
+  "source": "User-provided calculation result screenshot, 2026-09-18",
+  "precisionNote": "Times, capacities and coordinates are transcribed display values, not full precision internal results. Input pages are still needed.",
+  "method": "FEM9.851",
+  "case": 1,
+  "forkType": "Single fork",
+  "locations": 2968,
+  "scSeconds": 86.3,
+  "scInSeconds": 86.3,
+  "scOutSeconds": 86.3,
+  "dcSeconds": 143.5,
+  "scPalletsPerHour": 35.5,
+  "dcPalletsPerHour": 42.7,
+  "cycleTimeFactor": 1.66,
+  "maxTravelM": 104.68,
+  "maxHoistM": 20.67,
+  "forkStrokeM": 2.58,
+  "inputPortM": [
+    -1.2,
+    0
+  ],
+  "outputPortM": [
+    0,
+    0
+  ],
+  "pointsM": {
+    "P1": [
+      20.7,
+      13.78
+    ],
+    "P2": [
+      68.99,
+      4.13
+    ],
+    "P3": [
+      68.99,
+      13.78
+    ],
+    "P4": [
+      20.7,
+      4.13
+    ]
+  },
+  "movementColumns": [
+    "travelSeconds",
+    "highHoistSeconds",
+    "lowHoistSeconds"
+  ],
+  "movement": {
+    "inP1": [
+      17,
+      21.8,
+      21.8
+    ],
+    "inP2": [
+      33.1,
+      10.3,
+      10.3
+    ],
+    "inP3": [
+      33.1,
+      21.8,
+      21.8
+    ],
+    "inP4": [
+      17,
+      10.3,
+      10.3
+    ],
+    "outP1": [
+      17,
+      21.8,
+      21.8
+    ],
+    "outP2": [
+      33.1,
+      10.3,
+      10.3
+    ],
+    "outP3": [
+      33.1,
+      21.8,
+      21.8
+    ],
+    "outP4": [
+      17,
+      10.3,
+      10.3
+    ],
+    "P1P2": [
+      25.8,
+      16.9,
+      16.9
+    ],
+    "P1P3": [
+      25.8,
+      0,
+      0
+    ],
+    "P2P3": [
+      0,
+      16.9,
+      16.9
+    ],
+    "P2P4": [
+      25.8,
+      0,
+      0
+    ],
+    "P3P4": [
+      25.8,
+      16.9,
+      16.9
+    ],
+    "inOut": [
+      0,
+      0,
+      0
+    ]
+  },
+  "forkCycleSeconds": 15.7,
+  "secondForkCycleSeconds": 0,
+  "operationEfficiencyInputPercent": 85,
+  "inputFile": "참고 및 검증 자료/INQUIRY_인도",
+  "inputFileReproducesScreenshot": true
+}

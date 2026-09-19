@@ -1,0 +1,161 @@
+{
+  "passed": 39,
+  "records": [
+    {
+      "name": "motion triangular profile",
+      "pass": true
+    },
+    {
+      "name": "motion trapezoidal profile and zero distance",
+      "pass": true
+    },
+    {
+      "name": "asymmetric deceleration conserves distance",
+      "pass": true
+    },
+    {
+      "name": "downward factor controls loaded descent",
+      "pass": true
+    },
+    {
+      "name": "hand calculation: first job 1 + 5 + 1 = 7 seconds",
+      "pass": true
+    },
+    {
+      "name": "hand calculation: empty return is required for second upward job",
+      "pass": true
+    },
+    {
+      "name": "opposing demand allows a loaded return",
+      "pass": true
+    },
+    {
+      "name": "two shafts share one floor loading and unloading resource",
+      "pass": true
+    },
+    {
+      "name": "one output slot blocks a loaded car until downstream clears",
+      "pass": true
+    },
+    {
+      "name": "unload completion and downstream handoff are different metrics",
+      "pass": true
+    },
+    {
+      "name": "planned stop suspends motion at the same physical position",
+      "pass": true
+    },
+    {
+      "name": "overlapping planned stops are merged",
+      "pass": true
+    },
+    {
+      "name": "return-home finishes before a waiting request is assigned",
+      "pass": true
+    },
+    {
+      "name": "waiting buffer includes cargo reserved for loading",
+      "pass": true
+    },
+    {
+      "name": "identical random seed gives identical events",
+      "pass": true
+    },
+    {
+      "name": "splitting equal hourly ratios preserves all arrival timestamps",
+      "pass": true
+    },
+    {
+      "name": "zero demand and zero timeband produce no fake capacity or cargo",
+      "pass": true
+    },
+    {
+      "name": "hourly multipliers scale requested cargo",
+      "pass": true
+    },
+    {
+      "name": "history ignores timeband multipliers",
+      "pass": true
+    },
+    {
+      "name": "platform footprint, payload and output buffer constrain batch",
+      "pass": true
+    },
+    {
+      "name": "two identical box jobs are transported in one compatible batch",
+      "pass": true
+    },
+    {
+      "name": "batch waiting eventually releases a partial load",
+      "pass": true
+    },
+    {
+      "name": "different OD/cargo never join the same batch",
+      "pass": true
+    },
+    {
+      "name": "nearest dispatch chooses a nearby eligible source, FIFO honors earlier release",
+      "pass": true
+    },
+    {
+      "name": "incremental simulation matches one-shot execution",
+      "pass": true
+    },
+    {
+      "name": "conservation and buffer limits hold under mixed loads and stops",
+      "pass": true
+    },
+    {
+      "name": "warmup excludes earlier handoffs but keeps in-flight cargo",
+      "pass": true
+    },
+    {
+      "name": "availability only changes analytical correction",
+      "pass": true
+    },
+    {
+      "name": "auto OD retains values and adds zero demand for new floor pairs",
+      "pass": true
+    },
+    {
+      "name": "all presets validate and JSON round-trip exactly",
+      "pass": true
+    },
+    {
+      "name": "JSON rejects hash changes and incompatible units",
+      "pass": true
+    },
+    {
+      "name": "workbook tables round-trip every field with explicit units",
+      "pass": true
+    },
+    {
+      "name": "workbook invalid ID or missing setting is rejected atomically",
+      "pass": true
+    },
+    {
+      "name": "history CSV import handles quoting and rejects missing OD",
+      "pass": true
+    },
+    {
+      "name": "validation rejects bad capacities, equal floors and time gaps",
+      "pass": true
+    },
+    {
+      "name": "validation rejects invalid cargo height and excessive payload",
+      "pass": true
+    },
+    {
+      "name": "comparison preserves seed and returns real simulation outcomes",
+      "pass": true
+    },
+    {
+      "name": "ports and cargo handoffs have stable IDs and truthful contract",
+      "pass": true
+    },
+    {
+      "name": "reports escape project strings and CSV neutralizes formulas",
+      "pass": true
+    }
+  ]
+}

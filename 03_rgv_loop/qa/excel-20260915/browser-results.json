@@ -1,0 +1,26 @@
+{
+  "checks": [
+    "New Excel controls and version are visible",
+    "Unsaved current form inputs are exported and restored",
+    "All default fields and tables round-trip through actual download and upload",
+    "Load button opens the workbook picker",
+    "Import with fewer cars preserves valid selection and applies successfully",
+    "Every table, reverse direction, units and experiments import without data loss",
+    "Pure handling display subtracts overhead only once",
+    "Time-band percentages preserve multipliers",
+    "Invalid workbook reports sheet and row",
+    "Failed import preserves inputs and completed simulation results",
+    "Formula cells with stale cached values are rejected",
+    "Auto time table is restored and blank history clears previous data",
+    "Manual empty OD and profile sheets remain empty",
+    "Excel toolbar fits 1600 px",
+    "Excel toolbar fits 1024 px",
+    "Excel toolbar fits 900 px",
+    "Excel toolbar fits 780 px",
+    "Excel toolbar fits 390 px",
+    "No JavaScript errors or runtime network requests"
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "138.0.3351.95"
+}

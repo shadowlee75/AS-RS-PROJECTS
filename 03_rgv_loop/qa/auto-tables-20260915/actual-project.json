@@ -1,0 +1,789 @@
+{
+  "schemaVersion": "rgv-loop/project@1",
+  "deviceType": "rgv_loop",
+  "moduleVersion": "0.2.2",
+  "kernelVersion": "1.0.0",
+  "units": {
+    "distance": "m",
+    "speed": "m/s",
+    "time": "s",
+    "acceleration": "m/s²"
+  },
+  "config": {
+    "name": "자동 입력표 검증",
+    "horizontal": 60,
+    "vertical": 25,
+    "radius": 1.2,
+    "direction": "forward",
+    "distanceUnit": "m",
+    "speedUnit": "m/min",
+    "unit": "PLT",
+    "vehicles": 8,
+    "carLength": 1.8,
+    "gap": 0.5,
+    "batchSize": 1,
+    "emptyV": 2,
+    "emptyA": 0.6,
+    "emptyD": 0.6,
+    "loadedV": 1.6666666666666667,
+    "loadedA": 0.5,
+    "loadedD": 0.5,
+    "curveV": 0.75,
+    "creepDistance": 0,
+    "creepV": 0.15,
+    "position": 0.5,
+    "interlock": 0.5,
+    "signal": 0,
+    "control": 0.3,
+    "handlingMode": "total",
+    "peak": 1,
+    "targetUtil": 0.8,
+    "A": 1,
+    "Ew": 1,
+    "etaMode": "beta",
+    "beta": 0.04,
+    "gamma": 2,
+    "basis": "assumption",
+    "basisNote": "예시 β=0.04. 현장 실측으로 검증되지 않은 설계 가정.",
+    "analysisMode": "od",
+    "dispatch": "nearest",
+    "parking": "circulate",
+    "controlMode": "following",
+    "blocks": 32,
+    "reaction": 0.2,
+    "hours": 8,
+    "warmup": 3,
+    "seed": 20260911,
+    "arrival": "takt",
+    "jitter": 0,
+    "timeStep": 0.1,
+    "demandMode": "rate",
+    "odTableMode": "paired",
+    "periodTableMode": "hourly",
+    "stations": [
+      {
+        "id": "P1",
+        "name": "스테이션 1",
+        "s": 0,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P2",
+        "name": "스테이션 2",
+        "s": 1.53051571007,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P3",
+        "name": "스테이션 3",
+        "s": 3.06103142015,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P4",
+        "name": "스테이션 4",
+        "s": 4.59154713022,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P5",
+        "name": "스테이션 5",
+        "s": 6.1220628403,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P6",
+        "name": "스테이션 6",
+        "s": 7.65257855037,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P7",
+        "name": "스테이션 7",
+        "s": 9.18309426045,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P8",
+        "name": "스테이션 8",
+        "s": 10.7136099705,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P9",
+        "name": "스테이션 9",
+        "s": 12.2441256806,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P10",
+        "name": "스테이션 10",
+        "s": 13.7746413907,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P11",
+        "name": "스테이션 11",
+        "s": 15.3051571007,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P12",
+        "name": "스테이션 12",
+        "s": 16.8356728108,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P13",
+        "name": "스테이션 13",
+        "s": 18.3661885209,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P14",
+        "name": "스테이션 14",
+        "s": 19.896704231,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P15",
+        "name": "스테이션 15",
+        "s": 21.427219941,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P16",
+        "name": "스테이션 16",
+        "s": 22.9577356511,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P17",
+        "name": "스테이션 17",
+        "s": 24.4882513612,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P18",
+        "name": "스테이션 18",
+        "s": 26.0187670713,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P19",
+        "name": "스테이션 19",
+        "s": 27.5492827813,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P20",
+        "name": "스테이션 20",
+        "s": 29.0797984914,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P21",
+        "name": "스테이션 21",
+        "s": 30.6103142015,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "P22",
+        "name": "스테이션 22",
+        "s": 32.1408299116,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D1",
+        "name": "스테이션 59",
+        "s": 88.7699111843,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D2",
+        "name": "스테이션 60",
+        "s": 90.3004268944,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D3",
+        "name": "스테이션 61",
+        "s": 91.8309426045,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D4",
+        "name": "스테이션 62",
+        "s": 93.3614583145,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D5",
+        "name": "스테이션 63",
+        "s": 94.8919740246,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D6",
+        "name": "스테이션 64",
+        "s": 96.4224897347,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D7",
+        "name": "스테이션 65",
+        "s": 97.9530054448,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D8",
+        "name": "스테이션 66",
+        "s": 99.4835211548,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D9",
+        "name": "스테이션 67",
+        "s": 101.014036865,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D10",
+        "name": "스테이션 68",
+        "s": 102.544552575,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D11",
+        "name": "스테이션 69",
+        "s": 104.075068285,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D12",
+        "name": "스테이션 70",
+        "s": 105.605583995,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D13",
+        "name": "스테이션 71",
+        "s": 107.136099705,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D14",
+        "name": "스테이션 72",
+        "s": 108.666615415,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D15",
+        "name": "스테이션 73",
+        "s": 110.197131125,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D16",
+        "name": "스테이션 74",
+        "s": 111.727646835,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D17",
+        "name": "스테이션 75",
+        "s": 113.258162545,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D18",
+        "name": "스테이션 76",
+        "s": 114.788678256,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D19",
+        "name": "스테이션 77",
+        "s": 116.319193966,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D20",
+        "name": "스테이션 78",
+        "s": 117.849709676,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D21",
+        "name": "스테이션 79",
+        "s": 119.380225386,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D22",
+        "name": "스테이션 80",
+        "s": 120.910741096,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D23",
+        "name": "스테이션 81",
+        "s": 122.441256806,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D24",
+        "name": "스테이션 82",
+        "s": 123.971772516,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D25",
+        "name": "스테이션 83",
+        "s": 125.502288226,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D26",
+        "name": "스테이션 84",
+        "s": 127.032803936,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D27",
+        "name": "스테이션 85",
+        "s": 128.563319646,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D28",
+        "name": "스테이션 86",
+        "s": 130.093835356,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D29",
+        "name": "스테이션 87",
+        "s": 131.624351066,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D30",
+        "name": "스테이션 88",
+        "s": 133.154866776,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D31",
+        "name": "스테이션 89",
+        "s": 134.685382487,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D32",
+        "name": "스테이션 90",
+        "s": 136.215898197,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D33",
+        "name": "스테이션 91",
+        "s": 137.746413907,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D34",
+        "name": "스테이션 92",
+        "s": 139.276929617,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D35",
+        "name": "스테이션 93",
+        "s": 140.807445327,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D36",
+        "name": "스테이션 94",
+        "s": 142.337961037,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D37",
+        "name": "스테이션 95",
+        "s": 143.868476747,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      },
+      {
+        "id": "D38",
+        "name": "스테이션 96",
+        "s": 145.398992457,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0
+      }
+    ],
+    "ods": [
+      {
+        "id": "OD1",
+        "from": "P1",
+        "to": "D1",
+        "rate": 1
+      },
+      {
+        "id": "OD2",
+        "from": "P2",
+        "to": "D2",
+        "rate": 1
+      },
+      {
+        "id": "OD3",
+        "from": "P3",
+        "to": "D3",
+        "rate": 1
+      },
+      {
+        "id": "OD4",
+        "from": "P4",
+        "to": "D4",
+        "rate": 1
+      },
+      {
+        "id": "OD5",
+        "from": "P5",
+        "to": "D5",
+        "rate": 1
+      },
+      {
+        "id": "OD6",
+        "from": "P6",
+        "to": "D6",
+        "rate": 1
+      },
+      {
+        "id": "OD7",
+        "from": "P7",
+        "to": "D7",
+        "rate": 1
+      },
+      {
+        "id": "OD8",
+        "from": "P8",
+        "to": "D8",
+        "rate": 1
+      },
+      {
+        "id": "OD9",
+        "from": "P9",
+        "to": "D9",
+        "rate": 1
+      },
+      {
+        "id": "OD10",
+        "from": "P10",
+        "to": "D10",
+        "rate": 1
+      },
+      {
+        "id": "OD11",
+        "from": "P11",
+        "to": "D11",
+        "rate": 1
+      },
+      {
+        "id": "OD12",
+        "from": "P12",
+        "to": "D12",
+        "rate": 1
+      },
+      {
+        "id": "OD13",
+        "from": "P13",
+        "to": "D13",
+        "rate": 1
+      },
+      {
+        "id": "OD14",
+        "from": "P14",
+        "to": "D14",
+        "rate": 1
+      },
+      {
+        "id": "OD15",
+        "from": "P15",
+        "to": "D15",
+        "rate": 1
+      },
+      {
+        "id": "OD16",
+        "from": "P16",
+        "to": "D16",
+        "rate": 1
+      },
+      {
+        "id": "OD17",
+        "from": "P17",
+        "to": "D17",
+        "rate": 1
+      },
+      {
+        "id": "OD18",
+        "from": "P18",
+        "to": "D18",
+        "rate": 1
+      },
+      {
+        "id": "OD19",
+        "from": "P19",
+        "to": "D19",
+        "rate": 1
+      },
+      {
+        "id": "OD20",
+        "from": "P20",
+        "to": "D20",
+        "rate": 1
+      },
+      {
+        "id": "OD21",
+        "from": "P21",
+        "to": "D21",
+        "rate": 1
+      },
+      {
+        "id": "OD22",
+        "from": "P22",
+        "to": "D22",
+        "rate": 1
+      }
+    ],
+    "profile": [
+      {
+        "start": 0,
+        "end": 3,
+        "multiplier": 1
+      },
+      {
+        "start": 3,
+        "end": 63,
+        "multiplier": 1
+      },
+      {
+        "start": 63,
+        "end": 123,
+        "multiplier": 1
+      },
+      {
+        "start": 123,
+        "end": 183,
+        "multiplier": 1
+      },
+      {
+        "start": 183,
+        "end": 243,
+        "multiplier": 1
+      },
+      {
+        "start": 243,
+        "end": 303,
+        "multiplier": 1
+      },
+      {
+        "start": 303,
+        "end": 363,
+        "multiplier": 1
+      },
+      {
+        "start": 363,
+        "end": 423,
+        "multiplier": 1
+      },
+      {
+        "start": 423,
+        "end": 483,
+        "multiplier": 1
+      }
+    ],
+    "zones": [],
+    "history": []
+  }
+}

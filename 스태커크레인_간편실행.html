@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>스태커크레인 간편 계산 · STC EASY</title><style>:root{color-scheme:light;--ink:#193744;--muted:#667c87;--teal:#087c7d;--teal-dark:#075d60;--line:#dce5e8;--paper:#fff;--bg:#f4f7f7;--soft:#eaf5f2;--amber:#fff5e5;--radius:16px;font-family:"Malgun Gothic","맑은 고딕",system-ui,sans-serif;font-size:14px;color:var(--ink);background:var(--bg)}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a,input,select,summary{ -webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button{border:1px solid var(--line);background:white;color:var(--ink);border-radius:9px;min-height:40px;padding:10px 15px;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s,border-color .15s}button:hover{background:#f0f7f6;border-color:#a5c9c4}button:disabled{cursor:wait;opacity:.65}a{color:var(--teal);text-decoration:none}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #2baaa5;outline-offset:3px}[hidden]{display:none!important}.topbar{height:86px;padding:0 38px;display:flex;align-items:center;justify-content:space-between;background:white;border-bottom:1px solid var(--line);gap:20px}.brand{display:flex;align-items:center;gap:12px;color:var(--ink);font-size:21px;letter-spacing:1.3px}.brand-icon{font-size:35px;color:var(--teal);line-height:1}.brand b{color:var(--teal)}.brand small{display:block;font-size:10px;letter-spacing:1.2px;margin-top:5px;color:var(--muted)}.version{font-size:10px;letter-spacing:0;background:var(--soft);border:1px solid #d1e9e2;border-radius:5px;padding:4px 6px;margin-left:1px}.header-actions{display:flex;align-items:center;gap:9px}.original-link{font-size:12px;padding-left:13px;color:var(--muted)}.offline{font-size:11px;display:flex;align-items:center;gap:6px;margin-right:15px;color:var(--muted)}.offline i{width:6px;height:6px;background:#279b8a;border-radius:50%}.layout{max-width:1640px;display:grid;grid-template-columns:280px minmax(0,1fr);margin:0 auto;min-height:calc(100vh - 86px)}.rail{padding:40px 28px;border-right:1px solid var(--line);background:#f9fbfa}.eyebrow{font-size:10px;font-weight:800;letter-spacing:1.8px;color:var(--teal);margin:0 0 15px}.rail h1{font-size:25px;line-height:1.6;letter-spacing:-1.3px;margin:0}.rail-intro{font-size:12px;line-height:1.9;color:var(--muted);margin:14px 0 27px}.rail nav{display:grid;gap:8px}.step{display:flex;align-items:center;padding:16px 13px;gap:12px;text-align:left;border:1px solid transparent;background:transparent;border-radius:12px;min-height:76px}.step>span{color:#8d9e9f;font-size:12px;align-self:flex-start;padding-top:3px}.step b{display:block;font-size:14px}.step small{display:block;font-size:10px;font-weight:400;margin-top:7px;color:var(--muted)}.step em{font-style:normal;margin-left:auto;color:#9bb3b4}.step.active{background:var(--ink);color:white;box-shadow:0 7px 17px #19374412}.step.active small,.step.active>span,.step.active em{color:#8fd1c7}.rail-summary{margin-top:36px;background:white;border:1px solid var(--line);padding:19px 17px;border-radius:12px}.mini-label{font-size:11px;font-weight:700;color:var(--muted)}dl{margin:13px 0}dl>div{display:flex;justify-content:space-between;gap:12px;padding:8px 0}dt{font-size:12px;color:var(--muted)}dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums;font-size:13px}.text-button{min-height:30px;padding:3px 0;border:0;background:transparent;color:var(--teal);font-size:12px}.text-button:hover{background:transparent;text-decoration:underline}.rail-help{padding:22px 6px;font-size:12px;margin-top:15px}.rail-help p{font-size:11px;line-height:1.9;color:var(--muted)}.workspace{min-width:0;padding:39px 44px 0}.page-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:28px}.page-heading h2{font-size:26px;font-weight:800;letter-spacing:-1.1px;margin:0 0 13px}.page-heading p:not(.eyebrow){color:var(--muted);font-size:13px;line-height:1.8;margin:0}.pill,.tag{white-space:nowrap;color:var(--teal);font-size:11px;background:var(--soft);padding:7px 11px;border-radius:30px;font-weight:600}.pill{margin-top:26px}.project-name{margin:0 0 20px}.project-name .field{max-width:490px}.card,.input-group{border:1px solid var(--line);background:white;border-radius:var(--radius);padding:26px 28px;margin-bottom:20px}.group-heading{display:flex;gap:13px;align-items:flex-start;margin-bottom:22px}.group-index{background:var(--soft);color:var(--teal);border-radius:9px;width:33px;height:33px;flex:0 0 33px;display:grid;place-items:center;font-size:12px;font-weight:800}.group-heading h3,.card h3{font-size:16px;margin:0 0 8px;letter-spacing:-.4px}.group-heading p,.hint{font-size:12px;line-height:1.8;color:var(--muted);margin:0}.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:21px 22px}.field{min-width:0}.field.wide{grid-column:span 2}.field label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;min-height:23px;margin-bottom:8px}.field .unit{margin-left:auto;white-space:nowrap;font-weight:500;color:#748891;font-size:11px}.field input,.field select{width:100%;height:45px;border:1px solid #ccdade;border-radius:8px;padding:10px 12px;background:#fcfdfd;color:var(--ink);font-size:14px;font-variant-numeric:tabular-nums;outline:none}.field input:focus,.field select:focus{border-color:var(--teal);box-shadow:0 0 0 3px #0b88881c;background:white}.field input[aria-invalid=true]{border-color:#bd554d;background:#fff4f2}.field small{display:block;color:var(--muted);line-height:1.7;font-size:11px;margin-top:7px}.field.modified label:after{content:"변경";font-size:9px;font-weight:500;color:var(--teal);background:var(--soft);padding:1px 5px;border-radius:3px}.group-note{font-size:12px;line-height:1.8;padding:12px 16px;background:#f1f7f5;border-radius:8px;margin:19px 0 0;color:#436860}.next-card{display:flex;align-items:center;gap:20px;justify-content:space-between;padding:8px 4px 24px}.next-card b{font-size:13px}.next-card p{color:var(--muted);font-size:12px;line-height:1.8;margin-bottom:0}.next-card button{flex-shrink:0}.actionbar{position:sticky;bottom:0;background:#f4f7f7f5;border-top:1px solid var(--line);backdrop-filter:blur(12px);padding:19px 0;display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:22px;z-index:5}.actionbar p{display:inline-block;font-size:12px;color:var(--muted);margin:0 0 0 12px}.state-badge{display:inline-block;font-size:11px;font-weight:600;color:var(--teal);padding:6px 10px;background:var(--soft);border-radius:5px}.primary{background:var(--teal);color:white;border-color:var(--teal);font-size:15px;min-height:51px;padding:14px 24px;white-space:nowrap;box-shadow:0 5px 12px #087c7d14}.primary:hover{background:var(--teal-dark);border-color:var(--teal-dark)}.primary span{margin-left:30px}.message,.error,.notice{font-size:13px;line-height:1.85;padding:15px 20px;border-radius:10px;margin-bottom:22px;background:var(--soft);color:#285d54;border:1px solid #c8e4db;overflow-wrap:anywhere}.error{background:#fff1ee;border-color:#e8b6af;color:#993d35}.amber{background:var(--amber);border-color:#ead7b9;color:#8b652b}.parameter-toolbar{background:white;border:1px solid var(--line);border-radius:13px;padding:19px 22px;margin-bottom:23px;display:flex;justify-content:space-between;align-items:center;gap:16px}.parameter-toolbar b{font-size:13px}.parameter-toolbar small{display:block;color:var(--muted);font-size:11px;line-height:1.8;margin-top:7px}.parameter-toolbar>div:last-child{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.concepts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}.concepts article{display:flex;gap:12px;background:#ecf3f2;padding:17px 15px;border-radius:12px}.concept-icon{font-size:21px;color:var(--teal);font-weight:500;line-height:1.3}.concepts b{font-size:12px}.concepts p{font-size:11px;line-height:1.8;color:#536e71;margin:7px 0 0}.parameter-group{background:white;border:1px solid var(--line);border-radius:13px;margin-bottom:13px;overflow:hidden}.parameter-group summary{cursor:pointer;display:flex;gap:14px;align-items:center;padding:22px 25px;list-style:none}.parameter-group summary::-webkit-details-marker{display:none}.parameter-group summary:after{content:"+";margin-left:auto;font-size:22px;color:var(--teal);font-weight:400}.parameter-group[open] summary:after{content:"−"}.parameter-group summary b{font-size:15px}.parameter-group summary small{display:block;color:var(--muted);font-size:11px;line-height:1.8;margin-top:7px}.parameter-group .group-content{padding:0 25px 25px}.parameter-group .group-index{font-weight:600}.back-link{border:0;background:transparent;color:var(--muted);padding-left:0}.result-grid{display:grid;grid-template-columns:1.55fr 1fr 1fr;gap:17px;margin-bottom:18px}.result-card{padding:25px;border:1px solid var(--line);background:white;border-radius:var(--radius);min-width:0}.result-card.featured{background:var(--ink);border-color:var(--ink);color:white}.metric-label{font-size:12px;line-height:1.6;color:var(--muted);font-weight:600}.featured .metric-label{color:#c9e2df}.metric-value{font-size:39px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-1.5px;margin:16px 0 13px;overflow-wrap:anywhere}.metric-value small{font-weight:400;font-size:12px;letter-spacing:0;color:var(--muted);margin-left:7px}.featured .metric-value small{color:#b4ccc9}.metric-detail{font-size:11px;color:var(--muted);line-height:1.9}.featured .metric-detail{color:#9ec5c0}.judgement{padding:16px 22px;background:var(--soft);border:1px solid #c8e4db;border-radius:11px;font-size:13px;line-height:1.9;margin-bottom:21px;color:#285d54}.judgement.amber{background:var(--amber);border-color:#ead7b9;color:#8b652b}.result-columns{display:grid;grid-template-columns:1.25fr 1fr;gap:19px}.card-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.card-heading h3{margin:0}.result-columns .card{padding:23px;min-width:0}.table-scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px;text-align:left}th{background:#f5f8f8;color:var(--muted);font-weight:600;font-size:11px}td,th{padding:12px 10px;border-bottom:1px solid var(--line);line-height:1.6}td:not(:first-child){font-variant-numeric:tabular-nums}tbody tr:last-child td{border-bottom:0}.table-scroll+.hint{margin-top:15px}.applied-list{margin:0}.applied-list>div{padding:10px 0;border-bottom:1px solid #edf1f2}.applied-list>div:last-child{border:0}.result-detail{margin-bottom:20px;border:1px solid var(--line);border-radius:12px;background:#fff}.result-detail summary{padding:20px;cursor:pointer;font-size:13px;font-weight:700}.result-detail>div{padding:0 22px 22px;font-size:12px;line-height:1.9;color:var(--muted)}.result-detail code{background:#f0f6f5;display:block;padding:13px;white-space:normal;color:var(--ink);font-family:inherit;line-height:2}.result-footer{display:flex;justify-content:space-between;gap:12px;padding-bottom:8px}#rackDiagram svg{display:block;width:100%;height:auto;max-height:300px}#rackCaption{margin-top:7px}dialog{border:1px solid var(--line);border-radius:20px;max-width:560px;width:calc(100% - 32px);padding:30px;color:var(--ink);box-shadow:0 25px 100px #132d4440}dialog::backdrop{background:#17374477;backdrop-filter:blur(3px)}.dialog-heading{display:flex;align-items:center;justify-content:space-between}.dialog-heading .eyebrow{margin:0}.dialog-heading button{border:0;min-height:32px;padding:5px 10px}dialog h2{font-size:24px;margin:17px 0 24px}dialog ol{padding-left:22px}dialog li{padding:0 0 12px 7px;font-size:14px}dialog li p{font-size:12px;color:var(--muted);line-height:1.9;margin:8px 0}dialog .notice{font-size:12px}dialog>.primary{width:100%}
+@media(min-width:1500px){.workspace{padding-left:55px;padding-right:55px}.fields{gap:23px 27px}.input-group{padding:28px 31px}}
+@media(max-width:1150px){.topbar{padding:0 22px}.offline{display:none}.layout{grid-template-columns:235px minmax(0,1fr)}.rail{padding:31px 20px}.rail h1{font-size:23px}.workspace{padding:30px 24px 0}.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.concepts{grid-template-columns:1fr}.concepts article{padding:13px 17px}.concepts p{margin-top:4px}.parameter-toolbar{align-items:flex-start;flex-direction:column}.result-columns{grid-template-columns:1fr}.result-grid{gap:11px}.result-card{padding:20px 16px}.metric-value{font-size:32px}.actionbar p{display:block;margin:5px 0 0;font-size:11px}.page-heading h2{font-size:23px}.header-actions{gap:6px}.original-link{font-size:11px}}
+@media(max-width:780px){.topbar{height:auto;min-height:76px;padding:17px 20px;align-items:flex-start;flex-wrap:wrap}.brand{font-size:19px}.brand-icon{font-size:31px}.header-actions{flex:1;justify-content:flex-end}.header-actions button{font-size:11px;min-height:34px;padding:8px 10px}.original-link{display:none}.layout{display:block}.rail{padding:19px 20px 15px;border-right:0;border-bottom:1px solid var(--line)}.rail>.eyebrow,.rail h1,.rail-intro,.rail-summary,.rail-help{display:none}.rail nav{display:flex;gap:6px}.step{flex:1;min-height:65px;padding:11px 9px;gap:8px;border-radius:10px}.step>span{font-size:10px}.step b{font-size:12px}.step small{font-size:9px;margin-top:5px}.step em{display:none}.workspace{padding:26px 20px 0}.page-heading{margin-bottom:20px;gap:10px}.page-heading h2{font-size:22px;line-height:1.5}.page-heading p:not(.eyebrow){font-size:12px}.pill{font-size:10px;padding:6px 8px;white-space:normal;max-width:90px;text-align:center;flex-shrink:0}.input-group,.card{padding:22px 20px}.fields{gap:19px 15px}.field label{font-size:11px}.field input,.field select{font-size:13px}.field small{font-size:10px}.group-heading h3{font-size:15px}.next-card{display:block}.next-card button{margin-top:13px}.actionbar{padding:14px 0}.actionbar p{max-width:170px}.primary{font-size:13px;min-height:48px;padding:12px 17px}.primary span{margin-left:15px}.result-grid{grid-template-columns:1fr 1fr}.result-card.featured{grid-column:1/-1}.metric-value{font-size:35px;margin:11px 0}.result-card{min-height:137px}.parameter-group summary{padding:19px 18px}.parameter-group .group-content{padding:0 18px 22px}.parameter-group summary small{font-size:10px}.parameter-group summary b{font-size:14px}.page-heading>button{font-size:11px;padding:8px 10px}.card-heading{align-items:flex-start}.card-heading .tag{font-size:9px;white-space:normal}td,th{padding:10px 7px;font-size:11px}}
+@media(max-width:390px){.header-actions{justify-content:flex-start}.fields{grid-template-columns:1fr}.field.wide{grid-column:auto}.step{padding:10px 7px}.step>span{display:none}.workspace{padding-left:15px;padding-right:15px}.actionbar p{max-width:130px}.page-heading h2{font-size:20px}.primary{padding:12px}.parameter-toolbar>div:last-child{gap:8px}.parameter-toolbar button{font-size:11px}}
+</style></head>
+<body>
+  <header class="topbar"><a class="brand" href="#" aria-label="간편 계산 시작"><span class="brand-icon" aria-hidden="true">▥</span><span>STC <b>EASY</b><small>스태커크레인 간편 계산</small></span><span class="version">1.0</span></a><div class="header-actions"><span class="offline"><i></i> 오프라인 사용</span><button type="button" id="loadProject">프로젝트 열기</button><button type="button" id="saveProject">프로젝트 저장</button><a class="original-link" href="스태커크레인_실행.html" target="_blank" rel="noopener">기존 상세 프로그램 ↗</a></div></header>
+  <main class="layout">
+    <aside class="rail"><p class="eyebrow">QUICK CALCULATION</p><h1>기본값부터<br>쉽게 계산하세요.</h1><p class="rail-intro">창고와 장비 사양을 입력하면<br>시간당 처리량을 확인할 수 있습니다.</p>
+      <nav aria-label="계산 단계"><button type="button" class="step active" data-view="basic" aria-current="step"><span>01</span><div><b>기본 입력</b><small>창고 · 속도 · 요구량</small></div><em>→</em></button><button type="button" class="step" data-view="parameters"><span>02</span><div><b>파라미터 설정</b><small>효율 · 가감속 · 지연</small></div><em>→</em></button><button type="button" class="step" data-view="results"><span>03</span><div><b>계산 결과</b><small>시간 · 처리량 · 필요 대수</small></div><em>→</em></button></nav>
+      <div class="rail-summary"><span class="mini-label">현재 입력한 파라미터</span><dl><div><dt>운전효율</dt><dd id="summaryEfficiency">85%</dd></div><div><dt>적재 사양 적용률</dt><dd id="summaryLoaded">100%</dd></div><div><dt>제어 지연</dt><dd id="summaryControl">0.5초</dd></div></dl><button type="button" class="text-button" data-view="parameters">파라미터 살펴보기 →</button></div>
+      <div class="rail-help"><b>처음이라면</b><p>기본 입력을 확인하고 바로 계산해 보세요. 상세값은 파라미터 설정에서 바꿀 수 있습니다.</p><button type="button" class="text-button" id="openGuide">빠른 사용 안내 ↗</button></div>
+    </aside>
+    <div class="workspace"><div id="message" class="message" role="status" hidden></div><div id="error" class="error" role="alert" hidden></div>
+      <form id="calculator" novalidate>
+      <section id="basic" class="view" aria-labelledby="basicTitle"><div class="page-heading"><div><p class="eyebrow">STEP 01 / BASIC INPUT</p><h2 id="basicTitle">설비의 기본 정보를 알려주세요.</h2><p>예시값이 입력되어 있습니다. 검토할 설비의 값으로 바꿔주세요.</p></div><span class="pill">기본 입력</span></div><div class="project-name" id="projectName"></div><div id="basicGroups"></div><div class="next-card"><div><b>상세 사양을 모르셔도 시작할 수 있습니다.</b><p>초기 파라미터는 설계 예시입니다. 실제 사양을 확인하면 같은 화면에서 다시 조정하세요.</p></div><button type="button" data-view="parameters">파라미터 확인 →</button></div></section>
+      <section id="parameters" class="view" aria-labelledby="parameterTitle" hidden><div class="page-heading"><div><p class="eyebrow">STEP 02 / PARAMETERS</p><h2 id="parameterTitle">상세 조건은 따로 설정하세요.</h2><p>필요한 항목만 수정하세요. 기본 입력의 창고 크기와 요구량은 유지됩니다.</p></div><span id="parameterCount" class="pill">예시 기본값 사용</span></div><div class="parameter-toolbar"><div><b>자주 쓰는 설정을 재사용하세요.</b><small>파라미터 파일에는 효율·운동 사양·상세 위치만 저장됩니다.</small></div><div><button type="button" id="loadParameters">설정 불러오기</button><button type="button" id="saveParameters">설정 저장</button><button type="button" class="text-button" id="resetParameters">파라미터만 초기화</button></div></div><div class="concepts"><article><span class="concept-icon">%</span><div><b>운전효율</b><p>85%이면 시간당 이론 처리량에 0.85를 곱합니다.</p></div></article><article><span class="concept-icon">s</span><div><b>대기·지연시간</b><p>초 단위입니다. 줄이면 사이클 시간이 짧아집니다.</p></div></article><article><span class="concept-icon">↗</span><div><b>적재 사양 적용률</b><p>낮추면 이동이 느려집니다. 적재 사양을 입력했다면 100%.</p></div></article></div><div id="parameterGroups"></div><button type="button" class="back-link" data-view="basic">← 기본 입력으로 돌아가기</button></section>
+      </form>
+      <section id="results" class="view" aria-labelledby="resultsTitle" hidden><div class="page-heading"><div><p class="eyebrow">STEP 03 / CALCULATION RESULT</p><h2 id="resultsTitle">시간당 얼마나 처리할 수 있을까요?</h2><p id="resultSubtitle"></p></div><button type="button" id="printReport">보고서 / PDF ↗</button></div><div id="staleResult" class="notice amber" hidden>입력이 변경되었습니다. 아래 결과는 이전 계산입니다. 「물동량 계산하기」를 눌러 갱신하세요.</div><div id="resultCards" class="result-grid"></div><div id="judgement" class="judgement"></div><div id="changeSummary" class="notice" hidden></div><div class="result-columns"><article class="card"><div class="card-heading"><h3>한 사이클을 비교해 보세요.</h3><span class="tag">STC 1대 기준</span></div><div id="cycleTable" class="table-scroll"></div><p class="hint">싱글은 화물 1개, 듀얼은 입고 1개 + 출고 1개를 처리합니다. 아래 비교는 각 사이클을 연속 운전할 때의 환산값입니다.</p></article><article class="card"><div class="card-heading"><h3>계산에 적용한 조건</h3><button type="button" class="text-button" data-view="parameters">수정 →</button></div><div id="appliedParameters"></div></article></div><article class="card"><div class="card-heading"><h3>입력한 창고와 포트 배치</h3><span id="storageCount" class="tag"></span></div><div id="rackDiagram"></div><p class="hint" id="rackCaption"></p></article><details class="result-detail"><summary>계산식과 적용 범위 보기</summary><div id="calculationNotes"></div></details><div class="result-footer"><button type="button" data-view="basic">← 입력값 수정</button><button type="button" id="saveMarkdown">상세 계산서 저장</button></div></section>
+      <footer class="actionbar"><div><span id="stateBadge" class="state-badge">예시값 입력됨</span><p id="stateText">기본값을 확인한 뒤 계산하세요.</p></div><button type="submit" form="calculator" class="primary" id="calculate">물동량 계산하기 <span>→</span></button></footer>
+    </div>
+  </main>
+  <dialog id="guide"><div class="dialog-heading"><span class="eyebrow">QUICK GUIDE</span><button type="button" id="closeGuide" aria-label="안내 닫기">✕</button></div><h2>처음 사용하는 순서</h2><ol><li><b>기본 입력</b><p>랙 크기, 칸 수, 속도, 요구량을 입력합니다. 속도는 m/min, 길이는 m입니다.</p></li><li><b>파라미터 확인</b><p>운전효율 85%, 적재 사양 적용률 100%, 제어 지연 0.5초 등의 예시값을 확인합니다.</p></li><li><b>물동량 계산하기</b><p>효율을 반영한 보정 처리량을 먼저 보세요. 목표 설계 부하율은 필요 대수를 판단하는 별도 기준입니다.</p></li><li><b>설정 저장</b><p>프로젝트 저장은 전체 입력, 파라미터 설정 저장은 상세 조건만 보관합니다. 저장한 파일은 다음 검토에 다시 사용할 수 있습니다.</p></li></ol><p class="notice">간편판은 평균 사이클과 물동량을 계산합니다. 재고·대기·3D 시뮬레이션이나 STC별 복합 배치는 기존 상세 프로그램을 사용하세요.</p><button type="button" class="primary" id="startGuide">입력 시작하기 →</button></dialog>
+  <input type="file" id="projectFile" accept=".json,application/json" hidden><input type="file" id="parameterFile" accept=".json,application/json" hidden>
+  <script data-module="core/motion">
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.STCMotion = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  const VERSION = '0.2.4';
+  function port(c, kind) {
+    const inbound = kind === 'in';
+    const x = inbound ? c.ioX : (c.outX ?? c.ioX), y = inbound ? c.ioY : (c.outY ?? c.ioY);
+    const z = (inbound ? c.ioZ : c.outZ) ?? -c.stroke;
+    return { x, y, z, side: Math.sign(z) || -1, port: kind };
+  }
+  function axis(distance, speed, accel, decel) {
+    if (![distance, speed, accel, decel].every(Number.isFinite) || distance < 0 || speed <= 0 || accel <= 0 || decel <= 0)
+      throw new Error('거리 ≥ 0, 속도·가속도·감속도 > 0인 유한한 수를 입력하세요.');
+    const critical = speed * speed / 2 * (1 / accel + 1 / decel);
+    const peak = Math.min(speed, Math.sqrt(2 * distance / (1 / accel + 1 / decel)));
+    const ta = peak / accel, td = peak / decel;
+    const cruiseDistance = Math.max(0, distance - peak * peak / 2 * (1 / accel + 1 / decel));
+    const tc = peak > 0 ? cruiseDistance / peak : 0;
+    const phases = [];
+    let t = 0, p = 0, v = 0;
+    function phase(label, duration, a) {
+      if (duration <= 0) return;
+      phases.push({ label, start: t, duration, position: p, velocity: v, acceleration: a });
+      p += v * duration + a * duration * duration / 2;
+      v += a * duration;
+      t += duration;
+    }
+    phase('가속', ta, accel); phase('정속', tc, 0); phase('감속', td, -decel);
+    return { distance, speed, accel, decel, peak, critical, duration: t, ta, tc, td,
+      shape: distance === 0 ? '정지' : tc > 1e-9 ? '사다리꼴' : '삼각형', phases };
+  }
+  function at(profile, time) {
+    if (profile.duration === 0 || time >= profile.duration) return { p: profile.distance, v: 0, a: 0, phase: '정지' };
+    if (time < 0) return { p: 0, v: 0, a: 0, phase: '대기' };
+    const phase = profile.phases.find(p => time < p.start + p.duration) || profile.phases.at(-1);
+    const t = Math.max(0, time - phase.start);
+    return { p: phase.position + phase.velocity * t + phase.acceleration * t * t / 2,
+      v: Math.max(0, phase.velocity + phase.acceleration * t), a: phase.acceleration, phase: phase.label };
+  }
+  function move(c, from, to, loaded) {
+    const f = loaded ? c.loadedFactor : 1;
+    const x = axis(Math.abs(to.x - from.x), c.vx * f, c.ax * f, c.dx * f);
+    const y = axis(Math.abs(to.y - from.y), c.vy * f, c.ay * f, c.dy * f);
+    return { type: 'move', from: { ...from }, to: { ...to }, loaded, x, y,
+      duration: Math.max(x.duration, y.duration), directionX: Math.sign(to.x - from.x), directionY: Math.sign(to.y - from.y) };
+  }
+  function fork(c, distance = c.stroke) {
+    const profile = axis(distance, c.vf, c.af, c.df);
+    const factor = c.loadedFactor, lift = axis(c.transferLift ?? .11, c.vy * factor, c.ay * factor, c.dy * factor);
+    const liftStart = profile.duration, liftEnd = liftStart + lift.duration, retractStart = liftEnd + c.forkDwell;
+    return { profile, lift, liftStart, liftEnd, retractStart, duration: retractStart + profile.duration, dwell: c.forkDwell };
+  }
+  function forkAt(f, time) {
+    if (time < f.profile.duration) return at(f.profile, time);
+    if (time < f.retractStart) return { p: f.profile.distance, v: 0, a: 0, phase: time < f.liftEnd ? '캐리지 승하강' : '안착 대기' };
+    const p = at(f.profile, time - f.retractStart);
+    return { p: f.profile.distance - p.p, v: -p.v, a: -p.a, phase: p.phase === '정지' ? '정지' : '인입 ' + p.phase };
+  }
+  function plan(c, kind, from, inCell, outCell, returnHome) {
+    const home = port(c, 'in'), output = port(c, 'out');
+    const actions = [];
+    let pos = { ...from };
+    function travel(to, loaded) {
+      // Stored load centres are the lower transfer reference. Loaded travel is 110 mm higher by default.
+      to = { ...to, y: to.y + (loaded ? (c.transferLift ?? .11) : 0) };
+      const m = move(c, pos, to, loaded);
+      if (m.duration > 0) {
+        actions.push({ ...m, label: loaded ? '적재 이동' : '공차 이동' });
+        if (c.position > 0) actions.push({ type: 'position', label: '정위치', duration: c.position, from: { ...to }, to: { ...to }, loaded });
+      }
+      pos = { ...to };
+    }
+    function transfer(atPoint, pick, effect) {
+      const f = fork(c, Math.abs(atPoint.z ?? c.stroke));
+      const end = { ...atPoint, y: atPoint.y + (pick ? f.lift.distance : 0) };
+      actions.push({ type: 'fork', label: ({ pickIn: 'IN 상차', placeIn: '랙 입고', pickOut: '랙 출고', placeOut: 'OUT 하차' })[effect],
+        duration: f.duration, fork: f, pick, effect, point: { ...atPoint }, from: { ...pos }, to: end, side: atPoint.side || 1 });
+      pos = { ...end };
+    }
+    if (c.control > 0) actions.push({ type: 'control', label: '제어 지연', duration: c.control, from: { ...pos }, to: { ...pos } });
+    if (kind === 'in' || kind === 'dc') {
+      travel(home, false); transfer(home, true, 'pickIn'); travel(inCell, true); transfer(inCell, false, 'placeIn');
+    }
+    if (kind === 'out' || kind === 'dc') {
+      travel(outCell, false); transfer(outCell, true, 'pickOut'); travel(output, true); transfer(output, false, 'placeOut');
+    }
+    // A DC includes the empty A→E return, even when the ports are separated.
+    if (kind === 'dc' || (returnHome && kind === 'in')) travel(home, false);
+    let t = 0;
+    for (const action of actions) { action.start = t; t += action.duration; action.end = t; }
+    return { kind, actions, duration: t, from: { ...from }, to: pos };
+  }
+  function planAt(p, time) {
+    const action = p.actions.find(a => time < a.end) || null;
+    const zero = { p: 0, v: 0, a: 0, phase: '정지' };
+    if (!action) return { x: { ...zero, p: p.to.x }, y: { ...zero, p: p.to.y }, f: zero, label: '완료', action: null };
+    const local = Math.max(0, time - action.start);
+    const x = { ...zero, p: action.from.x }, y = { ...zero, p: action.from.y };
+    let f = { ...zero }, transfer = null, label = action.label;
+    if (action.type === 'move') {
+      const sx = at(action.x, local), sy = at(action.y, local);
+      Object.assign(x, { p: action.from.x + sx.p * action.directionX, v: sx.v * action.directionX, a: sx.a * action.directionX, phase: sx.phase });
+      Object.assign(y, { p: action.from.y + sy.p * action.directionY, v: sy.v * action.directionY, a: sy.a * action.directionY, phase: sy.phase });
+    } else if (action.type === 'fork') {
+      f = forkAt(action.fork, local);
+      f = { ...f, p: f.p * action.side, v: f.v * action.side, a: f.a * action.side };
+      const lift = at(action.fork.lift, local - action.fork.liftStart), sign = action.pick ? 1 : -1;
+      Object.assign(y, { p: action.from.y + sign * lift.p, v: sign * lift.v, a: sign * lift.a, phase: lift.phase });
+      const stage = local < action.fork.liftStart ? 'out' : local < action.fork.liftEnd ? 'lift' : local < action.fork.retractStart ? 'settle' : 'in';
+      const stageLabel = { out: '포크 OUT', lift: '캐리지 ' + (action.pick ? 'UP' : 'DOWN') + ' ' + Number((action.fork.lift.distance * 1000).toFixed(3)) + ' mm', settle: '안착 대기', in: '포크 IN' }[stage];
+      label += ' · ' + stageLabel;
+      transfer = { point: action.point, pick: action.pick, stage,
+        onFork: action.pick ? local >= action.fork.liftStart : local < action.fork.liftEnd };
+    }
+    return { x, y, f, label, action, transfer };
+  }
+  function sampleTimes(p) {
+    const times = new Set([0, p.duration]);
+    const add = t => { if (t >= 0 && t <= p.duration) { times.add(t); if (t > 0) times.add(Math.max(0, t - 1e-7)); } };
+    for (const action of p.actions) {
+      add(action.start); add(action.end);
+      if (action.type === 'move') for (const profile of [action.x, action.y]) {
+        profile.phases.forEach(ph => add(action.start + ph.start)); add(action.start + profile.duration);
+      }
+      if (action.type === 'fork') {
+        for (const offset of [0, action.fork.retractStart]) {
+          action.fork.profile.phases.forEach(ph => add(action.start + offset + ph.start));
+          add(action.start + offset + action.fork.profile.duration);
+        }
+        action.fork.lift.phases.forEach(ph => add(action.start + action.fork.liftStart + ph.start));
+        add(action.start + action.fork.liftEnd);
+      }
+    }
+    for (let i = 0; i <= 360; i++) times.add(p.duration * i / 360);
+    return [...times].sort((a, b) => a - b);
+  }
+  return { VERSION, port, axis, at, move, fork, forkAt, plan, planAt, sampleTimes };
+});
+
+</script>
+<script data-module="core/model">
+(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory(require('./motion.js'));
+  else root.STCModel = factory(root.STCMotion);
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (M) {
+  'use strict';
+  const VERSION = '0.3.4', SCHEMA = 'stc/project@1';
+  const defaults = {
+    name: '스태커크레인 설계 검토', length: 60, height: 20, bays: 30, levels: 10, sides: 2, rackDepth: 'single', rearStroke: null, firstLevelHeight: null, levelPitch: null,
+    ioX: 0, ioY: 0, ioZ: null, outX: null, outY: null, outZ: null, ports: [], method: 'cells', femCase: 1, pointMode: 'cell',
+    vx: 3, ax: 0.5, dx: 0.6, vy: 1, ay: 0.5, dy: 0.5,
+    stroke: 1.2, vf: 0.6, af: 0.8, df: 0.8, transferLift: .11, forkDwell: 1, position: 0.5, control: 0.5, loadedFactor: 1,
+    inbound: 35, outbound: 35, peak: 1.2, cranes: 1, targetUtil: 0.8,
+    operatingEfficiency: null, A: null, Ft: null, Ew: null, basis: '', basisNote: '',
+    mode: 'dc', dcRatio: 50, ratioBasis: 'cycles', routes: [], storage: 'random', retrieval: 'fifo', arrival: 'takt', jitter: 0.1,
+    initialFill: 0.5, inBuffer: 8, outBuffer: 8, takeaway: 0,
+    hours: 2, warmup: 10, seed: 20260909, unit: 'PLT', speedUnit: 'm/min'
+  };
+  const fields = {
+    dcRatio: ['듀얼 작업 비율', '%', 0, 100, 1],
+    length: ['랙 길이', 'm', 0.1, 500, 1], height: ['랙 높이', 'm', 0.1, 100, 1],
+    bays: ['Bay 수', '개', 1, 200, 1], levels: ['Level 수', '단', 1, 30, 1],
+    firstLevelHeight: ['1단 랙 이재 높이', 'm · 바닥 기준 Y', 0, 100, 0.01], levelPitch: ['단간격', 'm · 이재 높이 간격', 0.001, 100, 0.01],
+    sides: ['보관면 수', '면', 1, 2, 1], ioX: ['IN · X 주행', 'm', -500, 500, 0.1], ioY: ['IN · Y 승강', 'm', -100, 100, 0.1],
+    ioZ: ['IN · Z 포크', 'm', -10, 10, 0.1], outX: ['OUT · X 주행', 'm', -500, 500, 0.1], outY: ['OUT · Y 승강', 'm', -100, 100, 0.1], outZ: ['OUT · Z 포크', 'm', -10, 10, 0.1],
+    femCase: ['FEM CASE', '', 1, 6, 1],
+    vx: ['주행 최대속도', 'speed', 0.001, 20, 0.1], ax: ['주행 가속도', 'm/s²', 0.001, 20, 0.1], dx: ['주행 감속도', 'm/s²', 0.001, 20, 0.1],
+    vy: ['승강 최대속도', 'speed', 0.001, 10, 0.1], ay: ['승강 가속도', 'm/s²', 0.001, 20, 0.1], dy: ['승강 감속도', 'm/s²', 0.001, 20, 0.1],
+    stroke: ['포크 편도 스트로크 · 앞열', 'm', 0.001, 10, 0.1], rearStroke: ['뒷열 포크 편도 스트로크', 'm', 0.001, 20, 0.1], vf: ['포크 최대속도', 'speed', 0.001, 5, 0.1],
+    af: ['포크 가속도', 'm/s²', 0.001, 20, 0.1], df: ['포크 감속도', 'm/s²', 0.001, 20, 0.1],
+    transferLift: ['캐리지 이재 승하강량', 'mm', 0, 1, .001],
+    forkDwell: ['이재 후 안착 대기', 's/이재', 0, 120, 0.1], position: ['정위치 시간', 's/이동', 0, 120, 0.1],
+    control: ['제어 지연', 's/사이클', 0, 120, 0.1], loadedFactor: ['적재 속도·가감속 비율', 'ratio', 0.1, 1, 0.05],
+    inbound: ['평균 입고 요구량', 'unit/h', 0, 5000, 1], outbound: ['평균 출고 요구량', 'unit/h', 0, 5000, 1],
+    peak: ['피크 계수', '배', 1, 5, 0.1], cranes: ['독립 통로 / 크레인', '대', 1, 100, 1], targetUtil: ['목표 설계 부하율', 'ratio', 0.1, 1, 0.05],
+    operatingEfficiency: ['운전효율', '%', 1, 100, 0.1],
+    A: ['가용도 A', 'ratio', 0.01, 1, 0.01], Ft: ['교통계수 Fₜ', 'ratio', 0.01, 1, 0.01], Ew: ['작업효율 E𝑤', 'ratio', 0.01, 1, 0.01],
+    jitter: ['일정간격 변동폭', 'ratio', 0, 0.95, 0.05], initialFill: ['초기 랙 충전률', 'ratio', 0, 1, 0.05],
+    inBuffer: ['입고 버퍼 용량', '개', 1, 10000, 1], outBuffer: ['출고 버퍼 용량', '개', 1, 10000, 1],
+    takeaway: ['출고 반출 간격', 's/개 · 0=즉시', 0, 3600, 1],
+    hours: ['측정 시간', 'h', 0.05, 24, 0.25], warmup: ['준비운전 제외 시간', 'min', 0, 240, 1], seed: ['난수 시드', '', 0, 4294967295, 1]
+  };
+  const enums = { rackDepth: ['single', 'double'], method: ['cells', 'fem'], pointMode: ['cell', 'theory'], mode: ['sc-return', 'sc-stay', 'dc', 'mixed'], ratioBasis: ['cycles', 'loads'], storage: ['random', 'nearest'], retrieval: ['fifo', 'random', 'nearest'],
+    arrival: ['takt', 'poisson'], basis: ['', 'assumption', 'vendor', 'measured', 'ideal'], unit: ['PLT', 'BOX', 'TOTE'], speedUnit: ['m/s', 'm/min'] };
+  const integers = new Set(['femCase', 'bays', 'levels', 'sides', 'cranes', 'inBuffer', 'outBuffer', 'seed']);
+  const portKeys = ['ioX', 'ioY', 'ioZ', 'outX', 'outY', 'outZ'];
+  const nullable = ['operatingEfficiency', 'A', 'Ft', 'Ew', 'ioZ', 'outX', 'outY', 'outZ', 'firstLevelHeight', 'levelPitch', 'rearStroke'];
+  const depthCount = c => c.rackDepth === 'double' ? 2 : 1;
+  const depthStroke = (c, depth = 1) => depth === 2 && depthCount(c) === 2 ? (c.rearStroke ?? c.stroke * 2) : c.stroke;
+  const depthName = c => depthCount(c) === 2 ? '더블딥' : '싱글딥';
+  const sameLane = (a, b) => a.side === b.side && a.bay === b.bay && a.level === b.level;
+  const depthNote = '더블딥 분석은 앞열·뒷열 50:50, 접근 가능 조건의 평균입니다. 시뮬레이션은 뒷열부터 입고하고 앞열이 비어 있을 때만 뒷열에 접근합니다. FIFO는 접근 가능한 재고 내에서 적용하며 SKU 지정 출고·화물 재배치는 포함하지 않습니다.';
+  function migrate(input) {
+    // v0.1 used a common I/O and the full configured fork stroke.
+    return { ...input, ioZ: input.ioZ ?? null, outX: input.outX ?? null, outY: input.outY ?? null, outZ: input.outZ ?? null,
+      ports: input.ports ?? [], method: input.method ?? 'cells', femCase: input.femCase ?? 1,
+      firstLevelHeight: input.firstLevelHeight ?? null, levelPitch: input.levelPitch ?? null, pointMode: input.pointMode ?? 'cell',
+      transferLift: input.transferLift === undefined ? defaults.transferLift : input.transferLift,
+      operatingEfficiency: input.operatingEfficiency === undefined ? null : input.operatingEfficiency,
+      dcRatio: input.dcRatio === undefined ? 50 : input.dcRatio, ratioBasis: input.ratioBasis ?? 'cycles', routes: input.routes ?? [],
+      rackDepth: input.rackDepth === undefined ? 'single' : input.rackDepth, rearStroke: input.rearStroke === undefined ? null : input.rearStroke };
+  }
+  function validate(input) {
+    if (!input || typeof input !== 'object') throw Error('설정 객체가 필요합니다.');
+    input = migrate(input);
+    const c = {};
+    for (const key of Object.keys(defaults)) {
+      const value = input[key];
+      if (key in fields) {
+        if (nullable.includes(key) && value === null) { c[key] = null; continue; }
+        const [label, unit, min, max] = fields[key];
+        if (typeof value !== 'number' || !Number.isFinite(value) || value < min || value > max || (integers.has(key) && !Number.isInteger(value))) {
+          const displayUnit = unit === 'speed' ? (input.speedUnit === 'm/min' ? 'm/min' : 'm/s') : unit;
+          const scale = key === 'transferLift' ? 1000 : displayUnit === 'm/min' ? 60 : 1;
+          const number = v => String(Number(v.toPrecision(12)));
+          const suffix = unit === 'speed' || key === 'transferLift' ? ' ' + displayUnit : '';
+          let message = label + ': ' + number(min * scale) + ' ~ ' + number(max * scale) + suffix + (integers.has(key) ? ' 범위의 정수' : ' 범위의 숫자') + '를 입력하세요.';
+          if (unit === 'speed') {
+            message += Number.isFinite(value) ? ' 현재 입력: ' + number(value * scale) + suffix + '.' : ' 값이 비어 있거나 숫자가 아닙니다.';
+            if (displayUnit === 'm/s' && value > max && value / 60 >= min && value / 60 <= max)
+              message += ' ' + number(value) + ' m/min을 뜻한다면 ' + number(value / 60) + ' m/s를 입력하거나, 단위를 m/min으로 바꾼 후 ' + number(value) + '을 다시 입력하세요.';
+          }
+          const error = Error(message); error.field = key; throw error;
+        }
+      } else if (key === 'routes') {
+        if (!Array.isArray(value) || value.length > 600) throw Error('복합 포트 조합은 전체 600행, STC별 6행까지 입력할 수 있습니다.');
+        c.routes = value.map((row, i) => {
+          if (!row || typeof row !== 'object') throw Error('복합 포트 ' + (i + 1) + '행을 확인하세요.');
+          const fail = message => { throw Error('복합 포트 ' + (i + 1) + '행: ' + message); };
+          if (!Number.isInteger(row.aisle) || row.aisle < 1 || row.aisle > input.cranes) fail('STC 번호는 1~' + input.cranes + ' 범위입니다.');
+          if (typeof row.id !== 'string' || !/^[A-Za-z0-9_-]{1,24}$/.test(row.id)) fail('조합 ID는 영문·숫자·_·- 1~24자입니다.');
+          if (!Number.isInteger(row.femCase) || row.femCase < 1 || row.femCase > 6) fail('CASE는 1~6 정수입니다.');
+          if (typeof row.weight !== 'number' || !Number.isFinite(row.weight) || row.weight <= 0 || row.weight > 100) fail('배분율은 0 초과~100%입니다.');
+          const copy = { aisle: row.aisle, id: row.id, femCase: row.femCase, weight: row.weight };
+          for (const k of portKeys) {
+            if (row[k] == null) { copy[k] = null; continue; }
+            if (typeof row[k] !== 'number' || !Number.isFinite(row[k]) || row[k] < fields[k][2] || row[k] > fields[k][3]) fail(k + ' 좌표 범위를 확인하세요.');
+            copy[k] = row[k];
+          }
+          return copy;
+        }); continue;
+      } else if (key === 'ports') {
+        if (!Array.isArray(value) || value.length > 100) throw Error('STC별 포트 설정은 최대 100행입니다.');
+        c.ports = value.map((row, i) => {
+          if (!row || typeof row !== 'object') throw Error('STC ' + (i + 1) + ' 포트 행이 올바르지 않습니다.');
+          const copy = {};
+          if (row.femCase != null) {
+            if (!Number.isInteger(row.femCase) || row.femCase < 1 || row.femCase > 6) throw Error('STC ' + (i + 1) + ' CASE는 1~6 정수입니다.');
+            copy.femCase = row.femCase;
+          }
+          for (const k of portKeys) {
+            if (row[k] == null) { copy[k] = null; continue; }
+            if (typeof row[k] !== 'number' || !Number.isFinite(row[k]) || row[k] < fields[k][2] || row[k] > fields[k][3]) throw Error('STC ' + (i + 1) + ' ' + k + ' 좌표는 ' + fields[k][2] + '~' + fields[k][3] + ' m 범위여야 합니다.');
+            copy[k] = row[k];
+          }
+          return copy;
+        }); continue;
+      } else if (key in enums) {
+        if (!enums[key].includes(value)) throw Error(key + '에 지원하지 않는 값이 있습니다.');
+      } else if (typeof value !== 'string' || value.length > 300) throw Error(key + ': 300자 이내의 문자열이 필요합니다.');
+      c[key] = value;
+    }
+    if (!c.name.trim()) throw Error('프로젝트명을 입력하세요.');
+    if (depthCount(c) === 2 && depthStroke(c, 2) <= c.stroke) {
+      const error = Error('뒷열 포크 편도 스트로크는 앞열 스트로크보다 커야 합니다. 통로 중심부터 뒷열 화물 중심까지의 총 거리를 입력하세요.');
+      error.field = 'rearStroke'; throw error;
+    }
+    const layout = rackLayout(c);
+    if (layout.top > c.height + 1e-9) {
+      const error = Error('최상단 랙 이재 높이 ' + Number(layout.top.toFixed(6)) + ' m가 랙 높이 ' + c.height + ' m를 초과합니다. 1단 높이 + (단수−1) × 단간격을 확인하세요.');
+      error.field = layout.first > c.height ? 'firstLevelHeight' : 'levelPitch'; throw error;
+    }
+    if (c.ports.length > c.cranes) throw Error('포트 행 수가 STC 수보다 많습니다. STC별 포트 표를 갱신하세요.');
+    for (let i = 0; i < c.cranes; i++) {
+      const local = aisleConfig(c, i);
+      const rows = c.routes.filter(row => row.aisle === i + 1);
+      if (rows.length > 6 || new Set(rows.map(row => row.id)).size !== rows.length) throw Error('STC ' + (i + 1) + ': 조합은 최대 6개이며 ID가 중복되면 안 됩니다.');
+      if (rows.length && Math.abs(rows.reduce((s, row) => s + row.weight, 0) - 100) > 1e-6) throw Error('STC ' + (i + 1) + ': 복합 포트 배분율 합계를 100%로 입력하세요.');
+      for (const route of routeConfigs(local)) {
+      for (const kind of ['in', 'out']) {
+        const p = M.port(route.config, kind);
+        if (Math.abs(p.z) > depthStroke(c, depthCount(c)))
+          throw Error('STC ' + (i + 1) + ' ' + kind.toUpperCase() + ': |Z|는 포크 스트로크 이하여야 합니다. X·Y는 랙 외부 좌표를 허용합니다.');
+      }
+      if (c.method === 'fem') femPoints(route.config);
+      }
+    }
+    if (c.bays * c.levels * c.sides * depthCount(c) * c.cranes > 120000) throw Error('전체 랙 셀은 120,000개 이내로 입력하세요. 모든 STC와 깊이를 포함한 셀을 함께 재현하기 위한 한도입니다.');
+    if ((c.inbound + c.outbound) * c.peak * (c.hours + c.warmup / 60) > 100000)
+      throw Error('전체 예상 작업이 100,000건을 넘습니다. 측정 시간이나 수요를 줄이세요.');
+    if ((c.inbound + c.outbound) * c.peak / c.cranes * (c.hours + c.warmup / 60) > 30000)
+      throw Error('통로당 예상 작업이 30,000건을 넘습니다. 측정 시간이나 수요를 줄이세요.');
+    return c;
+  }
+  function rng(seed) {
+    let value = seed >>> 0;
+    return function () { value += 0x6D2B79F5; let t = value; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  }
+  function aisleConfig(c, index) {
+    const local = { ...c, ports: [], routes: (c.routes || []).filter(r => r.aisle === index + 1).map(r => ({ ...r, aisle: 1 })) }, overrides = c.ports?.[index] || {};
+    if (overrides.femCase != null) {
+      local.femCase = overrides.femCase;
+      Object.assign(local, casePorts({ ...local, ioX: 0, ioY: 0, outY: 0 }));
+      if ([1, 3, 4].includes(local.femCase)) local.outZ = local.ioZ;
+    }
+    for (const key of portKeys) if (overrides[key] != null) local[key] = overrides[key];
+    return local;
+  }
+  function routeConfigs(c) {
+    const rows = (c.routes || []).filter(row => row.aisle === 1);
+    if (!rows.length) return [{ id: 'BASE', weight: 1, femCase: c.femCase, config: { ...c, routes: [] } }];
+    return rows.map(row => {
+      const config = { ...c, ports: [], routes: [], femCase: row.femCase };
+      Object.assign(config, casePorts({ ...config, ioX: 0, ioY: 0, outY: 0 }));
+      if ([1, 3, 4].includes(config.femCase)) config.outZ = config.ioZ;
+      for (const key of portKeys) if (row[key] != null) config[key] = row[key];
+      return { id: row.id, weight: row.weight / 100, femCase: row.femCase, config };
+    });
+  }
+  function portKey(c, kind) { const p = M.port(c, kind); return kind + ':' + [p.x, p.y, p.z].join(','); }
+  function mix(c) {
+    const total = c.inbound + c.outbound, n = c.bays * c.levels * c.sides;
+    const limit = n < 2 ? 0 : total > 0 ? Math.min(c.inbound, c.outbound) / Math.max(c.inbound, c.outbound) : 1;
+    const specified = c.dcRatio / 100;
+    const requested = c.mode === 'mixed' ? (c.ratioBasis === 'loads' ? specified / (2 - specified) : specified) : c.mode === 'dc' ? 1 : 0;
+    const p = Math.min(requested, limit), paired = total * p / (1 + p);
+    const singlesIn = Math.max(0, c.inbound - paired), singlesOut = Math.max(0, c.outbound - paired), singles = singlesIn + singlesOut;
+    return { requested, limit, p, loadRatio: 2 * p / (1 + p), limited: requested > limit + 1e-9,
+      wIn: singles > 1e-9 ? singlesIn / singles : total > 0 ? c.inbound / total : .5 };
+  }
+  function address(cell, aisle = 0) {
+    return 'STC' + String(aisle + 1).padStart(2, '0') + '-' + (cell.side < 0 ? 'A' : 'B') + '-' + String(cell.bay).padStart(3, '0') + '-' + String(cell.level).padStart(2, '0') + (cell.depth ? '-D' + cell.depth : '');
+  }
+  const caseNames = ['공용 포트 · 하단 모서리', 'IN·OUT · 하단 양 끝', '공용 포트 · 좌측 높이 이동', '공용 포트 · 하단 X 이동', 'IN 하단 · OUT 상부', 'IN 상부 · OUT 하단'];
+  const caseConditions = ['E=A=(0,0)', 'E=(0,0), A=(L,0)', 'E=A=(0,h), 0<h≤H', 'E=A=(x,0), 0<x≤L', 'E=(0,0), A=(0,h), 0<h≤H', 'E=(0,h), A=(0,0), 0<h≤H'];
+  function casePorts(c) {
+    const k = Number(c.femCase), L = c.length, H = c.height;
+    const h = (c.ioY > 0 ? c.ioY : (c.outY > 0 ? c.outY : H / 2));
+    const x = c.ioX > 0 ? c.ioX : L / 2;
+    const xy = k === 1 ? [0, 0, 0, 0] : k === 2 ? [0, 0, L, 0] : k === 3 ? [0, h, 0, h] : k === 4 ? [x, 0, x, 0] : k === 5 ? [0, 0, 0, h] : [0, h, 0, 0];
+    return { ioX: xy[0], ioY: xy[1], outX: xy[2], outY: xy[3] };
+  }
+  function femPortMatch(c) {
+    const L = c.length, H = c.height, E = M.port(c, 'in'), A = M.port(c, 'out'), k = c.femCase;
+    const eq = (a, b) => Math.abs(a - b) < 1e-8, zero = a => eq(a, 0), same = eq(E.x, A.x) && eq(E.y, A.y) && eq(E.z, A.z);
+    const good = [same && zero(E.x) && zero(E.y), zero(E.x) && zero(E.y) && eq(A.x, L) && zero(A.y),
+      same && zero(E.x) && E.y > 0 && E.y <= H, same && zero(E.y) && E.x > 0 && E.x <= L,
+      zero(E.x) && zero(E.y) && zero(A.x) && A.y > 0 && A.y <= H,
+      zero(E.x) && E.y > 0 && E.y <= H && zero(A.x) && zero(A.y)][k - 1];
+    return good;
+  }
+  function femReference(c) {
+    const L = c.length, H = c.height, E = M.port(c, 'in'), A = M.port(c, 'out'), k = c.femCase;
+    if (!femPortMatch(c)) throw Error('FEM CASE ' + k + ' 이론 좌표 비교의 포트 조건: ' + caseConditions[k - 1] + ([1, 3, 4].includes(k) ? ' · 공용 포트의 Z도 같아야 합니다.' : '') + ' 외부 포트는 「실제 화물 중심」으로 계산하세요.');
+    const point = (x, y, name) => ({ x, y, z: -c.stroke, side: -1, name });
+    let p1 = point(L / 5, 2 * H / 3, 'P1'), p2 = point(2 * L / 3, H / 5, 'P2');
+    if (k === 3) {
+      p1.y = E.y <= H / 2 ? 2 * H / 3 + E.y / 3 : E.y / 3;
+      p2.y = E.y <= H / 2 ? H / 5 + E.y / 3 : 7 * H / 15 + E.y / 3;
+    }
+    if (k === 4) {
+      p1.x = E.x <= L / 2 ? L / 5 + E.x / 3 : 7 * L / 15 + E.x / 3;
+      p2.x = E.x <= L / 2 ? 2 * L / 3 + E.x / 3 : E.x / 3;
+    }
+    if (k === 5 || k === 6) { const h = k === 5 ? A.y : E.y; p1.y += h / 6; p2.y += h / 6; }
+    const mirrored = [point(L - p1.x, p1.y, 'P1′'), point(L - p2.x, p2.y, 'P2′')];
+    return { case: k, name: caseNames[k - 1], condition: caseConditions[k - 1], E, A,
+      inbound: [p1, p2], outbound: k === 2 ? mirrored : [p1, p2], dcPairs: k === 2 ? [[p1, p2], mirrored] : [[p1, p2]],
+      alpha: H / L * c.vx / c.vy };
+  }
+  function nearestCell(rack, point, excludedId = null) {
+    let nearest = null, distance = Infinity;
+    for (const cell of rack) {
+      if (cell.id === excludedId) continue;
+      const d = (cell.x - point.x) ** 2 + (cell.y - point.y) ** 2 + (cell.z - point.z) ** 2;
+      if (d < distance - 1e-10) { distance = d; nearest = cell; }
+    }
+    return nearest;
+  }
+  function femPoints(c) {
+    const matches = femPortMatch(c), mode = c.pointMode ?? 'cell';
+    let referenceConfig = c;
+    if (!matches && mode === 'cell') {
+      // CASE coordinates remain a reference template. Actual ports below are never moved to that template.
+      const limited = { ...c, ioX: Math.max(0, Math.min(c.length, c.ioX)), ioY: Math.max(0, Math.min(c.height, c.ioY)), outY: Math.max(0, Math.min(c.height, M.port(c, 'out').y)) };
+      referenceConfig = { ...c, ...casePorts(limited), ioZ: -c.stroke, outZ: -c.stroke };
+    }
+    const reference = femReference(referenceConfig), input = M.port(c, 'in'), output = M.port(c, 'out');
+    const mirroredLayout = !matches && input.x >= c.length && output.x >= c.length;
+    if (mirroredLayout) {
+      const seen = new Set();
+      for (const p of [...reference.inbound, ...reference.outbound]) if (!seen.has(p)) { p.x = c.length - p.x; seen.add(p); }
+      reference.E.x = c.length - reference.E.x; reference.A.x = c.length - reference.A.x;
+    }
+    const rack = cells(c);
+    const snapPair = points => {
+      let previous = null;
+      return points.map(p => {
+        const candidates = depthCount(c) === 2 && previous !== null && c.bays * c.levels * c.sides > 1 ? rack.filter(cell => !sameLane(cell, rack[previous])) : rack;
+        const cell = nearestCell(candidates, p, rack.length > 1 ? previous : null); previous = cell.id;
+        return { ...cell, name: p.name, reference: { ...p }, adjustment: Math.hypot(cell.x - p.x, cell.y - p.y, cell.z - p.z) };
+      });
+    };
+    const inbound = mode === 'theory' ? reference.inbound : snapPair(reference.inbound);
+    const outbound = c.femCase === 2 ? (mode === 'theory' ? reference.outbound : snapPair(reference.outbound)) : inbound;
+    return { ...reference, E: input, A: output, inbound, outbound, dcPairs: c.femCase === 2 ? [inbound, outbound] : [inbound],
+      mode, portMatch: matches, mirroredLayout, referencePorts: { in: reference.E, out: reference.A },
+      theoretical: { inbound: reference.inbound, outbound: reference.outbound } };
+  }
+  function rackLayout(c) {
+    const pitch = c.levelPitch ?? c.height / c.levels, first = c.firstLevelHeight ?? pitch / 2;
+    const heights = Array.from({ length: c.levels }, (_, l) => first + l * pitch), top = heights.at(-1);
+    const boundaries = [first - pitch / 2, ...heights.map(y => y + pitch / 2)];
+    return { first, pitch, top, heights, boundaries };
+  }
+  function cells(c) {
+    const layout = rackLayout(c);
+    const result = [];
+    for (let side = 0; side < c.sides; side++) for (let b = 0; b < c.bays; b++) for (let l = 0; l < c.levels; l++) for (let depth = 1; depth <= depthCount(c); depth++) {
+      result.push({ id: result.length, bay: b + 1, level: l + 1, side: side === 0 ? -1 : 1, ...(depthCount(c) === 2 ? { depth } : {}),
+        x: (b + 0.5) * c.length / c.bays, y: layout.heights[l], z: (side === 0 ? -1 : 1) * depthStroke(c, depth) });
+    }
+    return result;
+  }
+  function envelope(c) {
+    const layout = rackLayout(c), points = [];
+    for (let i = 0; i < c.cranes; i++) for (const r of routeConfigs(aisleConfig(c, i))) points.push(M.port(r.config, 'in'), M.port(r.config, 'out'));
+    const xMin = Math.min(0, ...points.map(p => p.x)), xMax = Math.max(c.length, ...points.map(p => p.x));
+    const yMin = Math.min(0, layout.boundaries[0], ...points.map(p => p.y)), yMax = Math.max(c.height, layout.boundaries.at(-1), layout.top + (c.transferLift ?? .11), ...points.map(p => p.y + (c.transferLift ?? .11)));
+    return { xMin, xMax, yMin, yMax, width: xMax - xMin, height: yMax - yMin };
+  }
+  function calculate(input) {
+    const c = validate(input), rack = cells(c), n = rack.length;
+    const travelTime = (cfg, a, b, loaded) => { const t = M.move(cfg, a, b, loaded).duration; return t + (t > 0 ? cfg.position : 0); };
+    let between = 0, m2 = 0, samples = 0;
+    const depths = depthCount(c), dcPossible = n > depths, exact = n * (n - depths) <= 60000;
+    function add(i, j) {
+      const value = travelTime(c, rack[i], rack[j], false);
+      samples++; const delta = value - between; between += delta / samples; m2 += delta * (value - between);
+    }
+    if (c.method === 'cells' && dcPossible) {
+      if (exact) { for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) if (depths === 2 ? !sameLane(rack[i], rack[j]) : i !== j) add(i, j); }
+      else { const random = rng(9851); for (let k = 0; k < 30000; k++) {
+        const i = Math.floor(random() * n), start = Math.floor(i / depths) * depths;
+        let j = Math.floor(random() * (n - depths)); if (j >= start) j += depths; add(i, j);
+      } }
+    }
+    const total = c.inbound + c.outbound;
+    const mixing = mix(c), p = mixing.p;
+    const paired = total * p / (1 + p), singlesIn = c.inbound - paired, singlesOut = c.outbound - paired;
+    const singles = singlesIn + singlesOut;
+    const corrected = [c.A, c.Ft, c.Ew].every(Number.isFinite) && c.basis !== '';
+    const factorSource = c.operatingEfficiency !== null ? 'efficiency' : corrected ? 'coefficients' : null;
+    const factor = factorSource === 'efficiency' ? c.operatingEfficiency / 100 : corrected ? c.A * c.Ft * c.Ew : null, cache = new Map();
+    function one(cfg) {
+      const E = M.port(cfg, 'in'), A = M.port(cfg, 'out'), fem = c.method === 'fem' ? femPoints(cfg) : null;
+      const variants = point => depths === 1 ? [point] : [1, 2].map(depth => point.id == null ? { ...point, depth, z: point.side * depthStroke(cfg, depth) } : { ...point, ...rack.find(cell => sameLane(cell, point) && cell.depth === depth) });
+      const inPoints = fem ? fem.inbound.flatMap(variants) : rack, outPoints = fem ? fem.outbound.flatMap(variants) : rack;
+      const ins = inPoints.map(cell => M.plan(cfg, 'in', E, cell, null, true));
+      const outs = outPoints.map(cell => M.plan(cfg, 'out', A, null, cell, true));
+      const mean = plans => plans.reduce((s, v) => s + v.duration, 0) / plans.length;
+      const scIn = mean(ins), scOut = mean(outs);
+      // Residual SC jobs after pairing determine the correct directional weighting.
+      const wIn = singles > 1e-9 ? singlesIn / singles : total > 0 ? c.inbound / total : .5;
+      const sc = wIn * scIn + (1 - wIn) * scOut;
+      const averagePart = (plans, type) => plans.reduce((sum, plan) => sum + plan.actions.filter(a => a.type === type).reduce((s, a) => s + a.duration, 0), 0) / plans.length;
+      const scParts = {};
+      for (const type of ['move', 'position', 'fork', 'control']) scParts[type] = wIn * averagePart(ins, type) + (1 - wIn) * averagePart(outs, type);
+      let dc = null, dcPlans = [];
+      if (dcPossible) {
+        if (fem) { dcPlans = fem.dcPairs.flatMap(pair => variants(pair[0]).flatMap(a => variants(pair[1]).map(b => M.plan(cfg, 'dc', E, a, b, true)))); dc = mean(dcPlans); }
+        else {
+          const loadedIn = rack.reduce((s, cell) => s + travelTime(cfg, E, cell, true), 0) / n;
+          const loadedOut = rack.reduce((s, cell) => s + travelTime(cfg, cell, A, true), 0) / n;
+          dc = loadedIn + between + loadedOut + travelTime(cfg, A, E, false)
+            + M.fork(cfg, Math.abs(E.z)).duration + M.fork(cfg, Math.abs(A.z)).duration + 2 * rack.reduce((sum, cell) => sum + M.fork(cfg, Math.abs(cell.z)).duration, 0) / n + cfg.control;
+        }
+      }
+      const cycle = (1 - p) * sc + p * (dc || 0), theory = 3600 * (1 + p) / cycle;
+      const available = factor === null ? null : theory * factor;
+      return { scIn, scOut, sc, dc, cycle, theory, available, scParts, fem,
+        dcTimes: dcPlans.map(v => v.duration), returnTime: travelTime(cfg, A, E, false), ports: { in: E, out: A } };
+    }
+    const aisles = [];
+    for (let i = 0; i < c.cranes; i++) {
+      const cfg = aisleConfig(c, i), routes = routeConfigs(cfg).map(route => {
+        const key = JSON.stringify([route.femCase, M.port(route.config, 'in'), M.port(route.config, 'out')]);
+        if (!cache.has(key)) cache.set(key, one(route.config));
+        return { ...cache.get(key), id: route.id, weight: route.weight, femCase: route.femCase, aisle: i + 1 };
+      });
+      const average = key => routes.reduce((s, r) => s + r.weight * (r[key] || 0), 0);
+      const combined = { ...routes[0], routes, aisle: i + 1, transition: 0 };
+      if (routes.length > 1 || c.mode === 'mixed') {
+        // Independent route/direction selection, closed SC/DC cycles; expected empty repositioning between cycles.
+        const inWeight = p + (1 - p) * mixing.wIn, outWeight = (1 - p) * (1 - mixing.wIn);
+        for (const a of routes) for (const b of routes) for (const [from, wa] of [['in', inWeight], ['out', outWeight]]) for (const [to, wb] of [['in', inWeight], ['out', outWeight]])
+          combined.transition += a.weight * b.weight * wa * wb * travelTime(cfg, a.ports[from], b.ports[to], false);
+        for (const key of ['scIn', 'scOut', 'sc', 'dc', 'returnTime']) combined[key] = key === 'dc' && !dcPossible ? null : average(key);
+        combined.scParts = Object.fromEntries(Object.keys(combined.scParts).map(key => [key, routes.reduce((s, r) => s + r.weight * r.scParts[key], 0)]));
+        combined.cycle = average('cycle') + combined.transition;
+        combined.theory = 3600 * (1 + p) / combined.cycle;
+        combined.available = factor === null ? null : combined.theory * factor;
+      }
+      aisles.push(combined);
+    }
+    const first = aisles[0], theoryTotal = aisles.reduce((s, a) => s + a.theory, 0);
+    const capacity = factor === null ? null : theoryTotal * factor, demand = total * c.peak;
+    const util = capacity === null ? null : demand / capacity;
+    const worstUtil = factor === null ? null : Math.max(...aisles.map(a => demand / c.cranes / a.available));
+    // Conservative count for additional independent aisles under equal demand splitting.
+    const required = factor === null ? null : Math.ceil(demand / (Math.min(...aisles.map(a => a.available)) * c.targetUtil));
+    const allRoutes = aisles.flatMap(a => a.routes);
+    return { ...first, config: c, p, mix: mixing, allRoutes, demand, factor, factorSource, capacity, util, worstUtil, required, theoryTotal, aisles,
+      cells: n, totalCells: n * c.cranes, fork: M.fork(c).duration,
+      dcSampling: { method: c.method === 'fem' ? 'FEM 대표 경로' : exact ? '전수 열거' : '고정 시드 표본',
+        samples: c.method === 'fem' ? first.dcTimes.length : samples, se: !exact && samples > 1 ? Math.sqrt(m2 / (samples - 1) / samples) : 0 },
+      reference: (c.method === 'fem' ? 'FEM 9.851 (06.2003) CASE ' + [...new Set(allRoutes.map(a => a.femCase))].join('/') + (c.pointMode === 'cell' ? ' 기준 실제 화물 중심 · 설계 계산' : ' 이론 대표점 비교') + (allRoutes.some(a => !a.fem.portMatch) ? ' · 실제 외부/자유 포트 적용' : '') : '균일 셀 선택 · SC-return/DC 공학 모델')
+        + (aisles.some(a => a.routes.length > 1) ? ' · 복합 배치: 배분율 가중 시간 + 독립 조합 전환 공차시간 추정 (설계 확장)' : '')
+        + (depths === 2 ? ' · 더블딥 앞열/뒷열 균등 평균 (설계 확장, 재배치 제외)' : '')
+        + (c.mode === 'sc-stay' ? ' · SC-stay는 SC-return 참고값, DES 확인' : '') };
+  }
+  function correctionText(result) {
+    return result.factorSource === 'efficiency' ? '운전효율 ' + result.config.operatingEfficiency + '% 직접 적용' :
+      result.factor === null ? '운전효율 또는 세부 계수·근거 입력 필요' : 'A × Fₜ × E𝑤 = ' + Number(result.factor.toFixed(4)) + ' (' + Number((result.factor * 100).toFixed(2)) + '%)';
+  }
+  function sensitivity(result) {
+    const rows = [];
+    if (result.factor === null) return rows;
+    const keys = result.factorSource === 'efficiency' ? ['operatingEfficiency'] : ['A', 'Ft', 'Ew'];
+    for (const key of keys) for (const delta of [-0.1, -0.05, 0.05, 0.1]) {
+      const value = Math.max(fields[key][2], Math.min(fields[key][3], result.config[key] * (1 + delta)));
+      const capacity = result.capacity * value / result.config[key];
+      const minAvailable = Math.min(...result.aisles.map(a => a.available)) * value / result.config[key];
+      rows.push({ key, delta, value, capacity, required: Math.ceil(result.demand / (minAvailable * result.config.targetUtil)) });
+    }
+    return rows;
+  }
+  function pack(config) { return { schemaVersion: SCHEMA, moduleVersion: VERSION, kernelVersion: M.VERSION, deviceType: 'stacker-crane', savedAt: new Date().toISOString(), units: 'm,m/s,m/s²,s', config: validate(config) }; }
+  function unpack(data) {
+    if (!data || data.schemaVersion !== SCHEMA || data.deviceType !== 'stacker-crane' || data.units !== 'm,m/s,m/s²,s') throw Error('지원하는 STC 프로젝트 JSON과 단위 규격이 아닙니다.');
+    if (typeof data.moduleVersion !== 'string' || !['0.1', '0.2', '0.3'].includes(data.moduleVersion.split('.').slice(0, 2).join('.')))
+      throw Error('프로그램 주·부 버전이 다릅니다. 버전 변환 후 불러오세요.');
+    return validate(data.config);
+  }
+  return { VERSION, SCHEMA, defaults, fields, enums, nullable, portKeys, depthCount, depthStroke, depthName, sameLane, depthNote, migrate, aisleConfig, routeConfigs, portKey, mix, address, caseNames, caseConditions, casePorts, femPortMatch, femReference, femPoints, nearestCell, rackLayout, envelope, validate, rng, cells, calculate, correctionText, sensitivity, pack, unpack };
+});
+
+</script>
+<script data-module="core/report">
+(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory(require('./model.js'));
+  else root.STCReport = factory(root.STCModel);
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (Model) {
+  'use strict';
+  const number = value => Number.isFinite(value) ? String(Math.round(value * 10000) / 10000) : '미산정';
+  const escape = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\|/g, '\\|').replace(/[\r\n]+/g, ' ');
+  function csv(rows) {
+    return '\uFEFF' + rows.map(row => row.map(value => {
+      let text = String(value ?? '');
+      if (typeof value === 'string' && /^[=+@\-\t\r]/.test(text)) text = "'" + text;
+      return '"' + text.replace(/"/g, '""') + '"';
+    }).join(',')).join('\r\n');
+  }
+  function hash(config) { let h = 2166136261; for (const ch of JSON.stringify(config)) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0).toString(16).padStart(8, '0'); }
+  function markdown(result, sim) {
+    const c = result.config;
+    const rows = ['# 스태커크레인 물동량 계산서', '', '- 프로젝트: ' + escape(c.name), '- 생성: ' + new Date().toISOString(),
+      '- 모듈/운동 커널: ' + Model.VERSION + ' / ' + Model.pack(c).kernelVersion, '- 입력 식별자 (FNV-1a): ' + hash(c), '- 계산 방식: ' + result.reference, '',
+      '## 1. 입력 요약', '', '- 속도는 선택한 표시 단위로 환산합니다. 프로젝트 JSON과 운동 계산은 SI 단위(m, m/s, m/s², s)를 유지합니다.', '', '| 입력 | 값 | 단위 |', '| --- | --- | --- |'];
+    for (const key of Object.keys(Model.defaults).filter(key => key !== 'ports' && key !== 'routes')) {
+      const field = Model.fields[key], speed = field?.[1] === 'speed';
+      const value = key === 'rackDepth' ? Model.depthName(c) : c[key] === null ? (['firstLevelHeight', 'levelPitch', 'rearStroke'].includes(key) ? '자동' : '미입력') : key === 'transferLift' ? number(c[key] * 1000) : speed ? number(c[key] * (c.speedUnit === 'm/min' ? 60 : 1)) : c[key];
+      rows.push('| ' + escape(field?.[0] || (key === 'rackDepth' ? '화물 보관 깊이' : key)) + ' | ' + escape(value) + ' | ' + escape(speed ? c.speedUnit : field?.[1] || '—') + ' |');
+    }
+    rows.push('', '### SC/DC 지정 비율', '',
+      '- 운전 모드: ' + c.mode + '. 지정 SC ' + number(100 - c.dcRatio) + '% / DC ' + number(c.dcRatio) + '% (' + (c.ratioBasis === 'cycles' ? '운전 사이클 횟수 기준' : '처리 화물 개수 기준') + ', mixed 모드에서 적용).',
+      '- 사이클 기준 목표 DC: ' + number(result.mix.requested * 100) + '% / 수요·셀 제약 상한: ' + number(result.mix.limit * 100) + '% / 분석 적용 DC: ' + number(result.p * 100) + '%.',
+      '- 화물 기준 f를 선택하면 p=f/(2−f). 총 취급량 Q=3600×(1+p)/평균 사이클시간.',
+      '- 실제 비율은 도착·재고·버퍼 조건에 따라 달라집니다. 같은 조합의 입·출고만 DC로 묶으며, 지정 비율 모드의 SC는 포트 복귀입니다.');
+    rows.push('', '### 화물 보관 깊이', '', '- ' + Model.depthName(c) + ' · ' + result.cells + '셀/STC · 전체 ' + result.totalCells + '셀.', '- 앞열 포크 거리: ' + number(c.stroke) + ' m' + (Model.depthCount(c) === 2 ? ' / 뒷열: ' + number(Model.depthStroke(c, 2)) + ' m.' : '.'));
+    if (Model.depthCount(c) === 2) rows.push('- ' + Model.depthNote, '- FEM 대표점 표는 앞열(D1) 기준이며, 계산은 동일 X·Y의 뒷열 이재시간도 평균에 포함합니다.');
+    const layout = Model.rackLayout(c);
+    rows.push('', '### 단별 랙 이재 높이', '', '- Y(k) = 1단 높이 + (k−1) × 단간격. 바닥 기준, 모든 STC 공통.',
+      '- 적용 1단 높이: ' + number(layout.first) + ' m / 단간격: ' + number(layout.pitch) + ' m / 최상단: ' + number(layout.top) + ' m.',
+      '- 빈 단간격은 H/단수, 빈 1단 높이는 단간격/2입니다. 실제 화물 중심과 기본 P1·P2 선정에 적용합니다. 비교용 이론 좌표는 H 기준입니다.',
+      '', '| 단 | 이재 높이 Y (m) |', '| ---: | ---: |');
+    layout.heights.forEach((y, i) => rows.push('| ' + (i + 1) + ' | ' + number(y) + ' |'));
+    const bounds = Model.envelope(c);
+    rows.push('', '- 랙·포트 포함 범위: X ' + number(bounds.xMin) + '~' + number(bounds.xMax) + ' m, Y ' + number(bounds.yMin) + '~' + number(bounds.yMax) + ' m.',
+      '- 랙 X 범위는 0~' + number(c.length) + ' m이며 포트 위치에 따라 셀 간격을 늘리지 않습니다. X/Y 외부 좌표와 음수를 허용합니다.');
+    rows.push('', '## 2. 사이클타임 분해', '', '| 항목 | 시간 (s) |', '| --- | ---: |',
+      '| SC 주행·승강 (동시동작) | ' + number(result.scParts.move) + ' |', '| SC 정위치 | ' + number(result.scParts.position) + ' |',
+      '| SC 포크 이재 2회 | ' + number(result.scParts.fork) + ' |', '| 제어 지연 / 사이클 | ' + number(c.control) + ' |',
+      '| SC 합계 | ' + number(result.sc) + ' |', '| DC 합계 (이재 4회) | ' + number(result.dc) + ' |', '| DC 비율 / 전체 사이클 | ' + number(result.p) + ' |',
+      '', '- 상차: 포크 OUT → 캐리지 UP ' + number(c.transferLift * 1000) + ' mm → 안착 대기 → 포크 IN.',
+      '- 하차: 포크 OUT → 캐리지 DOWN ' + number(c.transferLift * 1000) + ' mm → 안착 대기 → 포크 IN.',
+      '- 포크 이재 1회 = 편도 스트로크 운동시간 × 2 + 캐리지 이재 승하강 운동시간 + 안착 대기. SC 2회 / DC 4회이며 캐리지 운동시간을 별도로 중복 가산하지 않습니다.',
+      '- 캐리지 이재에는 승강 Y 속도·가감속과 적재 비율을 적용합니다. 입력 Y와 P1·P2는 놓인 화물의 중심이며 적재 이동은 이재 승하강량만큼 높은 위치입니다.',
+      '- 기존 승하강·안착 입력에 승하강 시간이 포함되어 있었다면 안착 대기만 남겨 입력합니다. 재고·완료량은 각 포크 IN 완료 시 집계합니다.',
+      '- DC 셀 쌍: ' + result.dcSampling.method + ', n=' + result.dcSampling.samples + ', 사이클시간 표준오차=' + number(result.dcSampling.se) + ' s.',
+      '', '## 3. 처리량과 요구 대비 여유', '', '| 항목 | 값 |', '| --- | ---: |',
+      '| 1대 이론 총 취급량 | ' + number(result.theory) + ' ' + c.unit + '/h |', '| 1대 보정 총 취급량 | ' + number(result.available) + ' ' + c.unit + '/h |',
+      '| 전체 독립 통로 보정능력 | ' + number(result.capacity) + ' ' + c.unit + '/h |', '| 피크 총 요구량 | ' + number(result.demand) + ' ' + c.unit + '/h |',
+      '| 요구 대비 잔여능력 | ' + number(result.capacity === null ? null : result.capacity - result.demand) + ' ' + c.unit + '/h |',
+      '| 설계 부하율 | ' + number(result.util) + ' |', '| 목표 부하율 적용 필요 독립 통로 | ' + number(result.required) + ' |',
+      '', '- 적용 보정: ' + Model.correctionText(result) + '.',
+      '- 보정 처리량 = 이론 처리량 × 적용 효율. 운전효율 직접 입력 시 세부 A·Ft·Ew는 사용하지 않습니다.',
+      '- 목표 설계 부하율은 필요 대수와 부하 판정 기준이며 표시 처리량에 곱하지 않습니다. 사이클 시간과 DES 결과에는 운전효율을 추가 적용하지 않습니다.',
+      '', '## 4. 제약 검토', '', '- ' + Model.depthName(c) + ' / Single Fork, 균등 셀 배치, STC별 IN/OUT XYZ, 통로당 1대.',
+      '- 독립 통로 확장은 균등 부하 배분·공통 상하류 병목 없음의 조건부 분석입니다.',
+      '- 목표 부하율: ' + number(c.targetUtil) + '. ' + (result.util === null ? '보정계수 미선택으로 설계 판정 대기.' : result.worstUtil > c.targetUtil ? '목표 부하율 초과.' : '분석상 목표 부하율 이하.'),
+      '- 세부 계수 방식에서 A·Ft·Ew 중 1.0인 계수는 해당 손실을 제외하는 이상 조건입니다.', '- SC-stay의 분석값은 SC-return 참고값이며 동작별 결과는 DES에서 확인합니다.',
+      '', '## 5. 보정계수 민감도', '', '| 계수 | 상대변화 | 적용값 | 전체 보정능력 | 필요 통로 |', '| --- | ---: | ---: | ---: | ---: |');
+    for (const row of Model.sensitivity(result)) rows.push('| ' + (row.key === 'operatingEfficiency' ? '운전효율' : row.key) + ' | ' + number(row.delta * 100) + '% | ' + number(row.value) + (row.key === 'operatingEfficiency' ? '%' : '') + ' | ' + number(row.capacity) + ' | ' + row.required + ' |');
+    if (result.factor === null) rows.push('', '운전효율 또는 세부 계수·근거 입력 후 민감도를 계산합니다.');
+    rows.push('', '## 6. 적용 모델과 검증 범위', '', '- 사용자 개발계획서 v1.2의 비대칭 가감속 정지-정지 운동식과 SC/DC 집계 규칙을 사용합니다.',
+      '- FEM 선택 시 FEM 9.851 (06.2003) §4.1~4.6 대표점과 입력 운동·이재·지연 모델을 결합합니다. 현장 시험 및 규격 적합성 판정은 별도입니다.', '- 실제 장비 실측·기존 Python 골든 자료와의 현장 검증은 미완료입니다.',
+      '- creep, jerk 제한 S-curve, 고장, 더블딥 화물 재배치·SKU 지정 출고, Twin Fork, 공유레일 충돌은 포함하지 않습니다.',
+      '', '## 7. 해석 시 주의', '', '평균 사이클타임만으로 달성 물동량과 대기시간을 확정할 수 없습니다. 이론 처리능력과 측정구간의 실제 완료량, 종료 대기 작업을 함께 검토합니다.');
+    rows.push('', '## STC별 포트와 FEM 적용', '', '- 좌표: X=주행, Y=승강, Z=포크(각 통로 중심 기준). |Z|가 포트 이재 편도거리입니다.',
+      '- DC는 IN → P1 → P2 → OUT → IN 공차 복귀를 포함합니다. 필요 대수는 현재 STC 중 가장 낮은 보정능력을 기준으로 산정합니다.',
+      '- 단일 대수의 요약은 STC 1입니다. 전체 처리능력은 STC별 능력의 합입니다.',
+      '', '| STC | IN XYZ m | OUT XYZ m | SC 입고 s | SC 출고 s | DC s | OUT→IN s | 이론 /h |', '| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |');
+    for (const a of result.aisles) {
+      const point = p => [p.x, p.y, p.z].map(number).join(', ');
+      rows.push('| ' + [a.aisle, point(a.ports.in), point(a.ports.out), number(a.scIn), number(a.scOut), number(a.dc), number(a.returnTime), number(a.theory)].join(' | ') + ' |');
+    }
+    rows.push('', '### 복합 포트 조합', '', '- 각 STC의 입고·출고 수요에 같은 배분율을 적용합니다. 같은 XYZ의 IN끼리, OUT끼리는 버퍼를 공유합니다.',
+      '- 전환 공차시간은 복귀 사이클 간 조합·작업 방향을 독립 선택하는 추정값입니다. 실제 배차 이동·차단은 DES로 확인합니다. 복합 CASE는 FEM 참조 배치를 조합한 설계 확장입니다.',
+      '', '| STC | 조합 | CASE | 배분 % | IN XYZ m | OUT XYZ m | SC 입고 s | SC 출고 s | DC s |',
+      '| --- | --- | --- | ---: | --- | --- | ---: | ---: | ---: |');
+    for (const a of result.allRoutes) rows.push('| ' + [a.aisle, a.id, a.femCase, number(a.weight * 100), [a.ports.in.x, a.ports.in.y, a.ports.in.z].map(number).join(', '), [a.ports.out.x, a.ports.out.y, a.ports.out.z].map(number).join(', '), number(a.scIn), number(a.scOut), number(a.dc)].join(' | ') + ' |');
+    rows.push('', '| STC | 전환 공차 s/cycle | 혼합 평균 s/cycle | 이론 /h |', '| --- | ---: | ---: | ---: |');
+    for (const a of result.aisles) rows.push('| ' + [a.aisle, number(a.transition), number(a.cycle), number(a.theory)].join(' | ') + ' |');
+    if (result.fem) {
+      rows.push('', '- 출처: FEM 9.851 (06.2003), §4.1~4.6 / 적용 CASE: ' + [...new Set(result.allRoutes.map(a => a.femCase))].join(', '),
+        '- 조합별 CASE 참조 조건: ' + result.allRoutes.map(a => a.aisle + '/' + a.id + ': ' + Model.caseConditions[a.femCase - 1]).join(' · '), '- α=' + number(result.fem.alpha) + '; 권고 범위 0.5 < α < 2. ' + (result.fem.alpha <= .5 || result.fem.alpha >= 2 ? '범위 밖: 대표점 근사 적용 검토 필요.' : '범위 이내.'),
+        '- SC 입고/출고는 각 대표점의 완전 복귀 사이클 평균. CASE 2 DC는 기본/대칭 경로의 평균.',
+        '- 적용 위치: ' + (c.pointMode === 'cell' ? '실제 화물 중심. 가까운 셀을 결정한 후 그 중심 XYZ를 계산·운동 그래프·배치도·3D에 공통 적용합니다. 동일 셀로 겹치면 P2는 다른 셀 중 가장 가까운 중심을 선택합니다.' : '이론 좌표 비교. CASE 포트 조건과 원래 연속 좌표를 사용합니다.'),
+        ...(result.allRoutes.some(a => !a.fem.portMatch) ? ['- 실제 포트는 CASE 참조 배치와 다릅니다. 아래 참조 배치로 대표 셀을 선정하고, 입력한 실제 포트까지의 운동시간을 계산하는 설계 확장입니다. 원 규정 배치의 이론 계산과 구분합니다.'] : []),
+        '', '| STC | 점 | 적용 X m | 적용 Y m | 적용 Z m | ' + (c.pointMode === 'cell' ? '적용 화물 셀' : '가까운 셀 (참고)') + ' | 이론 XYZ (비교) |', '| --- | --- | ---: | ---: | ---: | --- | --- |');
+      for (const a of result.allRoutes) for (const p of [...a.fem.inbound, ...(a.femCase === 2 ? a.fem.outbound : [])]) {
+        const near = p.id == null ? Model.nearestCell(Model.cells(c), p) : p, ref = p.reference || p;
+        rows.push('| ' + [a.aisle + ' / ' + a.id + ' / CASE ' + a.femCase, p.name, number(p.x), number(p.y), number(p.z), Model.address(near, a.aisle - 1), [ref.x, ref.y, ref.z].map(number).join(', ')].join(' | ') + ' |');
+      }
+      if (result.allRoutes.some(a => !a.fem.portMatch)) {
+        rows.push('', '| STC | 셀 선정 참조 IN XYZ | 셀 선정 참조 OUT XYZ | 좌우 반전 |', '| --- | --- | --- | --- |');
+        for (const a of result.allRoutes) rows.push('| ' + [a.aisle + ' / ' + a.id, [a.fem.referencePorts.in.x, a.fem.referencePorts.in.y, a.fem.referencePorts.in.z].map(number).join(', '), [a.fem.referencePorts.out.x, a.fem.referencePorts.out.y, a.fem.referencePorts.out.z].map(number).join(', '), a.fem.mirroredLayout ? '적용' : '없음'].join(' | ') + ' |');
+      }
+    }
+    if (sim) {
+      rows.push('', '## 시뮬레이션 실행 결과 · 실제 실행 STC ' + (sim.cranes || 1) + '대 합계', '', '- seed: ' + sim.seed,
+        '- 현재/종료 시각: ' + number(sim.time) + ' / ' + number(sim.horizon) + ' s', '- 준비운전: ' + c.warmup + ' min, 현재 측정시간: ' + number(sim.measuredTime) + ' s',
+        '- 실행 상태: ' + (sim.time >= sim.horizon ? '종료' : '진행 중 / 부분 결과'),
+        '- 고장 없는 DES. 분석 보정계수 추가 차감 없음. 수요 = 전체 평균 × 피크 / 통로 수.',
+        '- 총 취급량 / 입고 / 출고 취급 / 외부 출하: ' + [sim.throughput, sim.inboundRate, sim.outboundRate, sim.shippingRate].map(number).join(' / ') + ' ' + c.unit + '/h',
+        '- 측정구간 입고/출고 완료: ' + sim.measured.in + ' / ' + sim.measured.out,
+        '- 측정구간 완료 SC/DC 사이클: ' + sim.measuredCycles.sc + ' / ' + sim.measuredCycles.dc + ' · 실제 DC 사이클 비율 ' + number(sim.mix?.actual == null ? null : sim.mix.actual * 100) + '%.',
+        '- 전체 생성 / 완료 / 대기 / 진행: ' + [sim.created.in + sim.created.out, sim.completed.in + sim.completed.out, sim.queued, sim.inProgress].join(' / '),
+        '- 평균/P95/최대 대기: ' + [sim.meanWait, sim.p95Wait, sim.maxWait].map(number).join(' / ') + ' s (측정구간 배차 작업 n=' + sim.waitSamples + ')',
+        '- 미배차 최장 경과시간: ' + number(sim.oldestPending) + ' s', '- 입고 버퍼 초과 / 출고 차단: ' + number(sim.overflowTime) + ' / ' + number(sim.stateTime.blocked) + ' s',
+        '- 재고 부족 / 랙 만재 대기: ' + number(sim.starvedTime) + ' / ' + number(sim.fullTime) + ' s',
+        '- 재고 보존: ' + sim.initialInventory + ' + ' + sim.completed.in + ' − ' + sim.completed.out + ' = ' + sim.stock + ' (랙) + ' + sim.outboundOnCrane + ' (출고 운반 중), 검산=' + sim.conservation,
+        '- 작업 보존 검산: ' + sim.jobsConserved, '', '| 상태 | 측정시간 (s) |', '| --- | ---: |');
+      if (sim.aisles) {
+        rows.push('', '| STC | seed | 입고 완료 | 출고 완료 | 재고 | 대기 | 처리량 /h | 보존 |', '| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |');
+        for (const a of sim.aisles) rows.push('| ' + [a.aisle, a.seed, a.completed.in, a.completed.out, a.stock, a.queued, number(a.throughput), a.conservation && a.jobsConserved].join(' | ') + ' |');
+        rows.push('', '| 상태 | 전체 STC 시간 합 (s) |', '| --- | ---: |');
+      }
+      for (const [key, value] of Object.entries(sim.stateTime)) rows.push('| ' + key + ' | ' + number(value) + ' |');
+    }
+    return rows.join('\n') + '\n';
+  }
+  return { csv, hash, markdown };
+});
+
+</script>
+<script data-module="core/charts">
+(function (root) {
+  'use strict';
+  const M = root.STCMotion;
+  const colors = { x: '#139caa', y: '#d38b30', f: '#577eda', idle: '#c0ced8', loaded: '#139caa', empty: '#7eb9c2', fork: '#577eda', position: '#d38b30', control: '#9dabb9', blocked: '#d96759' };
+  const esc = value => String(value).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
+  const fmt = (n, digits = 1) => Number.isFinite(n) ? n.toLocaleString('ko-KR', { minimumFractionDigits: digits, maximumFractionDigits: digits }) : '—';
+  function table(headers, rows) { return '<table><thead><tr>' + headers.map((h, i) => '<th' + (i ? ' class="num"' : '') + '>' + esc(h) + '</th>').join('') + '</tr></thead><tbody>' + rows.map(row => '<tr>' + row.map((v, i) => '<td' + (i ? ' class="num"' : '') + '>' + esc(v) + '</td>').join('') + '</tr>').join('') + '</tbody></table>'; }
+  function line(series, options = {}) {
+    const w = 500, h = options.height || 174, left = 44, right = 18, top = 17, bottom = 29;
+    const xMax = options.xMax || Math.max(1, ...series.flatMap(s => s.points.map(p => p.x)));
+    let lo = 0, hi = 0;
+    for (const s of series) for (const p of s.points) { lo = Math.min(lo, p.y); hi = Math.max(hi, p.y); }
+    if (hi === lo) hi = lo + 1;
+    if (options.symmetric) { hi = Math.max(Math.abs(lo), Math.abs(hi)) * 1.18; lo = -hi; }
+    else { const gap = hi - lo; hi += gap * 0.13; if (lo < 0) lo -= gap * 0.13; }
+    const sx = x => left + x / xMax * (w - left - right), sy = y => top + (hi - y) / (hi - lo) * (h - top - bottom);
+    let svg = '<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + esc(options.label || '시계열 그래프') + '"' + (options.motion ? ' data-motion-chart="true" data-duration="' + xMax + '"' : '') + '>';
+    for (let i = 0; i <= 4; i++) {
+      const value = lo + (hi - lo) * i / 4, y = sy(value);
+      svg += '<line x1="' + left + '" y1="' + y + '" x2="' + (w - right) + '" y2="' + y + '" stroke="#eaf0f4"/><text x="' + (left - 8) + '" y="' + (y + 3) + '" fill="#8f9fac" font-size="8" text-anchor="end">' + fmt(value, Math.abs(hi) > 50 ? 0 : 1) + '</text>';
+    }
+    for (let i = 0; i <= 5; i++) {
+      const value = xMax * i / 5, x = sx(value);
+      svg += '<line x1="' + x + '" y1="' + top + '" x2="' + x + '" y2="' + (h - bottom) + '" stroke="#f0f4f7"/><text x="' + x + '" y="' + (h - 10) + '" fill="#8f9fac" font-size="8" text-anchor="middle">' + fmt(value, xMax > 100 ? 0 : 1) + '</text>';
+    }
+    if (lo < 0) svg += '<line x1="' + left + '" y1="' + sy(0) + '" x2="' + (w - right) + '" y2="' + sy(0) + '" stroke="#b7c8d4" stroke-dasharray="3 3"/>';
+    for (const s of series) {
+      if (!s.points.length) continue;
+      const path = s.points.map((p, i) => (i ? 'L' : 'M') + sx(p.x).toFixed(3) + ',' + sy(p.y).toFixed(3)).join(' ');
+      if (options.fill) svg += '<path d="' + path + ' L' + sx(s.points.at(-1).x) + ',' + sy(0) + ' L' + sx(s.points[0].x) + ',' + sy(0) + ' Z" fill="' + s.color + '" opacity=".06"/>';
+      svg += '<path d="' + path + '" fill="none" stroke="' + s.color + '" stroke-width="1.9" stroke-linejoin="round"/>';
+    }
+    if (options.motion) svg += '<line data-cursor x1="44" x2="44" y1="' + top + '" y2="' + (h - bottom) + '" stroke="#294b60" stroke-width="1" stroke-dasharray="3 3"/>';
+    svg += '<text x="' + (w - right) + '" y="' + (h - 1) + '" fill="#9daab4" font-size="7" text-anchor="end">' + esc(options.xUnit || '시간 (s)') + '</text></svg>';
+    return svg;
+  }
+  function motion(plan, mode, speedUnit = 'm/min') {
+    const velocityFactor = speedUnit === 'm/min' ? 60 : 1;
+    const samples = M.sampleTimes(plan).map(time => ({ time, pose: M.planAt(plan, time) }));
+    const metrics = mode === 'pv' ? ['p', 'v'] : ['v', 'a'];
+    const titles = { p: '위치 / m', v: '속도 / ' + speedUnit, a: '가속도 / m/s²' };
+    return ['x', 'y', 'f'].map(axis => '<article class="axis-chart-card"><div class="axis-chart-heading"><h3><i class="dot ' + axis + '"></i>' + ({ x: '주행 X', y: '승강 Y', f: '포크 Z' })[axis] + '</h3><output id="motionValue-' + axis + '"></output></div><div class="chart-pair">' + metrics.map(metric => '<div><div class="chart-title">' + titles[metric] + '</div>' + line([{ color: colors[axis], points: samples.map(s => ({ x: s.time, y: s.pose[axis][metric] * (metric === 'v' ? velocityFactor : 1) })) }], { xMax: plan.duration, motion: true, symmetric: metric !== 'p', fill: true, label: ({ x: '주행', y: '승강', f: '포크' })[axis] + ' ' + titles[metric] }) + '</div>').join('') + '</div></article>').join('');
+  }
+  function timeline(plan) {
+    let html = '<div class="card-heading" style="margin-bottom:8px"><h2>동작 순서</h2><span class="muted">전체 ' + fmt(plan.duration, 2) + ' s</span></div><svg viewBox="0 0 980 52" role="img" aria-label="사이클 동작 순서와 시간">';
+    const segments = plan.actions.flatMap(a => a.type !== 'fork' ? [a] : [
+      { label: '포크 OUT', shortLabel: 'OUT', start: 0, duration: a.fork.profile.duration, type: 'fork' },
+      { label: '캐리지 ' + (a.pick ? 'UP' : 'DOWN') + ' ' + fmt(a.fork.lift.distance * 1000, 0) + ' mm', shortLabel: a.pick ? 'UP' : 'DOWN', start: a.fork.liftStart, duration: a.fork.lift.duration, type: 'position' },
+      { label: '안착 대기', shortLabel: '안착', start: a.fork.liftEnd, duration: a.fork.dwell, type: 'control' },
+      { label: '포크 IN', shortLabel: 'IN', start: a.fork.retractStart, duration: a.fork.profile.duration, type: 'fork' }
+    ].filter(s => s.duration > 0).map(s => ({ ...s, start: a.start + s.start, label: a.label + ' · ' + s.label })));
+    for (const a of segments) {
+      const x = a.start / plan.duration * 980, w = a.duration / plan.duration * 980;
+      const color = colors[a.type === 'move' ? (a.loaded ? 'loaded' : 'empty') : a.type];
+      html += '<rect x="' + x + '" y="2" width="' + Math.max(0.2, w - 1) + '" height="24" rx="2" fill="' + color + '" opacity=".8"><title>' + esc(a.label) + ': ' + fmt(a.duration, 2) + ' s</title></rect>';
+      if (w > (a.shortLabel ? 26 : 51)) html += '<text x="' + (x + w / 2) + '" y="18" font-size="8" text-anchor="middle" fill="white">' + esc(a.shortLabel || a.label) + '</text>';
+      if (w > 40) html += '<text x="' + (x + w / 2) + '" y="43" font-size="8" text-anchor="middle" fill="#8c9da9">' + fmt(a.duration, 1) + 's</text>';
+    }
+    return html + '<line data-timeline-cursor x1="0" x2="0" y1="0" y2="29" stroke="#133b50" stroke-width="2"/></svg>';
+  }
+  function rack(c, a, b, engine) {
+    const Model = root.STCModel, primary = Model.routeConfigs(c)[0].config, input = M.port(primary, 'in'), output = M.port(primary, 'out'), layout = Model.rackLayout(c), bounds = Model.envelope(c);
+    const xMin = bounds.xMin - bounds.width * .09, xMax = bounds.xMax + bounds.width * .09;
+    const yMin = bounds.yMin - bounds.height * .1, yMax = bounds.yMax + bounds.height * .1;
+    const sx = x => 44 + (x - xMin) / (xMax - xMin) * 662, sy = y => 240 - (y - yMin) / (yMax - yMin) * 216;
+    const bottom = layout.boundaries[0], top = layout.boundaries.at(-1), cellW = (sx(c.length) - sx(0)) / c.bays, cellH = sy(0) - sy(layout.pitch);
+    let s = '<svg viewBox="0 0 750 290" role="img" aria-label="랙 화물 중심과 외부 입출고 포트 경로"><rect data-rack x="' + sx(0) + '" y="' + sy(top) + '" width="' + (sx(c.length) - sx(0)) + '" height="' + (sy(bottom) - sy(top)) + '" fill="#f4f8fa"/>';
+    for (let i = 0; i <= c.bays; i++) s += '<line x1="' + sx(i * c.length / c.bays) + '" y1="' + sy(top) + '" x2="' + sx(i * c.length / c.bays) + '" y2="' + sy(bottom) + '" stroke="#c2d3dc" stroke-width=".7"/>';
+    for (const y of layout.boundaries) s += '<line x1="' + sx(0) + '" y1="' + sy(y) + '" x2="' + sx(c.length) + '" y2="' + sy(y) + '" stroke="#c2d3dc" stroke-width=".7"/>';
+    const pose = engine?.pose(), transfer = pose?.transfer;
+    for (const cell of (engine ? engine.rack : Model.cells(c)).filter(p => p.side === -1)) {
+      let state = cell.state;
+      if (transfer?.point.id === cell.id) {
+        if (pose.action.effect === 'pickOut' && transfer.onFork) state = 'empty';
+        if (pose.action.effect === 'placeIn' && !transfer.onFork) state = 'occupied';
+      }
+      const color = !engine ? '#bfd5dd' : ['empty', 'reservedIn'].includes(state) ? '#e5edf1' : state === 'occupied' ? '#439e92' : '#e2a74e';
+      s += '<rect data-cell="' + cell.id + '" data-x="' + cell.x + '" data-y="' + cell.y + '" x="' + (sx(cell.x) - cellW * .3 + (Model.depthCount(c) === 2 ? ((cell.depth || 1) - 1) * cellW * .32 : 0)) + '" y="' + (sy(cell.y) - cellH * .27) + '" width="' + cellW * (Model.depthCount(c) === 2 ? .28 : .6) + '" height="' + cellH * .54 + '" rx="1" fill="' + color + '" opacity=".7"><title>' + cell.bay + '번지 ' + cell.level + '단' + (cell.depth ? ' D' + cell.depth : '') + ' · 중심 (' + fmt(cell.x, 3) + ', ' + fmt(cell.y, 3) + ') m</title></rect>';
+    }
+    if (engine) {
+      const pose = engine.pose(); s += '<line x1="' + sx(pose.x.p) + '" x2="' + sx(pose.x.p) + '" y1="' + sy(bounds.yMax) + '" y2="' + sy(bounds.yMin) + '" stroke="#e8a23c" stroke-width="4"/><rect x="' + (sx(pose.x.p) - 7) + '" y="' + (sy(pose.y.p) - 5) + '" width="14" height="10" fill="#123e52"/>';
+    } else if (a && b) {
+      s += '<path d="M' + sx(input.x) + ',' + sy(input.y) + ' L' + sx(a.x) + ',' + sy(a.y) + '" stroke="' + colors.x + '" stroke-width="2" fill="none"/><path d="M' + sx(a.x) + ',' + sy(a.y) + ' L' + sx(b.x) + ',' + sy(b.y) + ' L' + sx(output.x) + ',' + sy(output.y) + '" stroke="' + colors.y + '" stroke-width="1.8" stroke-dasharray="5 4" fill="none"/>';
+      [a, b].forEach((p, i) => { const label = p.name || (i ? 'P2' : 'P1'); s += '<circle data-point="' + esc(label) + '" data-cell-id="' + (p.id ?? '') + '" cx="' + sx(p.x) + '" cy="' + sy(p.y) + '" r="5" fill="' + (i ? colors.y : colors.x) + '" stroke="white" stroke-width="1.5"/><text x="' + (sx(p.x) + 9) + '" y="' + (sy(p.y) - 8) + '" font-size="10" fill="#3b5a6e">' + esc(label) + '</text>'; });
+    }
+    for (let i = 1; i <= c.bays; i++) s += '<text x="' + sx((i - .5) * c.length / c.bays) + '" y="' + (sy(bottom) + 13) + '" text-anchor="middle" font-size="' + Math.min(9, cellW * .45) + '" fill="#647f91">' + i + '</text>';
+    for (let i = 1; i <= c.levels; i++) s += '<text data-level="' + i + '" data-height="' + layout.heights[i - 1] + '" x="' + (sx(0) - 7) + '" y="' + (sy(layout.heights[i - 1]) + 3) + '" text-anchor="end" font-size="' + Math.min(9, cellH * .6) + '" fill="#647f91">' + i + '</text>';
+    for (const route of Model.routeConfigs(c)) for (const [p, key, label, color, dy] of [[M.port(route.config, 'in'), 'in', 'E / IN', colors.x, -14], [M.port(route.config, 'out'), 'out', 'A / OUT', colors.y, 18]])
+      s += '<circle data-port="' + key + '" cx="' + sx(p.x) + '" cy="' + sy(p.y) + '" r="6" fill="' + color + '" stroke="white" stroke-width="2"/><text x="' + sx(p.x) + '" y="' + (sy(p.y) + dy) + '" text-anchor="middle" fill="' + color + '" font-size="10">' + label + (Model.routeConfigs(c).length > 1 ? ' / ' + esc(route.id) : '') + '<title>XYZ (' + [p.x, p.y, p.z].map(v => fmt(v, 3)).join(', ') + ') m</title></text>';
+    s += '<text x="375" y="278" text-anchor="middle" fill="#8ba0ad" font-size="10">랙 ' + fmt(c.length) + ' m · ' + c.bays + '번지 × ' + c.levels + '단 · ' + Model.depthName(c) + (Model.depthCount(c) === 2 ? ' (셀 좌/우: D1/D2)' : '') + ' · 포트 포함 X ' + fmt(bounds.xMin) + '~' + fmt(bounds.xMax) + ' m</text></svg>';
+    return s;
+  }
+  root.STCCharts = { colors, esc, fmt, table, line, motion, timeline, rack };
+})(globalThis);
+
+</script>
+<script data-module="core/print">
+(function (root) {
+  'use strict';
+  const Model = root.STCModel, M = root.STCMotion, C = root.STCCharts, R = root.STCReport;
+  const esc = C.esc, n = (value, digits = 3) => Number.isFinite(value) ? C.fmt(value, digits) : '미산정';
+  const labels = { rackDepth: { single: '싱글딥', double: '더블딥' }, method: { cells: '전체 셀 평균', fem: 'FEM CASE 기준' }, pointMode: { cell: '실제 화물 중심', theory: '이론 좌표 비교' },
+    mode: { 'sc-return': 'SC - I/O 복귀', 'sc-stay': 'SC - 제자리 대기', dc: 'DC - 최대 페어링', mixed: 'SC/DC - 지정 비율' },
+    ratioBasis: { cycles: '운전 사이클 횟수', loads: '처리 화물 개수' },
+    basis: { '': '미선택', assumption: '설계 가정', vendor: '벤더 사양', measured: '실측', ideal: '이상 조건' },
+    storage: { random: '무작위', nearest: '가까운 셀' }, retrieval: { fifo: '선입선출', random: '무작위', nearest: '가까운 셀' },
+    arrival: { takt: '일정 간격', poisson: 'Poisson' } };
+  const stateNames = { idle: '대기', loaded: '적재 이동', empty: '공차 이동', fork: '포크 이재', position: '정위치', control: '제어 지연', blocked: '출고 차단' };
+  const table = (heads, rows, cls = '') => '<table class="' + cls + '"><thead><tr>' + heads.map(h => '<th>' + esc(h) + '</th>').join('') +
+    '</tr></thead><tbody>' + rows.map(row => '<tr>' + row.map(v => '<td>' + esc(v) + '</td>').join('') + '</tr>').join('') + '</tbody></table>';
+  const note = text => '<p class="note">' + esc(text) + '</p>';
+  const chunk = (rows, size) => Array.from({ length: Math.ceil(rows.length / size) }, (_, i) => rows.slice(i * size, (i + 1) * size));
+  const xyz = p => [p.x, p.y, p.z].map(v => n(v)).join(' / ');
+  function documentHtml(result, snapshot, options = {}) {
+    const c = result.config, unit = c.unit + '/h', generated = new Date().toLocaleString('ko-KR', { hour12: false });
+    const sim = options.includeSimulation === false ? null : snapshot;
+    const simStatus = options.includeSimulation === false && snapshot ? '보고서에서 제외' : !sim ? '미실행' :
+      sim.time >= sim.horizon ? '완료' : sim.measuredTime > 0 ? '진행 중 - 부분 결과' : '준비운전 중 - 측정 전';
+    const pages = [];
+    function section(title, content, cls = '') { pages.push('<section class="report-section ' + cls + '"><h2>' + esc(title) + '</h2>' + content + '</section>'); }
+    const inputRows = keys => keys.map(key => {
+      const field = Model.fields[key], raw = c[key], isSpeed = field?.[1] === 'speed';
+      const value = labels[key] ? labels[key][raw] : raw === null ? (['firstLevelHeight', 'levelPitch', 'rearStroke'].includes(key) ? '자동' : '미입력') : key === 'transferLift' ? n(raw * 1000, 0) :
+        typeof raw === 'number' ? n(raw * (isSpeed && c.speedUnit === 'm/min' ? 60 : 1), Number.isInteger(raw) && !isSpeed ? 0 : 3) : raw;
+      return [field?.[0] || ({ rackDepth: '화물 보관 깊이', mode: '운전 모드', ratioBasis: '비율 기준', storage: '입고 셀 선택', retrieval: '출고 셀 선택', arrival: '작업 도착', basis: '보정 근거', method: '계산 방식', pointMode: 'P1/P2 위치' })[key] || key,
+        value, isSpeed ? c.speedUnit : field?.[1] === 'unit/h' ? unit : field?.[1] === 'ratio' ? '비율' : field?.[1] || '-'];
+    });
+    const judgement = result.factor === null ? '판정 보류 - 운전효율 또는 세부 계수·근거를 입력해야 설계 능력을 산정할 수 있습니다.' :
+      result.worstUtil > c.targetUtil ? '목표 부하율 초과 - 입력한 설비 조건과 필요 대수를 검토하세요.' : '분석상 목표 부하율 이하입니다.';
+    const kpis = [['피크 총 요구량', n(result.demand, 1), unit], ['전체 이론 능력', n(result.theoryTotal, 1), unit],
+      ['전체 보정 능력', n(result.capacity, 1), unit], ['목표 부하율 적용 필요 대수', n(result.required, 0), '대']];
+    // Cover is compact and the subsequent specification tables retain every calculation input.
+    const denseCover = c.name.length > 100 || [options.documentNo, options.recipient, options.author, options.reviewer].join('').length > 150;
+    pages.push('<section class="report-section cover' + (denseCover ? ' dense' : '') + '"><div class="eyebrow">STC STUDIO / CALCULATION REPORT</div><h1>스태커크레인<br>물동량 계산 보고서</h1><p class="project-name">' + esc(c.name) + '</p>' +
+      table(['문서 정보', '내용'], [['문서번호', options.documentNo || '-'], ['제출처', options.recipient || '-'], ['작성자 / 검토자', (options.author || '-') + ' / ' + (options.reviewer || '-')], ['생성일시', generated]]) +
+      '<div class="summary-grid">' + kpis.map(([label, value, suffix]) => '<div><span>' + esc(label) + '</span><strong>' + esc(value) + '</strong><small>' + esc(suffix) + '</small></div>').join('') + '</div>' +
+      '<div class="judgement">' + esc(judgement) + '</div>' +
+      table(['검토 항목', '적용값'], [['계산 기준', result.reference], ['설비 구성', c.cranes + '대 / 통로당 ' + result.cells + '셀 / 전체 ' + result.totalCells + '셀'],
+        ['피크 입고 / 출고 요구량', n(c.inbound * c.peak, 1) + ' / ' + n(c.outbound * c.peak, 1) + ' ' + unit],
+        ['목표 / 최대 STC 부하율', n(c.targetUtil * 100, 1) + '% / ' + n(result.worstUtil === null ? null : result.worstUtil * 100, 1) + (result.worstUtil === null ? '' : '%')],
+        ['시뮬레이션 결과', simStatus], ['모듈 / 운동 커널', Model.VERSION + ' / ' + M.VERSION], ['입력 식별자', R.hash(c)]] ) +
+      note('이론 능력과 보정 능력은 설계 계산입니다. 실행한 시뮬레이션 결과 및 적용 조건을 함께 검토합니다. 이 보고서의 수치는 PDF 보고서 생성 시점의 적용 설정을 기준으로 합니다.') + '</section>');
+    const layout = Model.rackLayout(c);
+    section('1. 설비 및 동작 사양',
+      '<h3>랙 구성</h3>' + table(['항목', '값', '단위'], inputRows(['rackDepth', 'length', 'height', 'bays', 'levels', 'sides', 'firstLevelHeight', 'levelPitch', 'cranes'])) +
+      note('적용 1단 높이 ' + n(layout.first) + ' m / 단간격 ' + n(layout.pitch) + ' m / 최상단 ' + n(layout.top) + ' m. Y(k)=1단 높이+(k-1)×단간격.') +
+      '<h3>주행·승강·포크 운동</h3>' + table(['축', '최대속도 (' + c.speedUnit + ')', '가속도 (m/s²)', '감속도 (m/s²)'],
+        [['주행 X', c.vx, c.ax, c.dx], ['승강 Y', c.vy, c.ay, c.dy], ['포크 Z', c.vf, c.af, c.df]].map(([name, v, a, d]) => [name, n(v * (c.speedUnit === 'm/min' ? 60 : 1)), n(a), n(d)])) +
+      table(['이재 및 지연 항목', '값', '단위'], inputRows([...(Model.depthCount(c) === 2 ? ['stroke', 'rearStroke'] : ['stroke']), 'transferLift', 'forkDwell', 'position', 'control', 'loadedFactor'])) +
+      (Model.depthCount(c) === 2 ? note('적용 뒷열 스트로크: ' + n(Model.depthStroke(c, 2)) + ' m. ' + Model.depthNote) : '') +
+      note('상차: 포크 OUT → 캐리지 UP ' + n(c.transferLift * 1000, 0) + ' mm → 안착 대기 → 포크 IN. 하차: 포크 OUT → 캐리지 DOWN ' + n(c.transferLift * 1000, 0) + ' mm → 안착 대기 → 포크 IN.') +
+      note('승하강 중 포크는 완전 신장 상태로 정지합니다. 캐리지 이재에는 승강 속도·가감속과 적재 비율을 적용합니다. 랙·포트 Y 및 P1/P2는 놓인 화물 중심이며 적재 이동 시 이재 승하강량만큼 높아집니다.'));
+    section('2. 운영 조건 및 계산 기준',
+      '<h3>요구량 및 설계 보정</h3>' + table(['항목', '값', '단위'], inputRows(['inbound', 'outbound', 'peak', 'targetUtil', 'operatingEfficiency', 'A', 'Ft', 'Ew', 'basis'])) +
+      note('적용 보정: ' + Model.correctionText(result) + '. 운전효율 직접 입력 시 세부 A·Ft·Ew는 사용하지 않습니다.') +
+      note('보정 근거 상세: ' + (c.basisNote || '미입력')) +
+      '<h3>운전 및 시뮬레이션 입력</h3>' + table(['항목', '값', '단위'], inputRows(['mode', 'storage', 'retrieval', 'arrival', 'jitter', 'initialFill', 'inBuffer', 'outBuffer', 'takeaway', 'hours', 'warmup', 'seed'])) +
+      note('방법: ' + result.reference + '. 총 취급량=입고+출고, DC 1회=화물 2개 취급. 전체 셀 평균은 균일 셀 선택, FEM은 CASE 참조점과 입력 이재 모델을 결합합니다.'), c.basisNote.length > 80 ? 'dense' : '');
+    section('SC/DC 지정 비율 및 혼합 계산',
+      table(['항목', '값'], [['운전 모드', labels.mode[c.mode]], ['지정 SC / DC', n(100 - c.dcRatio, 2) + '% / ' + n(c.dcRatio, 2) + '% (' + labels.ratioBasis[c.ratioBasis] + ', 지정 비율 모드에서 적용)'],
+      ['사이클 기준 목표 / 제약 상한 / 분석 DC', [result.mix.requested, result.mix.limit, result.p].map(v => n(v * 100, 2) + '%').join(' / ')],
+      ['실제 완료 SC / DC 사이클', sim ? sim.measuredCycles.sc + ' / ' + sim.measuredCycles.dc : '미실행'],
+      ['측정구간 실제 DC 사이클 비율', sim?.mix.actual == null ? '측정 전' : n(sim.mix.actual * 100, 2) + '%']]) +
+      note('화물 기준 f는 p=f/(2−f)로 환산합니다. Q=3600×(1+p)/평균 사이클시간. 지정 비율 모드의 SC는 포트 복귀이며, 같은 조합의 입고·출고만 DC로 묶습니다. 실제 비율은 도착·재고·버퍼에 따라 달라집니다.') +
+      table(['STC', '조합 수', '전환 공차 (s/cycle)', '혼합 평균 (s/cycle)'], result.aisles.slice(0, 8).map(a => [a.aisle, a.routes.length, n(a.transition), n(a.cycle)])) +
+      note('복합 포트 전환 공차시간은 조합과 SC 입출고 방향의 독립 선택 가정입니다. 실제 배차의 이동·버퍼 차단은 DES에서 확인합니다.'));
+    chunk(result.aisles.slice(8), 18).forEach((rows, i) => section('STC별 혼합 계산 (계속 ' + (i + 1) + ')',
+      table(['STC', '조합 수', '전환 공차 (s/cycle)', '혼합 평균 (s/cycle)'], rows.map(a => [a.aisle, a.routes.length, n(a.transition), n(a.cycle)]))));
+    chunk(result.allRoutes, 8).forEach((routes, i) => section('복합 입·출고 포트 조합' + (i ? ' (계속)' : ''),
+      table(['STC / 조합', 'CASE', '배분 %', 'IN XYZ m', 'OUT XYZ m'], routes.map(a => [a.aisle + ' / ' + a.id, a.femCase, n(a.weight * 100), xyz(a.ports.in), xyz(a.ports.out)])) +
+      table(['STC / 조합', 'SC 입고 s', 'SC 출고 s', 'DC s'], routes.map(a => [a.aisle + ' / ' + a.id, n(a.scIn), n(a.scOut), n(a.dc)])) +
+      note('배분율은 STC별 입고·출고 요구량에 동일하게 적용합니다. 동일 XYZ의 IN끼리, OUT끼리는 버퍼를 공유합니다. 복합 CASE 구성은 참조 배치를 조합한 설계 확장입니다.')));
+    const bounds = Model.envelope(c);
+    const portGroups = [result.aisles.slice(0, 4), ...chunk(result.aisles.slice(4), 10)];
+    portGroups.forEach((aisles, i) => section('3. STC별 포트와 계산 결과' + (portGroups.length > 1 ? ' (' + (i + 1) + '/' + portGroups.length + ')' : ''),
+      note('XYZ 단위 m. X=주행, Y=승강, Z=각 통로 중심에서 포크 방향. 빈 개별값의 상속을 반영한 실제 적용 좌표입니다.') +
+      table(['STC', '첫 조합 IN X / Y / Z (m)', '첫 조합 OUT X / Y / Z (m)'], aisles.map(a => [a.aisle, xyz(a.ports.in), xyz(a.ports.out)])) +
+      '<h3>사이클타임 및 처리능력</h3>' + table(['STC', 'SC 입고 (s)', 'SC 출고 (s)', 'DC (s)', '이론 (' + unit + ')', '보정 (' + unit + ')'],
+        aisles.map(a => [a.aisle, n(a.scIn), n(a.scOut), n(a.dc), n(a.theory, 2), n(a.available, 2)]), 'compact') +
+      note('단일 대수 요약은 STC 1 기준, 전체 능력은 STC별 능력의 합입니다. 필요 대수는 현재 STC 중 가장 낮은 보정 능력과 목표 부하율을 사용합니다.') +
+      (i === 0 ? table(['STC 1 사이클 분해', '시간 / 값'], [['SC 주행·승강 동시 이동', n(result.scParts.move) + ' s'], ['SC 정위치', n(result.scParts.position) + ' s'],
+        ['SC 포크 이재 2회 (캐리지 승하강 포함)', n(result.scParts.fork) + ' s'], ['제어 지연', n(c.control) + ' s'], ['SC 합계 / DC 합계', n(result.sc) + ' / ' + n(result.dc) + ' s'], ['분석 DC 비율', n(result.p * 100, 1) + '%']]) : '') +
+      note('랙·포트 및 이재 포함 범위: X ' + n(bounds.xMin) + ' ~ ' + n(bounds.xMax) + ' m, Y ' + n(bounds.yMin) + ' ~ ' + n(bounds.yMax) + ' m.')));
+    if (result.fem) {
+      const rows = result.allRoutes.flatMap(a => [...a.fem.inbound, ...(a.femCase === 2 ? a.fem.outbound : [])].map(p => [a.aisle + ' / ' + a.id + ' / CASE ' + a.femCase, p.name,
+        Model.address(p.id == null ? Model.nearestCell(Model.cells(c), p) : p, a.aisle - 1), xyz(p), xyz(p.reference || p)]));
+      const groups = chunk(rows, 16);
+      groups.forEach((rows, i) => section('4. FEM 대표점 적용' + (groups.length > 1 ? ' (' + (i + 1) + '/' + groups.length + ')' : ''),
+        (Model.depthCount(c) === 2 ? note('대표점 표는 앞열(D1) 기준입니다. 계산은 동일 X·Y의 앞열·뒷열 50:50 평균이며 뒷열 |Z|=' + n(Model.depthStroke(c, 2)) + ' m입니다.') : '') +
+        note('FEM 9.851 (06.2003) §4.1~4.6 참조 CASE: ' + [...new Set(result.allRoutes.map(a => a.femCase))].join(', ') + '. 각 조합의 CASE로 대표점을 선정합니다.') +
+        note('적용 위치: ' + labels.pointMode[c.pointMode] + '. α=' + n(result.fem.alpha) + ' (권고 0.5<α<2' + (result.fem.alpha <= .5 || result.fem.alpha >= 2 ? ', 범위 밖' : ', 범위 이내') + ').') +
+        table(['STC', '점', c.pointMode === 'cell' ? '적용 화물 셀' : '가까운 셀 (참고)', '적용 XYZ (m)', '이론 XYZ (m)'], rows, 'compact') +
+        note(result.allRoutes.some(a => !a.fem.portMatch) ? '실제 포트가 CASE 참조 배치와 다른 설계 확장입니다. CASE 기준으로 셀을 선정하고 실제 외부/자유 포트까지의 이동시간을 계산했습니다.' : 'CASE 참조 포트 조건과 일치합니다.') +
+        note('SC는 대표점별 복귀 사이클 평균, DC는 IN → P1 → P2 → OUT → IN입니다. CASE 2는 기본·대칭 경로를 평균합니다.')));
+      const extended = result.allRoutes.filter(a => !a.fem.portMatch);
+      chunk(extended, 16).forEach((aisles, i) => section('FEM 셀 선정 참조 포트' + (i ? ' (계속)' : ''),
+        table(['STC', '참조 IN XYZ (m)', '참조 OUT XYZ (m)', '좌우 반전'], aisles.map(a => [a.aisle + ' / ' + a.id, xyz(a.fem.referencePorts.in), xyz(a.fem.referencePorts.out), a.fem.mirroredLayout ? '적용' : '없음'])) +
+        note('이 표는 대표 셀 선정을 위한 참조 배치입니다. 실제 포트는 STC별 포트 표의 값을 사용합니다.')));
+    }
+    if (options.includeGraphs !== false && options.plan && options.motionConfig) {
+      const diagram = C.rack(options.motionConfig, options.inPoint, options.outPoint);
+      section('선택 경로 배치도', note('STC ' + ((options.aisle || 0) + 1) + ' / ' + (options.routeDescription || '선택 경로')) + diagram +
+        note('배치도는 선택한 STC의 화물 중심과 입력 포트 위치를 표시합니다. 표의 전체 STC 계산 결과와 구분되는 단일 경로 예시입니다.'));
+      const graphs = C.motion(options.plan, 'va', c.speedUnit).replace(/font-size="([0-9.]+)"/g, (_, size) => 'font-size="' + Math.max(14, Number(size)) + '"')
+        .replace(/viewBox="0 0 500 174"/g, 'viewBox="0 0 500 194"').replace(/y="173"/g, 'y="188"');
+      section('선택 경로 가감속 선도', note('STC ' + ((options.aisle || 0) + 1) + ' / ' + (options.routeDescription || '선택 경로') + ' / 전체 ' + n(options.plan.duration) + ' s') + graphs +
+        note('주행 X, 승강 Y, 포크 Z의 속도·가속도입니다. 음수는 반대 방향입니다. 캐리지 이재 UP/DOWN 구간에서는 포크가 정지합니다. 그래프는 선택 경로 계산값이며 운영 시뮬레이션의 실측값이 아닙니다.'));
+    }
+    if (sim) section('시뮬레이션 결과',
+      '<div class="judgement">실행 상태: ' + esc(simStatus) + '</div>' +
+      table(['항목', '결과'], [['현재 / 종료 시각', n(sim.time, 1) + ' / ' + n(sim.horizon, 1) + ' s'], ['준비운전 / 측정 경과', n(c.warmup, 1) + ' min / ' + n(sim.measuredTime, 1) + ' s'],
+        ['전체 STC 총 취급량', (sim.measuredTime > 0 ? n(sim.throughput, 2) : '측정 전') + ' ' + unit], ['입고 / 출고 / 외부 출하', [sim.inboundRate, sim.outboundRate, sim.shippingRate].map(v => sim.measuredTime > 0 ? n(v, 2) : '측정 전').join(' / ') + ' ' + unit],
+        ['측정구간 입고 / 출고 완료', sim.measured.in + ' / ' + sim.measured.out + ' 개'], ['평균 / P95 / 최대 대기', [sim.meanWait, sim.p95Wait, sim.maxWait].map(v => n(v, 1)).join(' / ') + ' s'],
+        ['미배차 최장 경과', n(sim.oldestPending, 1) + ' s'], ['종료/현재 대기 작업', sim.queued + ' 건'], ['재고 보존', sim.initialInventory + ' + ' + sim.completed.in + ' - ' + sim.completed.out + ' = ' + sim.stock + ' + ' + sim.outboundOnCrane + ' / ' + (sim.conservation ? '정상' : '오류')],
+        ['작업 보존', (sim.created.in + sim.created.out) + ' = ' + (sim.completed.in + sim.completed.out) + ' + ' + sim.queued + ' + ' + sim.inProgress + ' / ' + (sim.jobsConserved ? '정상' : '오류')]]) +
+      table(['상태', '전체 STC 시간 합 (s)'], Object.entries(sim.stateTime).map(([key, value]) => [stateNames[key] || key, n(value, 1)])) +
+      note('P95 대기는 측정구간에 배차된 작업 표본 기준이며 미배차 작업은 포함하지 않습니다. 고장 없는 DES로 분석 보정계수를 다시 차감하지 않습니다. 진행 중 결과는 최종 달성 물동량으로 사용하지 않습니다.'));
+    if (sim?.aisles) chunk(sim.aisles, 20).forEach((aisles, i) => section('STC별 시뮬레이션 결과' + (i ? ' (계속)' : ''),
+      note('전체 운전 입고/출고 완료 수량과 측정구간 처리량을 표시합니다. 실행 상태: ' + simStatus) +
+      table(['STC', '시드', '입고 완료', '출고 완료', '재고', '대기', '처리량 (' + unit + ')', '보존'], aisles.map(a => [a.aisle, a.seed, a.completed.in, a.completed.out, a.stock, a.queued, a.measuredTime > 0 ? n(a.throughput, 2) : '측정 전', a.conservation && a.jobsConserved ? '정상' : '오류']), 'compact')));
+    section('적용 조건 및 민감도',
+      '<h3>계산식과 적용 범위</h3>' +
+      note('동시 이동시간=max(주행시간, 승강시간). 이동이 있을 때 정위치 시간 1회, 제어 지연은 사이클당 1회입니다. 이재 1회=포크 OUT+캐리지 승하강+안착 대기+포크 IN이며 SC 2회, DC 4회입니다.') +
+      note('SC 주행·승강은 각 포트 복귀 사이클 기준입니다. DC는 서로 다른 셀을 사용하고 OUT→IN 공차 복귀를 포함합니다. SC-stay 분석값은 SC-return 참고값이며 실제 제자리 대기는 DES에서 확인합니다.') +
+      note('보정 능력=이론 능력×운전효율(%)÷100. 운전효율 미입력 시 A×Ft×Ew를 대신 적용합니다. 필요 대수=ceil(피크 총 요구량/(현재 STC 중 최저 보정 능력×목표 부하율)). 목표 부하율은 표시 처리량에 곱하지 않습니다. 사이클 시간과 DES 결과에는 운전효율을 추가 적용하지 않습니다.') +
+      note('DC 셀 쌍 산정: ' + result.dcSampling.method + ', n=' + result.dcSampling.samples + ', 사이클시간 표준오차=' + n(result.dcSampling.se) + ' s. 적재 비율은 주행·승강 속도와 가감속에 함께 적용합니다.') +
+      note('Single / Double Deep, Single Fork, 균등 랙, 통로당 1대입니다. creep, jerk 제한 S-curve, 고장, 더블딥 화물 재배치·SKU 지정 출고, Twin Fork, 공유레일 충돌은 포함하지 않습니다. 현장 실측 및 규격 적합성 판정은 별도입니다.') +
+      '<h3>보정계수 민감도</h3>' +
+      (result.factor === null ? note('운전효율 또는 세부 계수·근거 미입력으로 민감도를 산정하지 않았습니다.') : table(['계수', '변경률', '적용값', '전체 보정 능력 (' + unit + ')', '필요 대수'],
+        Model.sensitivity(result).map(r => [r.key === 'operatingEfficiency' ? '운전효율' : r.key, n(r.delta * 100, 0) + '%', n(r.value) + (r.key === 'operatingEfficiency' ? '%' : ''), n(r.capacity, 2), r.required]))) +
+      note('세부 계수 방식에서 A·Ft·Ew 중 1.0은 해당 손실을 제외하는 조건입니다. 이론 능력, 종료 대기 작업, 재고 부족·만재 및 버퍼 차단을 함께 검토합니다.'));
+    const title = c.name.replace(/[\\/:*?"<>|\u0000-\u001f]/g, '_').slice(0, 70) + '_물동량계산_보고서';
+    return '<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
+      '<title>' + esc(title) + '</title><style>' + styles + '</style></head><body>' +
+      '<nav class="print-toolbar"><div><b>제출용 PDF 보고서</b><p>PDF 저장 / 인쇄 → 대상: PDF로 저장 → 용지: A4. 브라우저 머리글·바닥글은 끄세요.</p></div><button id="printPdf">PDF 저장 / 인쇄</button><button id="closeReport">닫기</button></nav>' +
+      '<main>' + pages.join('') + '</main><script>document.getElementById("printPdf").addEventListener("click",function(){window.print();});document.getElementById("closeReport").addEventListener("click",function(){window.close();});<\/script></body></html>';
+  }
+  const styles = `
+    @page { size:A4; margin:14mm 14mm 17mm; @bottom-left { content:"STC Studio / 물동량 계산 보고서"; font:8pt "Malgun Gothic",sans-serif; color:#627480; } @bottom-right { content:counter(page) " / " counter(pages); font:8pt Arial,sans-serif; color:#627480; } }
+    *{box-sizing:border-box}body{margin:0;background:#e8edf1;color:#192f3d;font:9pt/1.55 "Malgun Gothic","Segoe UI",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    main{width:210mm;margin:20px auto;padding:14mm;background:white}.print-toolbar{padding:15px 24px;background:#123342;color:white;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:1}.print-toolbar div{flex:1}.print-toolbar p{font-size:11px;margin:4px 0 0}.print-toolbar button{padding:10px 16px;border:0;border-radius:5px;cursor:pointer;background:#d7f0e9;color:#153f43;white-space:nowrap}
+    .report-section{break-before:page;margin-bottom:18mm}.report-section:first-child{break-before:auto}.report-section:last-child{margin-bottom:0}h1{font-size:27pt;line-height:1.4;margin:10mm 0 5mm;letter-spacing:-.6pt}h2{font-size:16pt;margin:0 0 7mm;padding-bottom:3mm;border-bottom:2px solid #16828a;break-after:avoid}h3{font-size:10.5pt;margin:5mm 0 2mm;break-after:avoid}.eyebrow{font-size:8pt;letter-spacing:2px;color:#16828a}.project-name{font-size:13pt;font-weight:bold;margin:0 0 7mm;overflow-wrap:anywhere}
+    table{border-collapse:collapse;width:100%;margin:3mm 0 4mm;table-layout:fixed;font-size:8.5pt}thead{display:table-header-group}th{background:#edf3f5;color:#31576b;text-align:left;font-weight:bold}th,td{border:1px solid #d5e0e5;padding:2.1mm 2.4mm;vertical-align:top;overflow-wrap:anywhere;white-space:normal;font-variant-numeric:tabular-nums}tr{break-inside:avoid}table.compact{font-size:8pt}table.compact th,table.compact td{padding:2mm 1.6mm}.note{font-size:8.5pt;color:#506b79;line-height:1.65;margin:3mm 0;overflow-wrap:anywhere;orphans:3;widows:3}p{orphans:3;widows:3}
+    .judgement{background:#edf6f3;border-left:3px solid #16828a;padding:3mm 4mm;margin:4mm 0;font-weight:bold;break-inside:avoid}.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:6mm 0}.summary-grid>div{border:1px solid #d2e0e4;padding:4mm 3mm;break-inside:avoid}.summary-grid span{display:block;font-size:8pt;min-height:10mm}.summary-grid strong{display:block;font-size:18pt;color:#087f80;overflow-wrap:anywhere}.summary-grid small{font-size:8pt;color:#617985}
+    .dense th,.dense td{padding-top:1.4mm;padding-bottom:1.4mm}.dense h3{margin-top:3mm}.cover.dense h1{font-size:23pt;margin:4mm 0 3mm}.cover.dense .project-name{font-size:10pt;margin-bottom:4mm}.cover.dense .summary-grid{margin:4mm 0}.cover.dense .summary-grid>div{padding:3mm}.cover.dense .summary-grid span{min-height:8mm}
+    svg{width:100%;height:auto;display:block;overflow:visible}.axis-chart-card{margin:0 0 5mm;break-inside:avoid}.axis-chart-heading h3{font-size:11pt;margin:0 0 2mm}.axis-chart-heading output{display:none}.chart-pair{display:grid;grid-template-columns:1fr 1fr;gap:5mm}.chart-title{font-size:8pt;color:#426574;margin-bottom:1mm}.dot{display:inline-block;width:2mm;height:2mm;margin-right:2mm;border-radius:50%}.dot.x{background:#139caa}.dot.y{background:#d38b30}.dot.f{background:#577eda}
+    @media print{body{background:white}.print-toolbar{display:none}main{width:auto;margin:0;padding:0}.report-section{margin-bottom:0}}
+    @media screen and (max-width:850px){main{width:100%;padding:20px;margin:0}.print-toolbar{position:static;flex-wrap:wrap}.print-toolbar div{flex-basis:100%}.summary-grid{grid-template-columns:1fr 1fr}.chart-pair{grid-template-columns:1fr}}
+  `;
+  root.STCPrint = { document: documentHtml };
+})(globalThis);
+
+</script>
+<script data-module="easy">
+(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory(require('./core/model.js'));
+  else root.STCEasy = factory(root.STCModel);
+})(globalThis, function (Model) {
+  'use strict';
+  const VERSION = '1.0.0';
+  const defaults = { ...Model.defaults, name: '스태커크레인 간편 검토', inbound: 20, outbound: 20, peak: 1, operatingEfficiency: 85, targetUtil: .85, loadedFactor: 1 };
+  const fields = {
+    name: ['프로젝트 이름', '', '예: A동 자동창고 검토', 'text'],
+    length: ['랙 길이', 'm', '크레인 주행 방향의 랙 전체 길이'],
+    height: ['랙 높이', 'm', '바닥부터 랙 상부까지의 높이'],
+    bays: ['가로 보관 칸 수', '칸', '한 면의 가로 칸 수 · Bay'],
+    levels: ['세로 보관 단 수', '단', '한 면의 높이 방향 단 수 · Level'],
+    sides: ['보관면', '', '크레인 통로를 기준으로 선택', { 2: '양쪽 랙 · 2면', 1: '한쪽 랙 · 1면' }],
+    rackDepth: ['보관 깊이', '', '한 위치에서 앞뒤로 보관하는 수', { single: '싱글딥 · 깊이 1개', double: '더블딥 · 깊이 2개' }],
+    vx: ['주행 속도', 'm/min', '통로를 따라 수평으로 이동하는 속도'],
+    vy: ['승강 속도', 'm/min', '화물을 위아래로 이동하는 속도'],
+    vf: ['포크 속도', 'm/min', '포크를 내밀고 당기는 속도'],
+    stroke: ['앞열 포크 편도 거리', 'm', '통로 중심부터 앞열 화물 중심까지'],
+    cranes: ['스태커크레인 수', '대', '독립 통로마다 1대씩 설치'],
+    inbound: ['시간당 입고 요구량', 'PLT/h', '모든 크레인이 합쳐서 입고할 수량'],
+    outbound: ['시간당 출고 요구량', 'PLT/h', '모든 크레인이 합쳐서 출고할 수량'],
+    mode: ['운전 방식', '', '단독은 화물 1개, 복합은 입고 1개 + 출고 1개', { 'sc-return': '단독 · 싱글(SC)', dc: '복합 우선 · 듀얼(DC)', mixed: '싱글·듀얼 비율 지정', 'sc-stay': '작업 위치 대기 · SC 복귀 참고값' }],
+    dcRatio: ['듀얼 사이클 비율', '%', '50% = 싱글 1회 + 듀얼 1회'],
+    operatingEfficiency: ['운전효율', '%', '처리량에 반영 · 85를 입력하면 이론값의 85%'],
+    targetUtil: ['목표 설계 부하율', '%', '필요 대수 판단용 · 표시 처리량에는 곱하지 않음'],
+    peak: ['피크 계수', '배', '혼잡 시간의 요구량 배수 · 1이면 추가 증가 없음'],
+    loadedFactor: ['적재 시 속도·가감속 적용률', '%', '100 = 입력 사양 그대로 · 50 = 속도·가감속을 절반으로 적용'],
+    ax: ['주행 가속도', 'm/s²', '주행 최고속도까지 빨라지는 정도'],
+    dx: ['주행 감속도', 'm/s²', '주행을 멈출 때 감속하는 정도'],
+    ay: ['승강 가속도', 'm/s²', '승강 최고속도까지 빨라지는 정도'],
+    dy: ['승강 감속도', 'm/s²', '승강을 멈출 때 감속하는 정도'],
+    af: ['포크 가속도', 'm/s²', '포크 최고속도까지 빨라지는 정도'],
+    df: ['포크 감속도', 'm/s²', '포크를 멈출 때 감속하는 정도'],
+    transferLift: ['캐리지 이재 승하강량', 'mm', '화물을 들어 올리거나 내려놓는 높이'],
+    forkDwell: ['이재 후 안착 대기', '초/이재', '승하강 완료 후 추가로 기다리는 시간'],
+    position: ['정위치 확인 시간', '초/이동', '주행·승강 이동이 끝날 때 추가하는 시간'],
+    control: ['제어 지연', '초/사이클', '한 사이클마다 한 번 추가하는 시간'],
+    firstLevelHeight: ['1단 화물 중심 높이', 'm', '빈칸이면 자동 · 바닥 기준 높이'],
+    levelPitch: ['단간격', 'm', '빈칸이면 랙 높이 ÷ 단 수'],
+    rearStroke: ['뒷열 포크 편도 거리', 'm', '통로 중심부터 뒷열까지 · 빈칸이면 앞열의 2배'],
+    ioX: ['입고 포트 · 주행 위치 X', 'm', '랙 시작점을 0으로 입력 · 외부 포트는 음수도 가능'],
+    ioY: ['입고 포트 · 높이 Y', 'm', '바닥을 0으로 입력'],
+    ioZ: ['입고 포트 · 포크 위치 Z', 'm', '빈칸이면 앞열 거리의 음수 · 좌우 방향 포함'],
+    outX: ['출고 포트 · 주행 위치 X', 'm', '빈칸이면 입고 포트 X와 동일'],
+    outY: ['출고 포트 · 높이 Y', 'm', '빈칸이면 입고 포트 Y와 동일'],
+    outZ: ['출고 포트 · 포크 위치 Z', 'm', '빈칸이면 앞열 거리의 음수 · 좌우 방향 포함'],
+    method: ['평균 사이클 계산 방법', '', '전체 셀 또는 대표점을 사용해 평균 이동 계산', { cells: '전체 보관 셀 평균', fem: 'FEM CASE 대표점' }],
+    femCase: ['FEM 배치 유형', '', '선택 후 아래 배치 좌표 적용 버튼으로 포트 설정', Object.fromEntries(Model.caseNames.map((n, i) => [i + 1, `CASE ${i + 1} · ${n}`]))],
+    pointMode: ['대표점 위치', '', '실제 화물 중심을 기본으로 사용', { cell: '실제 화물 중심', theory: '이론 좌표 · 비교 검토용' }]
+  };
+  const basicGroups = [
+    { id: 'rack', title: '창고 크기를 입력하세요', note: '도면의 랙 길이·높이와 보관 칸 수를 옮겨 적습니다.', keys: ['length', 'height', 'bays', 'levels', 'sides', 'rackDepth'] },
+    { id: 'speed', title: '장비 속도를 입력하세요', note: '사양서의 속도를 m/min으로 입력합니다. 1 m/s = 60 m/min입니다.', keys: ['vx', 'vy', 'vf', 'stroke'] },
+    { id: 'demand', title: '처리할 물량을 입력하세요', note: '입고와 출고를 합친 수량으로 처리능력을 비교합니다.', keys: ['cranes', 'inbound', 'outbound', 'mode', 'dcRatio'] }
+  ];
+  const parameterGroups = [
+    { id: 'efficiency', title: '효율과 설계 여유', note: '운전효율은 처리량에, 목표 부하율은 필요 대수에 적용합니다.', keys: ['operatingEfficiency', 'targetUtil', 'peak'] },
+    { id: 'movement', title: '적재 시 움직임과 가감속', note: '속도 입력값이 적재 사양이면 적용률을 100%로 두세요. 적용률을 낮추면 이동 시간이 길어집니다.', keys: ['loadedFactor', 'ax', 'dx', 'ay', 'dy', 'af', 'df'] },
+    { id: 'delay', title: '이재 동작과 지연시간', note: '다른 조건이 같으면 대기·지연시간을 줄일수록 처리량이 증가합니다.', keys: ['transferLift', 'forkDwell', 'position', 'control'] },
+    { id: 'geometry', title: '랙 상세 치수', note: '모르는 항목은 빈칸으로 두면 자동 계산값을 사용합니다.', keys: ['firstLevelHeight', 'levelPitch', 'rearStroke'] },
+    { id: 'ports', title: '입고·출고 위치', note: '모든 크레인에 같은 배치를 적용합니다. 기본은 랙 하단의 공용 포트입니다.', keys: ['ioX', 'ioY', 'ioZ', 'outX', 'outY', 'outZ'] },
+    { id: 'method', title: '계산 기준', note: '회사 프로그램과 비교할 때는 이 항목과 실제 포트 위치도 맞춰 확인하세요.', keys: ['method', 'femCase', 'pointMode'] }
+  ];
+  const parameterKeys = parameterGroups.flatMap(g => g.keys);
+  const scale = key => ['vx', 'vy', 'vf'].includes(key) ? 60 : key === 'transferLift' ? 1000 : ['loadedFactor', 'targetUtil'].includes(key) ? 100 : 1;
+  const display = (c, key) => c[key] === null ? '' : typeof c[key] === 'number' ? Number((c[key] * scale(key)).toPrecision(12)) : c[key];
+  function fromDisplay(values, base = defaults) {
+    const c = { ...base, speedUnit: 'm/min' };
+    for (const [key, raw] of Object.entries(values)) {
+      if (!(key in fields)) continue;
+      if (key in Model.fields) {
+        const value = String(raw).trim(), [label, , low, high] = Model.fields[key], f = scale(key);
+        if (value === '' && Model.nullable.includes(key)) { c[key] = null; continue; }
+        const number = value === '' ? NaN : Number(value);
+        if (!Number.isFinite(number) || number < low * f || number > high * f) {
+          const e = Error(`${fields[key][0]}: ${Number((low * f).toPrecision(8))}~${Number((high * f).toPrecision(8))} ${fields[key][1]} 범위의 값을 입력하세요.`); e.field = key; throw e;
+        }
+        c[key] = number / f;
+      } else c[key] = raw;
+    }
+    return Model.validate(c);
+  }
+  function parameterPack(c) {
+    c = Model.validate(c);
+    return { schemaVersion: 'stc/easy-parameters@1', interfaceVersion: VERSION, units: 'm,m/s,m/s²,s', parameters: Object.fromEntries(parameterKeys.map(k => [k, c[k]])) };
+  }
+  function applyParameters(base, data) {
+    if (!data || data.schemaVersion !== 'stc/easy-parameters@1' || data.units !== 'm,m/s,m/s²,s' || !data.parameters || Array.isArray(data.parameters)) throw Error('간편판에서 저장한 파라미터 JSON 파일을 선택하세요.');
+    if (Object.keys(data.parameters).length !== parameterKeys.length || parameterKeys.some(k => !Object.hasOwn(data.parameters, k))) throw Error('파라미터 항목이 누락되었거나 지원하지 않는 파일입니다.');
+    return Model.validate({ ...base, ...Object.fromEntries(parameterKeys.map(k => [k, data.parameters[k]])) });
+  }
+  function projectPack(c) { return { ...Model.pack(c), interface: 'stc/easy@1', interfaceVersion: VERSION }; }
+  function projectUnpack(data) {
+    const c = Model.unpack(data);
+    if (c.routes.length || c.ports.some(p => Object.values(p).some(v => v !== null))) throw Error('STC별 개별 포트 또는 복합 배치가 있는 파일입니다. 이 파일은 기존 상세 프로그램에서 열어주세요. 간편판은 모든 STC에 같은 포트 배치를 사용합니다.');
+    // Empty override rows have no physical effect. Removing them permits changing crane count.
+    return { ...c, ports: [], speedUnit: 'm/min' };
+  }
+  function changed(a, b, keys = Object.keys(fields)) { return keys.filter(k => a[k] !== b[k]); }
+  function comparisons(r) {
+    const sc = Model.calculate({ ...r.config, mode: 'sc-return' });
+    return [
+      { label: '단독 · 싱글 SC', loads: 1, time: sc.sc, theory: 3600 / sc.sc },
+      { label: '복합 · 듀얼 DC', loads: 2, time: r.dc, theory: r.dc ? 7200 / r.dc : null }
+    ].map(v => ({ ...v, available: v.theory === null || r.factor === null ? null : v.theory * r.factor }));
+  }
+  return { VERSION, defaults, fields, basicGroups, parameterGroups, parameterKeys, scale, display, fromDisplay, parameterPack, applyParameters, projectPack, projectUnpack, changed, comparisons };
+});
+
+</script>
+<script data-module="app">
+(function () {
+  'use strict';
+  const Easy = STCEasy, Model = STCModel, $ = id => document.getElementById(id), esc = STCCharts.esc;
+  const fmt = (v, d = 1) => Number.isFinite(v) ? v.toLocaleString('ko-KR', { minimumFractionDigits: d, maximumFractionDigits: d }) : '—';
+  const modeName = { 'sc-return': '단독 · 싱글', 'sc-stay': 'SC 위치 대기 · 복귀 참고값', dc: '복합 우선 · 듀얼', mixed: '싱글·듀얼 혼합' };
+  let config = structuredClone(Easy.defaults), result = null, dirty = false, currentView = 'basic';
+  function field(key) {
+    const [label, unit, help, type] = Easy.fields[key], id = 'input-' + key;
+    const numeric = key in Model.fields, optional = Model.nullable.includes(key);
+    let control;
+    if (type && typeof type === 'object') control = '<select id="' + id + '" data-key="' + key + '" aria-describedby="hint-' + key + '">' + Object.entries(type).map(([v, text]) => '<option value="' + esc(v) + '">' + esc(text) + '</option>').join('') + '</select>';
+    else if (!numeric) control = '<input type="text" id="' + id + '" data-key="' + key + '" maxlength="300" aria-describedby="hint-' + key + '">';
+    else {
+      const [, , low, high] = Model.fields[key], f = Easy.scale(key);
+      control = '<input type="number" inputmode="decimal" id="' + id + '" data-key="' + key + '" min="' + low * f + '" max="' + high * f + '" step="any"' + (optional ? ' placeholder="' + (key === 'operatingEfficiency' ? '미입력' : '자동') + '"' : '') + ' aria-describedby="hint-' + key + '">';
+    }
+    return '<div class="field' + (['name', 'mode', 'loadedFactor'].includes(key) ? ' wide' : '') + '" data-field="' + key + '"><label for="' + id + '">' + esc(label) + (unit ? '<span class="unit" data-unit="' + key + '">' + esc(unit) + '</span>' : '') + '</label>' + control + '<small id="hint-' + key + '">' + esc(help) + '</small></div>';
+  }
+  $('projectName').innerHTML = field('name');
+  $('basicGroups').innerHTML = Easy.basicGroups.map((g, i) => '<article class="input-group"><div class="group-heading"><span class="group-index">' + (i + 1) + '</span><div><h3>' + g.title + '</h3><p>' + g.note + '</p></div></div><div class="fields">' + g.keys.map(field).join('') + '</div>' + (g.id === 'speed' ? '<p class="group-note">입력한 속도를 그대로 사용합니다. 적재 시 속도가 달라지면 「파라미터 설정 → 적재 사양 적용률」에서 조정하세요.</p>' : '') + '</article>').join('');
+  $('parameterGroups').innerHTML = Easy.parameterGroups.map((g, i) => '<details class="parameter-group" id="group-' + g.id + '"' + (i === 0 ? ' open' : '') + '><summary><span class="group-index">' + String(i + 1).padStart(2, '0') + '</span><div><b>' + g.title + '</b><small>' + g.note + '</small></div></summary><div class="group-content"><div class="fields">' + g.keys.map(field).join('') + '</div>' + (g.id === 'method' ? '<p class="group-note">배치 유형을 선택한 후 좌표를 적용하세요. 실제 도면 위치가 다르면 입고·출고 위치를 직접 수정할 수 있습니다.</p><button type="button" id="applyCase">선택한 배치 좌표 적용</button>' : '') + (g.id === 'movement' ? '<p class="group-note" id="loadedExplanation"></p>' : '') + '</div></details>').join('');
+  function notify(text) { $('message').textContent = text; $('message').hidden = false; }
+  function clearError() { $('error').hidden = true; document.querySelectorAll('[aria-invalid]').forEach(e => e.removeAttribute('aria-invalid')); }
+  function showError(error) {
+    $('error').textContent = error.message; $('error').hidden = false;
+    const input = $('input-' + error.field);
+    if (input) {
+      showView(input.closest('.view').id, false);
+      const details = input.closest('details'); if (details) details.open = true;
+      input.setAttribute('aria-invalid', 'true'); input.focus(); input.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    } else $('error').scrollIntoView({ block: 'center' });
+  }
+  function read(overrides = {}) { return Easy.fromDisplay({ ...Object.fromEntries([...document.querySelectorAll('[data-key]')].map(e => [e.dataset.key, e.value])), ...overrides }, config); }
+  const defaultParameterInputs = () => Object.fromEntries(Easy.parameterKeys.map(k => [k, Easy.display(Easy.defaults, k)]));
+  function write(c) {
+    config = c;
+    document.querySelectorAll('[data-key]').forEach(e => { e.value = Easy.display(c, e.dataset.key); });
+    ['inbound', 'outbound'].forEach(k => document.querySelector('[data-unit="' + k + '"]').textContent = c.unit + '/h');
+    syncUI();
+  }
+  function syncUI() {
+    const value = k => $('input-' + k).value;
+    $('summaryEfficiency').textContent = value('operatingEfficiency') === '' ? '직접값 미입력' : value('operatingEfficiency') + '%';
+    $('summaryLoaded').textContent = value('loadedFactor') + '%';
+    $('summaryControl').textContent = value('control') + '초';
+    document.querySelector('[data-field="dcRatio"]').hidden = value('mode') !== 'mixed';
+    document.querySelector('[data-field="rearStroke"]').hidden = value('rackDepth') !== 'double';
+    ['femCase', 'pointMode'].forEach(k => { document.querySelector('[data-field="' + k + '"]').hidden = value('method') !== 'fem'; });
+    $('applyCase').hidden = value('method') !== 'fem';
+    let count = 0;
+    for (const key of Easy.parameterKeys) {
+      const actual = value(key), standard = String(Easy.display(Easy.defaults, key));
+      const changed = actual !== standard && !(actual !== '' && standard !== '' && Number(actual) === Number(standard));
+      document.querySelector('[data-field="' + key + '"]').classList.toggle('modified', changed); if (changed) count++;
+    }
+    $('parameterCount').textContent = count ? '초기값에서 ' + count + '개 변경' : '예시 기본값 사용';
+    const f = Number(value('loadedFactor')) / 100, vx = Number(value('vx')), vy = Number(value('vy'));
+    $('loadedExplanation').textContent = Number.isFinite(f * vx * vy) ? '적재 시 적용 속도: 주행 ' + fmt(vx * f, 2) + ' m/min · 승강 ' + fmt(vy * f, 2) + ' m/min. 가속도·감속도와 캐리지 이재 승하강에도 같은 비율을 적용합니다. 포크 수평 속도는 포크 입력값을 사용합니다.' : '적재 사양 적용률에 따라 실제 이동 속도가 달라집니다.';
+    const depthHint = value('rackDepth') === 'double' ? '더블딥의 뒷열 포크 거리는 파라미터에서 조정합니다. 빈칸이면 앞열의 2배를 사용합니다.' : Easy.fields.rackDepth[2];
+    $('hint-rackDepth').textContent = depthHint;
+    $('hint-dcRatio').textContent = config.ratioBasis === 'loads' ? '불러온 파일은 화물 개수 비율 기준입니다. 50% 화물 = 약 33.3% 사이클.' : Easy.fields.dcRatio[2];
+  }
+  function markDirty() {
+    dirty = true; document.body.dataset.dirty = 'true';
+    $('stateBadge').textContent = '입력 변경됨'; $('stateText').textContent = '계산 버튼을 눌러 결과에 반영하세요.';
+    $('staleResult').hidden = !result; syncUI();
+  }
+  function showView(view, scroll = true) {
+    if (view === 'results' && !result) { calculate(); return; }
+    currentView = view;
+    document.querySelectorAll('.view').forEach(e => { e.hidden = e.id !== view; });
+    document.querySelectorAll('.step').forEach(e => { e.classList.toggle('active', e.dataset.view === view); if (e.dataset.view === view) e.setAttribute('aria-current', 'step'); else e.removeAttribute('aria-current'); });
+    if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function calculate() {
+    clearError();
+    try {
+      const c = read(), previous = result;
+      const next = Model.calculate(c);
+      config = c; result = next; dirty = false; document.body.dataset.dirty = 'false';
+      renderResults(previous); $('staleResult').hidden = true;
+      $('stateBadge').textContent = '계산 완료'; $('stateText').textContent = '현재 입력값이 모두 반영되었습니다.';
+      showView('results');
+    } catch (error) { showError(error); }
+  }
+  function metric(title, value, unit, detail, featured) {
+    return '<article class="result-card' + (featured ? ' featured' : '') + '"><div class="metric-label">' + esc(title) + '</div><div class="metric-value">' + esc(value) + '<small>' + esc(unit) + '</small></div><div class="metric-detail">' + esc(detail) + '</div></article>';
+  }
+  function renderResults(previous) {
+    const r = result, c = r.config, unit = c.unit + '/h';
+    $('resultSubtitle').textContent = c.name + ' · ' + modeName[c.mode] + ' · ' + Model.depthName(c) + ' · STC ' + c.cranes + '대';
+    $('resultCards').innerHTML = metric('효율을 반영한 처리량 · 1대', fmt(r.available), unit, Model.correctionText(r) + ' / 이론 ' + fmt(r.theory) + ' ' + unit, true) + metric('전체 크레인 처리능력', fmt(r.capacity), unit, c.cranes + '대 합계 · 피크 요구량 ' + fmt(r.demand) + ' ' + unit) + metric('목표 부하율 기준 필요 대수', fmt(r.required, 0), '대', '현재 ' + c.cranes + '대 · 목표 부하율 ' + fmt(c.targetUtil * 100) + '%');
+    const noFactor = r.factor === null, insufficient = r.worstUtil !== null && r.worstUtil > c.targetUtil;
+    $('judgement').className = 'judgement' + (noFactor || insufficient ? ' amber' : '');
+    $('judgement').textContent = noFactor ? '운전효율이 미입력입니다. 파라미터에서 효율을 입력하면 보정 처리량과 필요 대수가 표시됩니다. 이론 처리량은 ' + fmt(r.theory) + ' ' + unit + '입니다.' : (insufficient ? '목표 설계 부하율을 초과합니다. 필요 대수 또는 설비 조건을 검토하세요.' : '입력한 요구량은 목표 설계 부하율 이내입니다.') + ' 전체 요구량 ' + fmt(r.demand) + ' ' + unit + ' / 설계 부하율 ' + fmt(r.worstUtil * 100) + '% / 목표 ' + fmt(c.targetUtil * 100) + '%.';
+    const changes = previous ? Easy.changed(previous.config, c) : [];
+    $('changeSummary').hidden = !changes.length;
+    if (changes.length) {
+      const descriptions = changes.slice(0, 5).map(k => Easy.fields[k][0] + ': ' + (Easy.display(previous.config, k) === '' ? '자동/미입력' : Easy.display(previous.config, k)) + ' → ' + (Easy.display(c, k) === '' ? '자동/미입력' : Easy.display(c, k)) + ' ' + Easy.fields[k][1]);
+      const diff = r.available !== null && previous.available !== null ? r.available - previous.available : null;
+      $('changeSummary').textContent = '이전 계산과 비교' + (diff === null ? '' : ': 1대 보정 처리량 ' + (diff >= 0 ? '+' : '') + fmt(diff, 2) + ' ' + unit) + '. ' + descriptions.join(' / ') + (changes.length > 5 ? ' 외 ' + (changes.length - 5) + '개' : '');
+    }
+    const rows = Easy.comparisons(r);
+    $('cycleTable').innerHTML = '<table><thead><tr><th>비교 항목</th>' + rows.map(v => '<th>' + esc(v.label) + '</th>').join('') + '</tr></thead><tbody>' + [['1회 취급 수', ...rows.map(v => v.loads + '개')], ['평균 사이클 시간', ...rows.map(v => fmt(v.time, 2) + '초')], ['시간당 이론 처리량', ...rows.map(v => fmt(v.theory, 2) + ' ' + unit)], ['효율 반영 처리량', ...rows.map(v => fmt(v.available, 2) + ' ' + unit)]].map(row => '<tr>' + row.map(v => '<td>' + esc(v) + '</td>').join('') + '</tr>').join('') + '</tbody></table>';
+    $('appliedParameters').innerHTML = '<dl class="applied-list">' + [['운전효율', r.factor === null ? '미입력' : fmt(r.factor * 100, 2) + '%'], ['적재 사양 적용률', fmt(c.loadedFactor * 100) + '%'], ['제어 지연', fmt(c.control, 2) + '초 / 사이클'], ['정위치 확인', fmt(c.position, 2) + '초 / 이동'], ['피크 계수', fmt(c.peak, 2) + '배'], ['계산 방법', c.method === 'fem' ? 'FEM CASE ' + c.femCase : '전체 보관 셀 평균'], ['실제 계산 DC 비율', fmt(r.p * 100) + '% / 사이클']].map(([k, v]) => '<div><dt>' + esc(k) + '</dt><dd>' + esc(v) + '</dd></div>').join('') + '</dl>';
+    $('storageCount').textContent = fmt(r.cells, 0) + '셀/대 · 전체 ' + fmt(r.totalCells, 0) + '셀';
+    $('rackDiagram').innerHTML = rackSvg(r);
+    const layout = Model.rackLayout(c);
+    $('rackCaption').textContent = '랙 ' + c.length + ' m × ' + c.height + ' m · ' + c.bays + '칸 × ' + c.levels + '단 · 1단 높이 ' + fmt(layout.first, 3) + ' m · 단간격 ' + fmt(layout.pitch, 3) + ' m. 한 면의 측면도이며 격자는 보기 쉽게 간략화했습니다.';
+    const notes = ['이론 처리량 = 3600 × (1 + 듀얼 사이클 비율) ÷ 평균 사이클 시간', '보정 처리량 = 이론 처리량 × 운전효율 ÷ 100', '필요 대수 = 올림(피크 요구량 ÷ 1대 보정 처리량 ÷ 목표 설계 부하율)'];
+    $('calculationNotes').innerHTML = '<code>' + notes.map(esc).join('<br>') + '</code><p>' + esc(r.reference) + '</p><p>상단 처리량은 선택한 운전 방식과 입출고 수요 비중을 반영합니다. 사이클 비교표는 각 사이클의 연속 운전 환산값입니다. 운전효율은 처리량에 적용하고 물리적 사이클 시간은 바꾸지 않습니다.</p>' + (r.mix.limited ? '<p>입출고 수요가 불균형하거나 사용 가능한 셀 쌍이 없어 요청한 듀얼 비율을 제한했습니다. 계산 적용 비율은 ' + fmt(r.p * 100) + '%입니다.</p>' : '') + (c.mode === 'sc-stay' ? '<p>SC 작업 위치 대기는 SC 복귀 사이클 참고값입니다. 실제 운영 배차는 상세 프로그램의 시뮬레이션으로 확인하세요.</p>' : '') + (Model.depthCount(c) === 2 ? '<p>' + esc(Model.depthNote) + '</p>' : '') + '<p>독립 통로에 수요를 균등 배분하는 평균 능력 계산입니다. 재고·대기·공유 상하류 병목, 고장, creep 및 jerk 제어는 포함하지 않습니다. 초기 파라미터는 설계 예시이며 현장·장비 사양과 대조해 조정하세요.</p>';
+  }
+  function rackSvg(r) {
+    const c = r.config, E = r.ports.in, A = r.ports.out;
+    const xMin = Math.min(0, E.x, A.x), xMax = Math.max(c.length, E.x, A.x), yMin = Math.min(0, E.y, A.y), yMax = Math.max(c.height, E.y, A.y);
+    const x = v => 62 + (v - xMin) / (xMax - xMin) * 636, y = v => 232 - (v - yMin) / (yMax - yMin) * 193;
+    let svg = '<svg viewBox="0 0 760 280" role="img" aria-label="랙과 입고 출고 포트 배치"><defs><pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#deebe9"/></pattern></defs><rect x="30" y="15" width="702" height="237" rx="12" fill="url(#dots)"/><rect x="' + x(0) + '" y="' + y(c.height) + '" width="' + (x(c.length) - x(0)) + '" height="' + (y(0) - y(c.height)) + '" fill="#edf6f3" stroke="#82aaa3"/>';
+    for (let i = 1; i < Math.min(c.bays, 40); i++) { const px = x(c.length * i / Math.min(c.bays, 40)); svg += '<path d="M' + px + ' ' + y(0) + 'V' + y(c.height) + '" stroke="#c3dbd5"/>'; }
+    for (const h of Model.rackLayout(c).heights) svg += '<path d="M' + x(0) + ' ' + y(h) + 'H' + x(c.length) + '" stroke="#c3dbd5"/>';
+    const pts = r.fem?.inbound || [];
+    if (r.fem) svg += '<path d="M' + x(E.x) + ' ' + y(E.y) + 'L' + x(pts[0].x) + ' ' + y(pts[0].y) + 'L' + x(pts[1].x) + ' ' + y(pts[1].y) + 'L' + x(A.x) + ' ' + y(A.y) + '" fill="none" stroke="#16948d" stroke-width="2.5" stroke-dasharray="6 5"/>' + pts.map((p, i) => '<circle cx="' + x(p.x) + '" cy="' + y(p.y) + '" r="5" fill="#087c7d"/><text x="' + (x(p.x) + 9) + '" y="' + (y(p.y) - 9) + '" font-size="11" fill="#075d60">P' + (i + 1) + '</text>').join('');
+    const same = E.x === A.x && E.y === A.y;
+    for (const p of (same ? [{ ...E, label: '입고 / 출고' }] : [{ ...E, label: '입고' }, { ...A, label: '출고' }])) svg += '<rect x="' + (x(p.x) - 6) + '" y="' + (y(p.y) - 6) + '" width="12" height="12" rx="3" fill="#cd9c4d" stroke="white" stroke-width="2"/><text x="' + x(p.x) + '" y="' + (y(p.y) + 23) + '" text-anchor="middle" font-size="11" fill="#8d6632">' + p.label + '</text>';
+    return svg + '<text x="380" y="22" text-anchor="middle" font-size="12" fill="#667c87">랙 길이 ' + c.length + ' m</text><text x="7" y="133" font-size="11" fill="#667c87">' + c.height + ' m</text></svg>';
+  }
+  function download(name, text, type) { const url = URL.createObjectURL(new Blob([text], { type })), a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1500); }
+  const safeName = text => text.replace(/[\\/:*?"<>|\u0000-\u001f]/g, '_').slice(0, 70);
+  function getAppliedResult() { if (dirty || !result) calculate(); if (dirty || !result || !$('error').hidden) throw Error('입력 오류를 확인한 뒤 다시 계산해주세요.'); return result; }
+  $('calculator').addEventListener('submit', e => { e.preventDefault(); calculate(); });
+  $('calculator').addEventListener('input', () => { clearError(); $('message').hidden = true; markDirty(); });
+  $('calculator').addEventListener('change', () => { clearError(); markDirty(); });
+  document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => showView(button.dataset.view)));
+  document.querySelector('.brand').addEventListener('click', e => { e.preventDefault(); showView('basic'); });
+  $('openGuide').addEventListener('click', () => $('guide').showModal());
+  $('closeGuide').addEventListener('click', () => $('guide').close());
+  $('startGuide').addEventListener('click', () => { $('guide').close(); showView('basic'); });
+  $('saveProject').addEventListener('click', () => { clearError(); try { const c = read(); download(safeName(c.name) + '_간편프로젝트.json', JSON.stringify(Easy.projectPack(c), null, 2), 'application/json'); notify('전체 입력을 프로젝트 파일로 저장했습니다.'); } catch (e) { showError(e); } });
+  $('saveParameters').addEventListener('click', () => { clearError(); try { download('스태커크레인_파라미터.json', JSON.stringify(Easy.parameterPack(read()), null, 2), 'application/json'); notify('파라미터를 별도 파일로 저장했습니다. 다른 프로젝트에서도 설정 불러오기로 재사용할 수 있습니다.'); } catch (e) { showError(e); } });
+  for (const [button, input] of [['loadProject', 'projectFile'], ['loadParameters', 'parameterFile']]) $(button).addEventListener('click', () => { $(input).value = ''; $(input).click(); });
+  async function fileJson(input) { const f = input.files[0]; if (!f) return null; if (f.size > 1e6) throw Error('1 MB 이하의 프로젝트 또는 파라미터 JSON 파일을 선택하세요.'); try { return JSON.parse(await f.text()); } catch { throw Error('JSON 파일을 읽을 수 없습니다. 저장한 파일을 다시 선택하세요.'); } }
+  $('projectFile').addEventListener('change', async () => { clearError(); try { const data = await fileJson($('projectFile')); if (!data) return; const c = Easy.projectUnpack(data); write(c); result = null; markDirty(); calculate(); notify('프로젝트를 불러왔습니다. 저장된 계산 조건과 효율을 적용했습니다.'); } catch (e) { showError(e); } });
+  $('parameterFile').addEventListener('change', async () => { clearError(); try { const data = await fileJson($('parameterFile')); if (!data) return; const c = Easy.applyParameters(read(defaultParameterInputs()), data); write(c); markDirty(); showView('parameters'); notify('파라미터를 불러왔습니다. 기본 입력을 유지했으며, 계산 버튼을 누르면 결과에 반영됩니다.'); } catch (e) { showError(e); } });
+  $('resetParameters').addEventListener('click', () => { clearError(); try { const c = read(defaultParameterInputs()); write(c); markDirty(); notify('파라미터를 간편판 예시 기본값으로 되돌렸습니다. 창고 크기·속도·요구량은 유지했습니다.'); } catch (e) { showError(e); } });
+  $('applyCase').addEventListener('click', () => {
+    clearError(); try {
+      const c = read({ method: 'cells', pointMode: 'cell' });
+      const ports = Model.casePorts(c);
+      for (const [k, v] of Object.entries(ports)) $('input-' + k).value = v;
+      if ([1, 3, 4].includes(c.femCase)) $('input-outZ').value = $('input-ioZ').value;
+      markDirty(); $('group-ports').open = true; notify('선택한 CASE의 기본 X·Y 좌표를 적용했습니다. 포크 위치 Z와 실제 도면 치수를 확인하세요.');
+    } catch (e) { showError(e); }
+  });
+  $('saveMarkdown').addEventListener('click', () => { try { const r = getAppliedResult(); download(safeName(r.config.name) + '_간편계산서.md', '간편판 v' + Easy.VERSION + ' · 평균 물동량 검토\n\n' + STCReport.markdown(r), 'text/markdown;charset=utf-8'); } catch (e) { showError(e); } });
+  $('printReport').addEventListener('click', () => { try { const r = getAppliedResult(); const popup = window.open('', '_blank'); if (!popup) throw Error('보고서를 열려면 브라우저의 팝업 허용을 설정하세요.'); popup.document.open(); popup.document.write(STCPrint.document(r, null, { includeSimulation: false })); popup.document.close(); } catch (e) { showError(e); } });
+  write(config); document.body.dataset.dirty = 'false';
+})();
+
+</script>
+</body></html>

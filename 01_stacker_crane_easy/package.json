@@ -1,0 +1,11 @@
+{
+  "name": "stc-easy-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node --test tests/*.test.js",
+    "verify": "node scripts/verify.js",
+    "browser-check": "node scripts/browser-check.js"
+  }
+}

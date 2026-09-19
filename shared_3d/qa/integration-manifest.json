@@ -1,0 +1,100 @@
+{
+  "blenderVersion": "4.5.13 LTS",
+  "assetManifest": {
+    "blenderVersion": "4.5.13 LTS",
+    "models": {
+      "cargo_pallet": {
+        "triangles": 3024,
+        "materials": 5
+      },
+      "lift": {
+        "triangles": 1748,
+        "materials": 4
+      },
+      "rgv_linear": {
+        "triangles": 7652,
+        "materials": 8
+      },
+      "rgv_loop": {
+        "triangles": 7652,
+        "materials": 8
+      },
+      "shuttle": {
+        "triangles": 6708,
+        "materials": 8
+      },
+      "stacker_base": {
+        "triangles": 1936,
+        "materials": 4
+      },
+      "stacker_carriage": {
+        "triangles": 1184,
+        "materials": 3
+      },
+      "stacker_fork": {
+        "triangles": 1420,
+        "materials": 3
+      },
+      "stacker_mast": {
+        "triangles": 2160,
+        "materials": 3
+      }
+    },
+    "files": {
+      "equipment_models.blend": {
+        "bytes": 2288570,
+        "sha256": "62b85efd38e952e2336f553fa0baaccf89ba31ad5c4791f0603fe3e06ee504e0"
+      },
+      "equipment_models.glb": {
+        "bytes": 1893964,
+        "sha256": "a9e935674c8da5f435028935c13f720c75a51ca8428d55122c589d7d22515497"
+      },
+      "mesh_library.json": {
+        "bytes": 2236731,
+        "sha256": "b7ec3406d7b6c0ef9a3ffbad925a3b6382eedb72b10b2257070e8f5f11f6e5b3"
+      }
+    }
+  },
+  "apps": [
+    {
+      "app": "stacker",
+      "folder": "01_stacker_crane",
+      "html": "스태커크레인_실행.html",
+      "models": [
+        "stacker_base",
+        "stacker_mast",
+        "stacker_carriage",
+        "stacker_fork",
+        "cargo_pallet"
+      ]
+    },
+    {
+      "app": "linear",
+      "folder": "02_rgv_linear",
+      "html": "직선RGV_실행.html",
+      "models": [
+        "rgv_linear",
+        "cargo_pallet"
+      ]
+    },
+    {
+      "app": "loop",
+      "folder": "03_rgv_loop",
+      "html": "LoopRGV_실행.html",
+      "models": [
+        "rgv_loop",
+        "cargo_pallet"
+      ]
+    },
+    {
+      "app": "shuttle",
+      "folder": "04_shuttle_4way",
+      "html": "셔틀_실행.html",
+      "models": [
+        "shuttle",
+        "lift",
+        "cargo_pallet"
+      ]
+    }
+  ]
+}

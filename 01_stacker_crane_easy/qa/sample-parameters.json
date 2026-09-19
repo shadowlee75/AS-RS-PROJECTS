@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "stc/easy-parameters@1",
+  "interfaceVersion": "1.0.0",
+  "units": "m,m/s,m/s²,s",
+  "parameters": {
+    "operatingEfficiency": 80,
+    "targetUtil": 0.85,
+    "peak": 1,
+    "loadedFactor": 0.5,
+    "ax": 0.5,
+    "dx": 0.6,
+    "ay": 0.5,
+    "dy": 0.5,
+    "af": 0.8,
+    "df": 0.8,
+    "transferLift": 0.11,
+    "forkDwell": 1,
+    "position": 0.5,
+    "control": 0.25,
+    "firstLevelHeight": null,
+    "levelPitch": null,
+    "rearStroke": null,
+    "ioX": 0,
+    "ioY": 0,
+    "ioZ": null,
+    "outX": null,
+    "outY": null,
+    "outZ": null,
+    "method": "cells",
+    "femCase": 1,
+    "pointMode": "cell"
+  }
+}

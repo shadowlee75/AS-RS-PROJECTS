@@ -1,0 +1,1 @@
+{"name":"shuttle-4way-studio","version":"0.1.0","private":true,"scripts":{"build":"node scripts/build.js","test":"node tests/invariants.js","shipcheck":"node scripts/shipcheck.js","qa:browser":"node scripts/browser-check.js","qa:legacy":"node scripts/legacy-check.js","examples":"node scripts/examples.js"},"engines":{"node":">=18"}}

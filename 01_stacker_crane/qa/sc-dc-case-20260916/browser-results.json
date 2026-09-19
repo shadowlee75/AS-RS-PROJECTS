@@ -1,0 +1,33 @@
+{
+  "checks": 26,
+  "passed": [
+    "default project boots offline",
+    "single edit complements dual to 100%",
+    "load-based 50% converts to 33.3% cycles on screen",
+    "six CASE rows auto-generated and normalized",
+    "invalid distribution is rejected without applying partial settings",
+    "analysis lists all six CASE routes",
+    "saved JSON contains ratios and every route coordinate",
+    "JSON reload restores mixed UI and allocation table",
+    "3D renders six CASE marker sets and seven shared physical buffers",
+    "middle-wheel drag pans the 3D view",
+    "built HTML DES matches source counts and mixture",
+    "actual ratio and conservation visible after completion",
+    "CSV carries route and CASE for completed jobs",
+    "calculation export contains every route and requested/actual ratios",
+    "motion preview selects the CASE 6 inlet at height",
+    "print report includes CASE 1–6 and mixed operating results",
+    "print tables remain within page width",
+    "each crane applies its own CASE and 3D port coordinates",
+    "multiple crane simulation preserves stock and jobs",
+    "adding routes normalizes only the selected crane",
+    "removing a route restores remaining allocation to 100%",
+    "per-crane CASE and route override coexist after save",
+    "repeat comparison includes the configured mixture as a fourth mode",
+    "repeat JSON retains cycle counts and observed DC ratio",
+    "updated manual links to new ratio and CASE instructions",
+    "no JavaScript errors or external network requests"
+  ],
+  "errors": [],
+  "network": []
+}

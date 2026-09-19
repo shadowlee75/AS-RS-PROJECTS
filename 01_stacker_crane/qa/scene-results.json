@@ -1,0 +1,11 @@
+{
+  "loadMeshAttached": true,
+  "fullSizeLoads": 300,
+  "inventory": 300,
+  "cellCount": 600,
+  "drawCalls": 14,
+  "playback": true,
+  "viewSwitch": true,
+  "errors": [],
+  "testedAt": "2026-09-09T05:43:41.748Z"
+}

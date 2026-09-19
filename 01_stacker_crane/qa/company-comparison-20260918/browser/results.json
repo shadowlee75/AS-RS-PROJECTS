@@ -1,0 +1,24 @@
+{
+  "checks": [
+    "default boots without changing the old motion model",
+    "company file imports all input and output values",
+    "company geometry and efficiency applied",
+    "low speed uses m/min",
+    "saved project retains complete comparison settings",
+    "Markdown includes mode, inputs and both corrected rates",
+    "low speed converted on unit change",
+    "unit change preserves calculated time",
+    "invalid low speed shows field-specific error",
+    "motion identifies continuous representative coordinates",
+    "PDF report includes low speed input and timing model",
+    "PDF report tables stay inside their sections",
+    "simulation completes with low-speed model",
+    "invalid company file leaves current inputs intact",
+    "imported project reloads identical time",
+    "mobile page does not overflow horizontally",
+    "no browser script errors",
+    "offline only"
+  ],
+  "errors": [],
+  "network": []
+}

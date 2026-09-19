@@ -1,0 +1,99 @@
+{
+  "passed": 23,
+  "records": [
+    {
+      "name": "offline WebGL application initializes without script errors",
+      "pass": true
+    },
+    {
+      "name": "middle-button drag pans and wheel still zooms",
+      "pass": true
+    },
+    {
+      "name": "worker computes conservation and separates unload from handoff",
+      "pass": true
+    },
+    {
+      "name": "3D seek uses simulated loaded car position",
+      "pass": true
+    },
+    {
+      "name": "pallet cargo geometry stays within its stated dimensions",
+      "pass": true
+    },
+    {
+      "name": "play pause and rewind operate on simulation time",
+      "pass": true
+    },
+    {
+      "name": "result tables and charts are available",
+      "pass": true
+    },
+    {
+      "name": "report CSV and interface downloads include actual results",
+      "pass": true
+    },
+    {
+      "name": "all settings export as an actual 8-sheet XLSX workbook",
+      "pass": true
+    },
+    {
+      "name": "editing inputs invalidates stale simulation results",
+      "pass": true
+    },
+    {
+      "name": "XLSX file input restores exact config atomically",
+      "pass": true
+    },
+    {
+      "name": "externally compressed XLSX imports all settings",
+      "pass": true
+    },
+    {
+      "name": "formula workbook is rejected without changing the project",
+      "pass": true
+    },
+    {
+      "name": "invalid JSON import leaves existing input intact",
+      "pass": true
+    },
+    {
+      "name": "adding a floor creates all missing zero-demand ODs",
+      "pass": true
+    },
+    {
+      "name": "hourly ratios and planned-stop tables can be edited",
+      "pass": true
+    },
+    {
+      "name": "blocked preset visibly reduces throughput and retains cargo",
+      "pass": true
+    },
+    {
+      "name": "comparison uses true simulations and identifies downstream improvement",
+      "pass": true
+    },
+    {
+      "name": "box preset loads multiple cargo pieces with valid 3D geometry",
+      "pass": true
+    },
+    {
+      "name": "two-lift preset builds and animates two independent shafts",
+      "pass": true
+    },
+    {
+      "name": "narrow viewport retains controls without page overflow",
+      "pass": true
+    },
+    {
+      "name": "HTML manual opens with ten sections and visible screenshot",
+      "pass": true
+    },
+    {
+      "name": "all UI actions complete without script errors or network requests",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "requests": []
+}

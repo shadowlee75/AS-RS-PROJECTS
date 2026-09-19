@@ -1,0 +1,22 @@
+{
+  "passed": 14,
+  "checks": [
+    "offline file launch: 4 KPIs, Worker, no remote requests",
+    "3D WebGL rendering is available",
+    "playback moves without changing final throughput",
+    "all seven templates calculate and conserve cargo",
+    "layout input units, stale result protections and recompute",
+    "invalid cargo dimensions are shown, prior results remain visibly stale",
+    "JSON round trip and rejected foreign project",
+    "report, results CSV and integration exports are generated",
+    "scenario snapshots and sensitivity compute actual alternate runs",
+    "history CSV switches demand mode and completes two requests",
+    "recompute in another tab preserves a rendered 3D scene",
+    "mobile page fits viewport and remains usable",
+    "no unhandled browser exceptions",
+    "WebGL disabled has usable 2D replay fallback"
+  ],
+  "errors": [],
+  "remoteRequests": [],
+  "runAt": "2026-09-15T07:46:43.314Z"
+}

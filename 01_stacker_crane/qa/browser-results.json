@@ -1,0 +1,28 @@
+{
+  "browser": "138.0.3351.95",
+  "checks": [
+    "offline file opens with four analysis cards",
+    "no initial validation error",
+    "m/s to m/min conversion updates input",
+    "unit switch preserves throughput",
+    "explicit ideal factors produce adjusted capacity",
+    "three axes each show velocity and acceleration charts",
+    "motion playback advances time",
+    "position mode changes chart units",
+    "WebGL renderer is present",
+    "simulation completes with inventory conservation",
+    "completed simulation has measured throughput",
+    "completion CSV exported with records",
+    "Markdown report includes simulation provenance",
+    "invalid geometry blocks applying stale results",
+    "project import restores numeric inputs",
+    "15 repeat runs finish across three operating modes",
+    "experiment cancellation restores run button",
+    "mobile page has no document horizontal overflow",
+    "no JavaScript page errors",
+    "no runtime HTTP requests"
+  ],
+  "errors": [],
+  "network": [],
+  "testedAt": "2026-09-09T05:39:47.881Z"
+}

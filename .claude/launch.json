@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "landing-page-dev-server",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5500"],
+      "port": 5500
+    }
+  ]
+}

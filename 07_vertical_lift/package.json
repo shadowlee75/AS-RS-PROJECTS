@@ -1,0 +1,1 @@
+{"name":"logistics-vertical-lift","version":"1.0.0","private":true,"description":"Offline reciprocating vertical lift throughput calculator and 3D discrete-event simulation","scripts":{"build":"node scripts/build.js","test":"node tests/core.test.js","check":"node scripts/build.js && node tests/core.test.js","test:browser":"node scripts/browser-check.js"}}

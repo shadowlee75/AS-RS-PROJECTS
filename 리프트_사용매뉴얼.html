@@ -1,0 +1,107 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>리프트 사용 매뉴얼 · v1.0.0</title><style>body{margin:0;font:15px/1.9 Segoe UI,Malgun Gothic,sans-serif;color:#29475a;background:#f2f6f8}header{background:#153f50;color:white;padding:30px calc((100% - 1160px)/2);min-width:0}header>div{padding:0 24px}header b{font-size:11px;letter-spacing:2px;color:#75d3c7}header p{margin:5px 0;font-size:24px}nav{position:sticky;top:0;align-self:start;max-height:90vh;overflow:auto;width:240px;padding:24px;background:white;border-radius:8px}nav a{display:block;margin:10px 0;font-size:12px}main{max-width:1200px;margin:30px auto;display:flex;gap:26px;padding:0 20px}article{min-width:0;flex:1;background:#fff;border:1px solid #dde7ec;padding:34px;border-radius:8px}h1{font-size:27px;line-height:1.5}h2{font-size:21px;margin-top:44px;padding-bottom:10px;border-bottom:2px solid #bcdedb}h3{font-size:17px;margin-top:30px}a{color:#008783;text-decoration:none}p,li{font-size:13px}img{max-width:100%;height:auto;border:1px solid #d8e5e9;border-radius:7px}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px;line-height:1.7}td,th{padding:10px;border:1px solid #dce7ec;text-align:left}th{background:#eaf3f5}pre{background:#edf4f6;padding:16px;font:12px/1.8 Consolas,monospace;overflow:auto}code{background:#edf4f6;padding:1px 3px}button{padding:9px 18px;background:#008c88;border:0;border-radius:6px;color:#fff;cursor:pointer}.controls{display:flex;gap:12px;margin:20px 0}footer{font-size:11px;color:#78909e;margin-top:40px}@media(max-width:900px){main{display:block}nav{position:static;width:auto;margin-bottom:20px;box-sizing:border-box}article{padding:22px}header{padding:20px}h1{font-size:23px}}@media print{header,nav,.controls{display:none}body{background:white}main{display:block;margin:0;padding:0}article{padding:0;border:0}h2{break-after:avoid}tr{break-inside:avoid}a{color:inherit}img{max-height:220mm;object-fit:contain}pre{white-space:pre-wrap}}</style></head><body><header><div><b>LOGISTICS LAB / LIFT 07</b><p>사용 매뉴얼</p></div></header><main><nav><a href="#section-4">1. 실행과 빠른 시작</a><a href="#section-19">2. 지원하는 장비와 운전</a><a href="#section-32">3. 기본조건 입력</a><a href="#section-56">4. 층 스테이션과 OD</a><a href="#section-68">5. 화물·시간대·계획정지·이력</a><a href="#section-100">6. 3D 화면 조작</a><a href="#section-117">7. 계산식과 결과 읽기</a><a href="#section-150">8. 개선안 비교</a><a href="#section-158">9. 파일 저장과 통합 창고 연동</a><a href="#section-188">10. 모델 범위와 확인 자료</a></nav><article><div class="controls"><a href="리프트_실행.html">프로그램 열기</a><button onclick="print()">인쇄 / PDF 저장</button></div><h1 id="section-0">왕복식 리프트 물동량 계산 · 3D 시뮬레이션 사용 매뉴얼</h1>
+<p>버전 1.0.0 · 작성 2026-09-16</p>
+<h2 id="section-4">1. 실행과 빠른 시작</h2>
+<p>같은 폴더의 <strong>리프트_실행.html</strong>을 Edge 또는 Chrome에서 엽니다. 별도 설치나 인터넷 연결 없이 계산과 3D를 사용할 수 있습니다. 온라인 참고자료 링크를 열 때만 인터넷이 필요합니다.</p>
+<ol>
+<li>왼쪽에서 팔레트, 박스, 토트, 리프트 2대, 출구 정체 중 예제를 선택하고 <strong>예제 적용</strong>을 누릅니다.</li>
+<li><strong>층 · OD 물동량</strong>에서 실제 층 높이, 상하차 시간, 버퍼와 층간 요구 물동량을 입력합니다.</li>
+<li>플랫폼 유효 치수, 화물 허용하중, 승강 속도·가감속을 승인 사양에 맞춥니다.</li>
+<li><strong>계산 · 시뮬레이션 실행</strong>을 누릅니다.</li>
+<li><strong>재생</strong> 또는 시간 막대로 운전 상태를 확인합니다. <strong>결과 · 개선안</strong>에서 미투입·재공·차단·리드타임을 확인합니다.</li>
+<li><strong>엑셀 저장</strong>, <strong>JSON 저장</strong>, <strong>검토 보고서</strong>로 조건과 결과를 보관합니다.</li>
+</ol>
+<p>기본값은 설명용 가정입니다. 특정 제조사의 장비를 그대로 재현하거나 성능을 보증하는 값이 아닙니다.</p>
+<p><img alt="기본 화면" src="07_vertical_lift/qa/02-loaded-lift.png"></p>
+<h2 id="section-19">2. 지원하는 장비와 운전</h2>
+<ul>
+<li>왕복식 수직 리프트, 독립 승강로 1~8대, 2~20층.</li>
+<li>모든 리프트는 동일 사양이며 등록한 모든 층을 운행합니다.</li>
+<li>팔레트·박스·토트. HU는 개별 운반물 1개를 뜻하며 유형 사이의 환산은 하지 않습니다.</li>
+<li>한 운행에서는 같은 OD, 같은 화물 유형만 함께 적재합니다.</li>
+<li>각 층에는 입력 이재부 1개와 출력 이재부 1개가 있습니다. 각 자원과 버퍼를 여러 리프트가 공유합니다. 입력·출력은 서로 다른 자원입니다.</li>
+<li>층 입력은 선입선출이며, 후단 출력 공간이 없으면 적재한 리프트가 도착층에서 기다립니다.</li>
+</ul>
+<p>운전 순서: <strong>배차 → 공차 접근 → 정위치 → 도어 열림 → 상차 → 닫힘·인터록 → 적재 승강 → 정위치 → 출력 공간·이재부 확보 → 도어 열림 → 하차 → 닫힘·인터록</strong>.</p>
+<p>매회 기준층 귀환을 선택하면 이후 공차 귀환과 정위치를 끝내고 다음 요청을 배차합니다. 도착층 대기는 하차층에서 다음 요청을 기다립니다.</p>
+<h2 id="section-32">3. 기본조건 입력</h2>
+<div class="tablewrap"><table><thead><tr><th>항목</th><th>의미</th></tr></thead><tbody><tr><td>프로젝트명 / 모듈 ID</td><td>설계안 이름과 향후 전체 창고에서 구분할 장비 ID</td></tr><tr><td>사양·가정 근거</td><td>승인 도면, 제조사 사양, 실측 날짜 또는 설계 가정을 기록</td></tr><tr><td>리프트 대수</td><td>독립 승강로 수. 한 승강로 안의 복수 캐리어 수가 아님</td></tr><tr><td>시작/귀환 층</td><td>운전 초기 위치와 매회 귀환 기준층</td></tr><tr><td>배차 방식</td><td>높은 OD 우선순위를 먼저 검토하고, 오래된 요청 또는 가까운 출발층 기준으로 선택</td></tr><tr><td>요청 발생</td><td>일정 간격 또는 Poisson 무작위 도착. 같은 시드는 같은 요청을 재현</td></tr><tr><td>총 운전시간 / 준비운전</td><td>둘 다 분(min). 준비운전은 총 운전시간 안에 포함되며 그 시간의 통계만 제외</td></tr><tr><td>플랫폼 유효 길이·폭·높이</td><td>화물을 실을 수 있는 유효 공간. 화물 회전·단 쌓기는 하지 않음</td></tr><tr><td>화물 허용하중</td><td>캐리어·컨베이어 자중을 제외하고 운반물에 허용하는 kg. 제조사 총 승강하중과 구분</td></tr><tr><td>최대 동시 적재</td><td>같은 OD 화물을 한 번에 싣는 상한. 공간·중량·버퍼 제약으로 더 작아질 수 있음</td></tr><tr><td>부분 적재 최대 대기</td><td>입력 버퍼에 들어온 첫 화물을 기준으로 만재를 기다리는 시간. 0이면 현재 있는 수량으로 바로 운행</td></tr><tr><td>적재 / 공차 승강속도</td><td>화면의 m/min 또는 m/s 표시 선택 적용. 내부 계산은 m/s</td></tr><tr><td>상승 / 하강 속도 비율</td><td>해당 방향 최대속도에 곱하는 비율. 가감속 값은 별도</td></tr><tr><td>정위치</td><td>실제 승강 이동 후 1회 적용. 같은 높이의 공차 접근에는 적용하지 않음</td></tr><tr><td>도어 열림·닫힘 / 인터록</td><td>상차 정차와 하차 정차 각각에 적용</td></tr><tr><td>해석용 가용도</td><td>해석 능력·참고 필요 대수에만 적용. 시뮬레이션 정지는 정지표로 별도 지정</td></tr><tr><td>목표 설계 부하율</td><td>참고 필요 대수 계산에 사용. 실제 장비 속도를 낮추는 값이 아님</td></tr></tbody></table></div>
+<p>입력을 바꾸면 기존 운전 결과와 개선안 비교가 초기화됩니다. <strong>입력 변경 되돌리기</strong>로 직전 입력 상태를 복원할 수 있습니다.</p>
+<h2 id="section-56">4. 층 스테이션과 OD</h2>
+<p>층 높이는 기준면에서의 절대 높이(m)입니다. 예: 0.6 m, 4.6 m, 8.6 m이면 각 층간 이동은 4 m입니다.</p>
+<p>상차·하차는 <strong>화물 1개당 순수 이재시간</strong>입니다. 2개를 실으면 이재시간도 2배이며 도어·인터록은 정차마다 한 번입니다. 도어·인터록을 포함한 총 실측시간을 입력할 경우 별도 지연을 중복 적용하지 않도록 분리해야 합니다.</p>
+<p>입력 버퍼의 자리는 상차가 끝날 때 비웁니다. 배차되어 리프트가 접근 중인 화물도 입력 버퍼를 점유합니다. 출력 버퍼는 하차 시작 전 예약하며, 후단 반출 중인 화물도 자리를 차지합니다. 후단 반출 0 s/개는 무대기 인계입니다.</p>
+<p>층을 추가하면 기존 OD 값은 유지하고 새 층과의 출발·도착 조합을 0 개/h로 만듭니다. <strong>전체 층간 OD 생성</strong>도 같은 방식입니다. 한 쌍에 여러 화물 유형이 필요하면 <strong>OD 추가</strong>로 행을 나눕니다.</p>
+<p>층 삭제 시 그 층을 참조하는 OD도 삭제하고 삭제 수를 알려줍니다. 실측 작업이력이 해당 OD를 참조하면 이력을 먼저 정리해야 삭제할 수 있습니다.</p>
+<h2 id="section-68">5. 화물·시간대·계획정지·이력</h2>
+<h3 id="section-70">적재 제한</h3>
+<p>화물 길이 방향을 플랫폼 길이 방향에 맞춥니다. 배치 가능 개수는 길이 방향 개수 × 폭 방향 개수입니다. 실제 상한은 이 개수, 중량으로 허용되는 개수, 최대 동시 적재, 출발 입력 버퍼, 도착 출력 버퍼 중 최솟값입니다. 유효 높이도 검사합니다.</p>
+<p>서로 다른 화물이나 OD는 섞어 싣지 않습니다. 같은 층 입력 대기열 중 앞에서 연속된 동일 OD만 묶습니다. 따라서 해석에서 가정한 최대 적재와 실제 운전의 평균 적재가 다를 수 있습니다.</p>
+<h3 id="section-76">시간대별 비율</h3>
+<p>운전 시작부터 분(min) 기준입니다. 100%는 1배, 150%는 1.5배, 0%는 그 구간의 신규 요청 없음입니다. 표가 비어 있으면 전 시간 100%입니다. 표를 입력하면 0부터 총 운전 종료까지 빠짐없이, 시간순으로, 중복 없이 연결해야 합니다.</p>
+<p><strong>1시간 간격 자동 생성</strong>은 기존 시간대 비율을 구간 길이로 가중하여 유지하고 새로운 시간은 100%로 만듭니다. 시간대 경계만 쪼개고 같은 비율을 유지하면 도착 수열이 달라지지 않습니다.</p>
+<h3 id="section-82">계획 정지</h3>
+<p>리프트 번호와 시작·종료 min을 입력합니다. 겹치는 정지 구간은 합칩니다. 해당 리프트의 이동·도어·이재 동작은 현재 위상에서 멈춘 뒤 재개합니다. 점유한 이재부와 화물도 유지합니다. 정지 때문에 출구 버퍼의 후단 반출까지 멈추지는 않습니다.</p>
+<p>이는 정지 시간을 검토하기 위한 근사이며, 비상정지 감속·브레이크 제어 모델은 아닙니다.</p>
+<h3 id="section-88">실측 작업이력</h3>
+<p>CSV 헤더는 <code>id,release_s,flowId</code>입니다. 한 행은 화물 1개입니다.</p>
+<pre><code>
+id,release_s,flowId
+
+J001,0,OD1
+
+J002,15.5,OD2
+
+</code></pre>
+<p>작업이력 모드에서는 OD의 화물·층·우선순위를 사용하지만 OD 요구량과 시간대 비율로 추가 요청을 만들지는 않습니다. CSV 불러오기는 자동으로 작업이력 모드로 바꿉니다. 엑셀 작업이력 시트로도 입력할 수 있습니다.</p>
+<h2 id="section-100">6. 3D 화면 조작</h2>
+<div class="tablewrap"><table><thead><tr><th>조작</th><th>동작</th></tr></thead><tbody><tr><td>마우스 왼쪽 버튼 드래그</td><td>시점 회전</td></tr><tr><td><strong>마우스 휠 버튼을 누르고 드래그</strong></td><td><strong>화면 평행 이동</strong></td></tr><tr><td>휠 굴리기</td><td>확대·축소</td></tr><tr><td>전체 / 정면 / 평면</td><td>시점 맞춤</td></tr><tr><td>리프트 선택 → 선택 리프트 보기</td><td>해당 리프트 위치로 시점 이동</td></tr><tr><td>재생 / 일시정지 / 처음</td><td>운전 이력 재생 제어</td></tr><tr><td>시간 막대</td><td>임의 운전 시각으로 이동</td></tr><tr><td>1×~120×</td><td>재생 속도만 변경. 계산 물동량은 바뀌지 않음</td></tr></tbody></table></div>
+<p>승강 위치는 계산에 사용한 같은 가감속 곡선을 사용합니다. 상하차·도어는 시간에 따른 개념 표현입니다. 층·방향별 대기 화물은 최대 8개, 전체 표시 화물은 최대 220개입니다. 결과 수량은 표시 개수 제한과 무관하며 전체 화물을 집계합니다.</p>
+<p>카드와 결과 탭은 <strong>전체 계산 종료 결과</strong>, 3D 아래 상태표는 <strong>현재 재생 시각</strong>입니다.</p>
+<h2 id="section-117">7. 계산식과 결과 읽기</h2>
+<p>이동거리 H, 최대속도 v, 가속도 a, 감속도 d일 때:</p>
+<pre><code>
+도달속도 vp = min(v, sqrt(2H / (1/a + 1/d)))
+
+가속거리 = vp² / (2a)
+
+감속거리 = vp² / (2d)
+
+정속시간 = max(0, H - 가속거리 - 감속거리) / vp
+
+이동시간 = vp/a + 정속시간 + vp/d
+
+</code></pre>
+<p>짧은 거리는 삼각형 속도곡선, 긴 거리는 사다리꼴 속도곡선입니다. 정위치·도어·상하차·제어시간은 별도입니다.</p>
+<p><strong>해석 리프트 능력</strong>은 현재 OD 비율을 유지한 최대 적재 기준입니다. 도착층 대기의 공차는 이전 OD와 다음 OD를 독립적으로 섞은 평균으로 근사합니다. 매회 기준층 귀환은 기준층 → 출발층, 도착층 → 기준층을 모두 더합니다. 공용 이재부와 후단 반출의 부하를 추가 비교한 값이 해석 라인 상한입니다.</p>
+<p><strong>시뮬레이션 처리량</strong>은 실제 사건 순서에 따라 배차·부분 적재·대기·정지·차단을 계산한 관측값입니다. 수요가 낮으면 처리량도 낮으므로 이를 최대 능력으로 해석하면 안 됩니다. 해석용 가용도를 다시 곱하지 않습니다.</p>
+<div class="tablewrap"><table><thead><tr><th>결과</th><th>의미</th></tr></thead><tbody><tr><td>리프트 하차 처리량</td><td>준비운전 이후 플랫폼에서 출력 버퍼로 하차 완료한 개수/h</td></tr><tr><td>후단 인계 처리량</td><td>준비운전 이후 출력 버퍼에서 후단으로 반출 완료한 개수/h</td></tr><tr><td>미투입</td><td>요청은 발생했지만 입력 버퍼에 들어가지 못한 화물</td></tr><tr><td>입력 / 탑승 / 출력</td><td>입력 버퍼, 리프트, 출력 버퍼의 종료 시점 화물</td></tr><tr><td>재공</td><td>입력 + 탑승 + 출력</td></tr><tr><td>평균 대기시간</td><td>요청 발생부터 배차까지. 공차 접근·상차부 대기는 이후 운전시간에 포함</td></tr><tr><td>평균 / P95 리드타임</td><td>요청 발생부터 최종 후단 인계까지. P95는 완료 화물의 95백분위</td></tr><tr><td>작업 / 차단 / 정지 / 유휴</td><td>리프트 시간 분류. 공차 비율은 작업 비율의 일부</td></tr></tbody></table></div>
+<p>준비운전 동안 상태는 유지하고 통계 시간만 제외합니다. 준비운전 전에 발생해 이후 완료한 작업도 완료 통계에 들어갑니다. 미완료 화물은 리드타임 통계에서 빠지므로 미투입·재공과 함께 읽어야 합니다.</p>
+<p>화물 보존 검증: <strong>총 요청 = 총 최종 인계 완료 + 미투입 + 입력 + 탑승 + 출력</strong>.</p>
+<h2 id="section-150">8. 개선안 비교</h2>
+<p>같은 요청·시드로 7개 안을 계산합니다: 기준, 리프트 1대 추가, 속도 20% 증가, 상하차 20% 단축, 출력 버퍼 2배, 후단 반출 20% 단축, 매회 기준층 귀환.</p>
+<p>입력 한도를 넘는 안은 제외합니다. 처리량이 높고 P95가 낮은 안을 표시하지만, 단일 시드의 제한된 후보 비교입니다. 전역 최적해나 현장 성능 보증은 아닙니다. 대수 증설은 승강로 공간·구조·비용을 별도로 검토해야 합니다.</p>
+<p><strong>이 조건 적용</strong>은 선택안의 입력을 적용하고 결과를 초기화합니다. 다시 시뮬레이션을 실행하여 확인합니다.</p>
+<h2 id="section-158">9. 파일 저장과 통합 창고 연동</h2>
+<h3 id="section-160">입력 파일</h3>
+<p>JSON은 SI 단위의 전체 입력을 저장하며 형식·버전·단위·입력 해시를 검사합니다. 엑셀은 아래 8개 시트에 전체 조건을 저장합니다.</p>
+<div class="tablewrap"><table><thead><tr><th>시트</th><th>내용</th></tr></thead><tbody><tr><td>안내</td><td>형식·단위·편집 방법</td></tr><tr><td>기본조건</td><td>플랫폼, 속도, 가감속, 도어, 배차, 시간, 시드 등</td></tr><tr><td>층스테이션</td><td>높이, 이재, 버퍼, 반출, 연계 장비</td></tr><tr><td>운반물</td><td>유형·치수·중량</td></tr><tr><td>OD물동량</td><td>출발·도착·화물·요구량·우선순위</td></tr><tr><td>시간대비율</td><td>시작·종료·비율</td></tr><tr><td>계획정지</td><td>리프트별 정지 구간</td></tr><tr><td>작업이력</td><td>시각별 화물 요청</td></tr></tbody></table></div>
+<p>엑셀 속도는 <strong>m/min</strong>, 기본 운전시간·준비운전·시간대·정지는 <strong>min</strong>, 작업이력은 <strong>s</strong>입니다. 화면 속도 표시 선택과 무관합니다. % 셀에는 120% 또는 1.2를 입력합니다. 키·시트명·헤더·단위를 유지하고 수식은 값 붙여넣기로 바꾸세요. .xlsx만 지원하며 파일은 10 MB 이하입니다.</p>
+<p>모든 시트를 검사한 뒤 한 번에 적용합니다. 오류가 있으면 기존 입력·결과를 유지합니다. 성공하면 이전 운전 결과는 초기화됩니다. 저장 파일은 브라우저 다운로드 폴더에 만들어집니다.</p>
+<h3 id="section-179">결과와 연동</h3>
+<ul>
+<li>검토 보고서: 전체 입력, 결과, 정의, 출처를 담은 HTML. 브라우저 인쇄에서 PDF 저장 가능.</li>
+<li>결과 CSV: OD·화물·장비별 처리량과 대기 지표.</li>
+<li>화물별 운전이력 CSV: 요청, 수락, 배차, 상하차, 후단 인계 시각.</li>
+<li>통합 연동 JSON: <code>vertical_lift</code> 형식, 모듈별 층 입출력 포트, 버퍼, SI 설정, 화물 ID와 후단 인계 이벤트.</li>
+</ul>
+<p>통합 포트 ID 예: <code>LIFT-01:F2:out</code>. 기존 컨베이어·스태커크레인·직선/LOOP RGV·셔틀·AGV/AMR를 연계 대상으로 지정할 수 있습니다. 현재는 설정·포트·완료 이력 교환 규격이며, <strong>기존 프로그램과 공유 시계로 동시 운전하는 어댑터는 연결되지 않았습니다</strong>. 후단은 입력한 반출시간으로 모사합니다.</p>
+<h2 id="section-188">10. 모델 범위와 확인 자료</h2>
+<p>복층 캐리어, 동일 승강로의 다중 차량, 혼합 목적지 중간 정차, 연속식 수직 컨베이어, 저크 제어, 전력·회생에너지, 구조 강도·안전 인증 설계는 포함하지 않습니다. 화물 자중·치수 검사는 입력 사양을 이용한 적재 가능성 검사입니다.</p>
+<p>참고자료 확인일: 2026-09-16. 제조사의 조건부 최대 처리량 대신 거리·가감속·실제 이재시간으로 계산합니다.</p>
+<ul>
+<li><a href="https://www.nerak-systems.com/vertical-lifts/vertical-reciprocating-conveyors">NERAK 왕복식 수직 리프트</a>: 다층 운반, 캐리어 위 컨베이어, 운반물과 높이에 따라 달라지는 능력.</li>
+<li><a href="https://www.qimarox.com/product/prorunner-mk1/">Qimarox Prorunner mk1</a>: 소형 운반물 왕복식, 짧은 스트로크의 속도 제한 참고. 한 페이지의 처리량 표기가 여러 개여서 고정 기본 능력으로 채택하지 않음.</li>
+<li><a href="https://www.qimarox.com/product/prorunner-mk9/">Qimarox Prorunner mk9</a>: 화물 하중과 캐리어 포함 하중의 구분, 다층 입출고 구성.</li>
+<li><a href="https://www.qimarox.com/product/prorunner-mk10/">Qimarox Prorunner mk10</a>: 고층·중량 팔레트의 참고 구성.</li>
+</ul>
+<p>세부 출처 검토와 기본값 구분은 <strong>리프트_물동량계산_참고자료_20260916.md</strong>를 참조하세요. 구현 소스·시험 기록은 <code>07_vertical_lift</code> 폴더에 있습니다.</p><footer>v1.0.0 · 작성 2026-09-16 · 원본: 리프트_사용매뉴얼.md</footer></article></main></body></html>

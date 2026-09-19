@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "conveyor/project@1",
+  "deviceType": "conveyor",
+  "moduleVersion": "1.0.0",
+  "units": {
+    "distance": "m",
+    "speed": "m/s",
+    "acceleration": "m/s2",
+    "time": "s",
+    "weight": "kg",
+    "quantity": "handling-unit"
+  },
+  "config": {
+    "schemaVersion": "conveyor/project@1",
+    "moduleId": "CV-01",
+    "name": "+ · 교차 컨베이어 물동량 검토",
+    "horizon": 3600,
+    "warmup": 300,
+    "seed": 20260915,
+    "arrival": "periodic",
+    "demandMode": "rates",
+    "target": 0.85,
+    "cargo": [
+      {
+        "id": "PLT",
+        "name": "팔레트",
+        "kind": "pallet",
+        "length": 1.2,
+        "width": 1,
+        "height": 1,
+        "weight": 700,
+        "color": "#c7955c"
+      },
+      {
+        "id": "BOX",
+        "name": "박스",
+        "kind": "box",
+        "length": 0.6,
+        "width": 0.4,
+        "height": 0.4,
+        "weight": 20,
+        "color": "#deaa6c"
+      },
+      {
+        "id": "TOTE",
+        "name": "토트",
+        "kind": "tote",
+        "length": 0.6,
+        "width": 0.4,
+        "height": 0.32,
+        "weight": 30,
+        "color": "#5b9dbe"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "IN1",
+        "name": "IN1",
+        "x": -12,
+        "z": 0,
+        "height": 0.8,
+        "type": "source",
+        "cycle": 1,
+        "policy": "fifo",
+        "resourceId": "IN1",
+        "peerType": "none",
+        "peerId": ""
+      },
+      {
+        "id": "IN2",
+        "name": "IN2",
+        "x": 0,
+        "z": -10,
+        "height": 0.8,
+        "type": "source",
+        "cycle": 1,
+        "policy": "fifo",
+        "resourceId": "IN2",
+        "peerType": "none",
+        "peerId": ""
+      },
+      {
+        "id": "X1",
+        "name": "X1",
+        "x": 0,
+        "z": 0,
+        "height": 0.8,
+        "type": "junction",
+        "cycle": 4,
+        "policy": "fifo",
+        "resourceId": "X1",
+        "peerType": "none",
+        "peerId": ""
+      },
+      {
+        "id": "OUT1",
+        "name": "OUT1",
+        "x": 12,
+        "z": 0,
+        "height": 0.8,
+        "type": "sink",
+        "cycle": 4,
+        "policy": "fifo",
+        "resourceId": "OUT1",
+        "peerType": "none",
+        "peerId": ""
+      },
+      {
+        "id": "OUT2",
+        "name": "OUT2",
+        "x": 0,
+        "z": 10,
+        "height": 0.8,
+        "type": "sink",
+        "cycle": 4,
+        "policy": "fifo",
+        "resourceId": "OUT2",
+        "peerType": "none",
+        "peerId": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "CV01",
+        "from": "IN1",
+        "to": "X1",
+        "speed": 0.4,
+        "pitch": 1.5,
+        "gap": 0.2,
+        "width": 1.2,
+        "payload": 1000,
+        "mode": "continuous",
+        "mechanism": "roller",
+        "accel": 0.5,
+        "decel": 0.5,
+        "dwell": 0.3,
+        "initial": 0,
+        "initialCargo": "PLT",
+        "initialSink": "OUT1"
+      },
+      {
+        "id": "CV02",
+        "from": "IN2",
+        "to": "X1",
+        "speed": 0.4,
+        "pitch": 1.5,
+        "gap": 0.2,
+        "width": 1.2,
+        "payload": 1000,
+        "mode": "continuous",
+        "mechanism": "roller",
+        "accel": 0.5,
+        "decel": 0.5,
+        "dwell": 0.3,
+        "initial": 0,
+        "initialCargo": "PLT",
+        "initialSink": "OUT1"
+      },
+      {
+        "id": "CV03",
+        "from": "X1",
+        "to": "OUT1",
+        "speed": 0.4,
+        "pitch": 1.5,
+        "gap": 0.2,
+        "width": 1.2,
+        "payload": 1000,
+        "mode": "continuous",
+        "mechanism": "roller",
+        "accel": 0.5,
+        "decel": 0.5,
+        "dwell": 0.3,
+        "initial": 0,
+        "initialCargo": "PLT",
+        "initialSink": "OUT1"
+      },
+      {
+        "id": "CV04",
+        "from": "X1",
+        "to": "OUT2",
+        "speed": 0.4,
+        "pitch": 1.5,
+        "gap": 0.2,
+        "width": 1.2,
+        "payload": 1000,
+        "mode": "continuous",
+        "mechanism": "roller",
+        "accel": 0.5,
+        "decel": 0.5,
+        "dwell": 0.3,
+        "initial": 0,
+        "initialCargo": "PLT",
+        "initialSink": "OUT1"
+      }
+    ],
+    "flows": [
+      {
+        "id": "OD1",
+        "from": "IN1",
+        "to": "OUT1",
+        "cargoId": "PLT",
+        "rate": 320,
+        "priority": 1
+      },
+      {
+        "id": "OD2",
+        "from": "IN1",
+        "to": "OUT2",
+        "cargoId": "BOX",
+        "rate": 160,
+        "priority": 1
+      },
+      {
+        "id": "OD3",
+        "from": "IN2",
+        "to": "OUT1",
+        "cargoId": "TOTE",
+        "rate": 160,
+        "priority": 1
+      },
+      {
+        "id": "OD4",
+        "from": "IN2",
+        "to": "OUT2",
+        "cargoId": "PLT",
+        "rate": 240,
+        "priority": 1
+      }
+    ],
+    "stops": [],
+    "history": []
+  }
+}

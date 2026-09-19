@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="오프라인 스태커크레인 물동량 계산, 재고 기반 시뮬레이션과 주행·승강·포크 가감속 그래프">
+  <title>STC Studio · 스태커크레인 물동량</title>
+  <style>/* STYLES */</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 4v24M27 4v24M5 10h22M5 21h22M16 4v24"/><rect x="10" y="12" width="12" height="7"/></svg><div>STC <b>STUDIO</b><small>물류자동화 · 스태커크레인</small></div><span class="version">v0.3.4</span></div>
+    <div class="top-actions"><span class="offline"><i></i> OFFLINE READY</span><button id="loadProject">불러오기</button><button id="saveProject">프로젝트 저장</button><button id="report">계산서 MD ↓</button><button id="pdfReport" class="light-primary">PDF 보고서</button><input id="projectFile" type="file" accept=".json,application/json" hidden></div>
+  </header>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-heading"><span class="eyebrow">CONFIGURATION</span><h2>설비 및 운영 조건</h2><p>실제 설비 사양에 맞게 입력하세요.<br>각 항목의 ? 에 마우스를 올리거나 클릭하면<br>입력 기준과 사용 방법을 볼 수 있습니다.</p></div>
+      <form id="configForm" novalidate>
+        <div class="project-field"><label for="name">프로젝트명</label><input id="name" maxlength="300"></div>
+        <details open><summary><span class="section-number">01</span> 랙 &amp; 스테이션 <span class="chevron">⌄</span></summary><div class="field inset"><label for="rackDepth">화물 보관 깊이</label><select id="rackDepth" aria-describedby="depthHint"><option value="single">싱글딥 · Single Deep</option><option value="double">더블딥 · Double Deep</option></select></div><p class="field-note" id="depthHint" aria-live="polite"></p><div class="fields" id="rackFields"></div><p class="field-note">번지(Bay) × 단(Level) × 보관면 × 깊이(1 또는 2)를 STC마다 동일하게 생성합니다. X=주행, Y=승강, Z=포크 방향(통로 중심 기준, A면 − / B면 +).</p>
+          <p class="field-note">단별 이재 높이 = 1단 높이 + (단 번호−1) × 단간격. 빈 단간격은 랙 높이÷단수, 빈 1단 높이는 단간격÷2를 사용합니다. 최상단 이재 높이는 랙 높이 이하여야 합니다.</p><p id="rackHeightHint" class="field-note" aria-live="polite"></p>
+          <div class="axis-label">기본 IN / OUT 포트 좌표</div><div class="fields three" id="portFields"></div>
+          <p class="field-note">빈 OUT X·Y는 IN을 따릅니다. 빈 Z는 −스트로크입니다. |Z|는 선택한 보관 방식의 최대 스트로크 이내이며, 실제 포크 이동거리는 |Z|입니다. 더블딥에서도 빈 포트 Z는 앞열 스트로크를 따릅니다.</p>
+          <p class="field-note">랙 왼쪽 끝 X=0, 오른쪽 끝 X=랙 길이입니다. 왼쪽 외부는 음수(예: −3), 오른쪽 외부는 랙 길이보다 큰 X를 입력하세요. Y도 기준면 아래 음수와 랙 높이 초과를 허용합니다. 기본·STC별 좌표 모두 동일하게 적용됩니다.</p>
+          <div class="inset"><button type="button" id="editPorts">STC별 포트 표 갱신</button><button type="button" id="clearPorts">개별값 지우기</button></div>
+          <div class="table-wrap port-table" id="portTable"></div><p class="field-note">STC별 CASE를 선택하면 해당 참조 배치를 사용합니다. 좌표를 입력하면 참조값보다 우선합니다. CASE가 기본이면 기존 기본 좌표를 따릅니다.</p><div class="inset"><button type="button" id="editRoutes">복합 입·출고 포트 구성</button><p id="routeCount" class="field-note"></p></div></details>
+        <details open><summary><span class="section-number">FEM</span> 대표점 계산 기준 <span class="chevron">⌄</span></summary>
+          <div class="field inset"><label for="method">처리량 계산 방법</label><select id="method"><option value="cells">전체 셀 평균 · 자유 포트 좌표</option><option value="fem">FEM CASE 기준 · 대표 셀 계산</option></select></div>
+          <div class="field inset"><label for="femCase">FEM CASE 1~6</label><select id="femCase"><option value="1">CASE 1 · 공용 포트 / 하단 모서리</option><option value="2">CASE 2 · IN·OUT / 하단 양 끝</option><option value="3">CASE 3 · 공용 포트 / 높이 이동</option><option value="4">CASE 4 · 공용 포트 / X 이동</option><option value="5">CASE 5 · IN 하단 / OUT 상부</option><option value="6">CASE 6 · IN 상부 / OUT 하단</option></select></div>
+          <div class="field inset"><label for="pointMode">P1 · P2 적용 위치</label><select id="pointMode"><option value="cell">실제 화물 중심 · 기본</option><option value="theory">FEM 이론 좌표 · 비교</option></select></div><p class="field-note">기본 모드는 P1·P2를 가까운 실제 화물 중심으로 옮겨 계산합니다. 외부 포트는 입력한 위치를 유지합니다. CASE 포트 배치 적용 버튼은 입력 포트를 참조 배치로 바꿉니다.</p>
+          <p id="caseHelp" class="field-note"></p><div class="inset"><button type="button" id="applyCase">CASE 포트 배치 적용</button></div>
+          <p class="field-note">배치 적용은 기본 좌표와 개별 기본 포트의 X·Y를 CASE 조건으로 설정합니다. 복합 포트 조합 표는 별도로 유지됩니다. 높이 또는 X는 기본 IN 값(0이면 H/2 또는 L/2)을 사용합니다. 이후 각 좌표를 직접 조정할 수 있습니다.</p>
+        </details>
+        <details open><summary><span class="section-number">02</span> 주행 · 승강 · 포크 <span class="chevron">⌄</span></summary>
+          <div class="unit-switch"><label for="speedUnit">속도 입력·표시 단위</label><select id="speedUnit"><option>m/min</option><option>m/s</option></select></div>
+          <p class="field-note speed-unit-note">기본 단위는 m/min입니다. 예: 180 m/min = 3 m/s. 세 축의 입력, 운동 그래프, 실시간 속도, 계산서에 같은 단위를 사용합니다. 단위 변경 시 입력값을 환산하며 가속도·감속도는 m/s²입니다.</p>
+          <div class="axis-label"><i class="dot x"></i> 주행 X</div><div class="fields three" id="xFields"></div>
+          <div class="axis-label"><i class="dot y"></i> 승강 Y</div><div class="fields three" id="yFields"></div>
+          <div class="axis-label"><i class="dot f"></i> 포크 Z</div><div class="fields" id="forkFields"></div>
+          <p class="field-note">상차: 포크 OUT → 캐리지 UP → 포크 IN.<br>하차: 포크 OUT → 캐리지 DOWN → 포크 IN.<br>승하강량 기본 110 mm. 승강 Y 속도·가감속과 적재 비율로 시간을 계산하며, 승하강 중 포크는 완전 신장 상태로 정지합니다. 안착 대기는 승하강 완료 후 별도로 적용합니다.</p>
+          <div class="fields" id="delayFields"></div><p class="field-note">기존 ‘승하강·안착’ 값에 승하강 시간이 포함되었다면 안착 대기만 남겨 입력하세요. 적재 비율은 주행·승강 속도와 가감속에 함께 적용됩니다.</p>
+        </details>
+        <details open><summary><span class="section-number">03</span> 요구 물동량 &amp; 운전 <span class="chevron">⌄</span></summary><div class="fields" id="flowFields"></div>
+          <div class="fields"><div class="field"><label for="unit">화물 단위</label><select id="unit"><option>PLT</option><option>BOX</option><option>TOTE</option></select></div>
+          <div class="field"><label for="mode">운전 모드</label><select id="mode"><option value="mixed">SC / DC · 지정 비율</option><option value="dc">DC · 최대 페어링</option><option value="sc-return">SC · I/O 복귀</option><option value="sc-stay">SC · 작업 위치 대기</option></select></div></div>
+          <div class="fields" id="mixFields"><div class="field"><label for="scRatio">싱글 작업 비율 <span class="unit">%</span></label><input id="scRatio" type="number" min="0" max="100" step="1"></div><div class="field"><label for="dcRatio">듀얼 작업 비율 <span class="unit">%</span></label><input id="dcRatio" type="number" min="0" max="100" step="1"></div></div><div class="field inset"><label for="ratioBasis">비율 기준</label><select id="ratioBasis"><option value="cycles">운전 사이클 횟수</option><option value="loads">처리 화물 개수</option></select></div><p class="field-note" id="mixHint"></p><p class="field-note">요구량은 전체 독립 통로의 합계입니다. 시뮬레이션에는 피크 수요 ÷ 통로 수를 투입합니다.</p>
+        </details>
+        <details open><summary><span class="section-number">04</span> 운전효율 및 보정 <span id="factorIndicator" class="mini-tag">미선택</span><span class="chevron">⌄</span></summary>
+          <div class="fields" id="efficiencyFields"></div>
+          <p class="field-note" id="efficiencyHint">85%는 85로 입력합니다. 보정 처리량 = 이론 처리량 × 운전효율 ÷ 100. 입력 후 「계산 및 설정 적용」을 누르세요.</p>
+          <p class="field-note" id="efficiencyStatus"></p>
+          <p class="field-note"><strong>세부 보정계수</strong> · 운전효율을 비우면 아래 A × Fₜ × E𝑤를 사용합니다.</p>
+          <div class="preset-buttons"><button type="button" id="assumedFactors">가정 예시 적용</button><button type="button" id="idealFactors">이상 조건 1.0</button></div>
+          <div class="fields three" id="factorFields"></div><div class="field inset"><label for="basis">계수 근거</label><select id="basis"><option value="">근거를 선택하세요</option><option value="assumption">설계 가정</option><option value="vendor">벤더 사양</option><option value="measured">실측</option><option value="ideal">이상 조건</option></select></div>
+          <div class="field inset"><label for="basisNote">근거 메모</label><input id="basisNote" maxlength="300" placeholder="예: 사양서 번호, 측정일, 설계 가정"></div>
+          <p class="field-note">운전효율과 세부 계수는 중복 적용하지 않습니다. 모두 미입력 시 이론 처리량만 계산합니다. 사이클 시간과 DES 시뮬레이션 결과에는 효율을 추가 적용하지 않습니다.</p>
+        </details>
+        <details><summary><span class="section-number">05</span> 시뮬레이션 조건 <span class="chevron">⌄</span></summary><div class="fields" id="simFields"></div>
+          <div class="fields"><div class="field"><label for="arrival">작업 도착</label><select id="arrival"><option value="takt">일정 간격 + 변동</option><option value="poisson">Poisson 도착</option></select></div>
+          <div class="field"><label for="storage">입고 셀 선택</label><select id="storage"><option value="random">빈 셀 무작위</option><option value="nearest">I/O에서 가까운 셀</option></select></div>
+          <div class="field"><label for="retrieval">출고 셀 선택</label><select id="retrieval"><option value="fifo">선입선출 FIFO</option><option value="random">재고 셀 무작위</option><option value="nearest">가까운 재고 셀</option></select></div></div>
+          <p class="field-note">지정 비율 모드는 누적 사이클 수로 배차 비율을 조절하고 SC는 포트로 복귀합니다. 같은 조합의 입고·출고와 셀이 없으면 가능한 SC를 우선 처리하므로 실제 비율은 달라질 수 있습니다. 최대 페어링 모드의 잔여 작업은 SC-stay입니다.</p>
+        </details>
+      </form>
+      <div class="sidebar-footer"><button class="primary" id="calculate">계산 및 설정 적용 <span>↗</span></button><button class="text-button" id="resetDefaults">예시 설비로 초기화</button></div>
+    </aside>
+    <main>
+      <div class="page-heading"><div><span class="eyebrow">STACKER CRANE / 01</span><h1>물동량 분석 워크스페이스</h1><p id="projectSubtitle">사이클 계산부터 실제 입출고 흐름까지.</p></div><span class="outline-badge" id="depthBadge">Single Deep · Single Fork</span></div>
+      <div id="error" class="notice error" role="alert" hidden></div>
+      <div id="dirtyNotice" class="notice warning" hidden>입력이 변경되었습니다. <b>계산 및 설정 적용</b>을 눌러 결과를 갱신하세요.</div>
+      <nav class="tabs" aria-label="분석 화면"><button data-tab="overview" class="active" aria-pressed="true">물동량 계산</button><button data-tab="simulation" aria-pressed="false">3D 시뮬레이션</button><button data-tab="motion" aria-pressed="false">운동 그래프</button><button data-tab="experiments" aria-pressed="false">반복 실험</button><button data-tab="guide" aria-pressed="false">계산 근거</button></nav>
+      <div id="results">
+        <section data-panel="overview">
+          <div class="kpi-grid" id="analysisKpis"></div>
+          <div id="analysisNotice" class="notice"></div>
+          <div class="overview-grid"><article class="card rack-card"><div class="card-heading"><div><span class="eyebrow">RACK LAYOUT</span><h2>랙과 기준 동작 경로</h2></div><span class="mini-tag" id="rackCount"></span></div><div id="rackDiagram"></div><div class="legend"><span><i class="dot x"></i> 입고 동선</span><span><i class="dot y"></i> 출고 동선</span><span>E · IN 포트 / A · OUT 포트</span></div><p class="muted">STC 1의 경로입니다. P1·P2는 선택한 실제 화물 중심을 표시합니다. 이론 좌표 비교 모드에서는 연속 좌표를 표시합니다.</p></article>
+          <article class="card"><div class="card-heading"><div><span class="eyebrow">CYCLE BREAKDOWN</span><h2>사이클 시간</h2></div><span class="muted">1대 기준</span></div><div id="cycleSummary"></div><div id="cycleBreakdown"></div><p class="muted">SC는 1건, DC는 입고 1건 + 출고 1건을 처리합니다.</p></article></div>
+          <article class="card"><div class="card-heading"><div><span class="eyebrow">LEVEL HEIGHTS</span><h2>단별 랙 이재 높이</h2></div><span class="muted">바닥 기준 Y · 모든 STC 공통</span></div><div id="levelHeights" class="table-wrap" style="max-height:220px;overflow:auto"></div><p class="muted">전체 셀 평균 계산과 시뮬레이션은 위 높이를 사용합니다. P1·P2도 변경된 높이의 실제 화물 중심을 사용합니다. 이론 좌표는 비교용으로 함께 제공합니다.</p></article>
+          <article class="card"><div class="card-heading"><div><span class="eyebrow">FEM 9.851 / 06.2003</span><h2>CASE 적용 및 STC별 계산</h2></div></div><p class="muted" id="travelEnvelope"></p><div id="femSummary"></div><div id="femPoints" class="table-wrap"></div><div id="referencePorts" class="table-wrap"></div><div id="aisleAnalysis" class="table-wrap"></div><h3>입·출고 포트 조합별 계산</h3><div id="routeAnalysis" class="table-wrap"></div><p class="muted">배분율은 각 STC의 입고·출고 요구량에 동일하게 적용합니다. DC는 동일 조합 안에서만 페어링합니다. 복합 배치 평균은 시간 가중치와 조합·방향 전환 공차시간의 추정값을 사용하며, 실제 배차 이동과 버퍼 대기는 시뮬레이션에서 확인합니다.</p></article>
+          <div class="two-col"><article class="card"><div class="card-heading"><h2>요구량과 처리능력</h2><span class="mini-tag">총 취급량 = 입고 + 출고</span></div><div id="capacityBars"></div><div id="designDetails"></div></article><article class="card"><div class="card-heading"><h2>보정계수 민감도</h2><span class="muted">상대 변화 ±5 · 10%</span></div><div id="sensitivityTable" class="table-wrap"></div></article></div>
+        </section>
+        <section data-panel="simulation" hidden>
+          <div class="toolbar"><div class="button-group"><button id="simPlay" class="primary">▶ 시뮬레이션 재생</button><button id="simStep">다음 이벤트</button><button id="simFinish">종료까지 계산</button><button id="simReset">↺ 리셋</button></div><div class="inline-field"><label for="simSpeed">배속</label><select id="simSpeed"><option value="1">1×</option><option value="10">10×</option><option value="50" selected>50×</option><option value="100">100×</option><option value="500">500×</option><option value="1000">1000×</option></select></div></div>
+          <div class="notice subtle" id="fleetNotice"></div>
+          <div class="toolbar"><div class="inline-field"><label for="simAisle">선택 STC</label><select id="simAisle"></select></div><div class="inline-field"><label for="cellSide">보관면</label><select id="cellSide"><option value="-1">A면</option><option value="1">B면</option></select></div><div class="inline-field"><label for="cellBay">번지(Bay)</label><input id="cellBay" type="number" min="1" value="1"></div><div class="inline-field"><label for="cellLevel">단(Level)</label><input id="cellLevel" type="number" min="1" value="1"></div><div class="inline-field"><label for="cellDepth">깊이</label><select id="cellDepth"><option value="1">D1 · 앞열</option><option value="2">D2 · 뒷열</option></select></div><button id="findCell">셀 위치 확인</button><button id="viewSelected">선택 STC 확대</button></div>
+          <div class="simulation-grid"><article class="scene-card"><div class="scene-top"><span><i class="live-dot"></i> DIGITAL TWIN / ALL STCs</span><div><button id="viewFront">정면</button><button id="viewIso">입체</button></div></div><div id="scene" aria-label="스태커크레인 3D 랙과 동작 애니메이션"></div><div class="scene-bottom"><span id="simState">대기</span><span id="simClock">00:00:00</span></div><div id="sceneHint">좌클릭 드래그 회전 · 휠 굴리기 확대·축소 · 휠 버튼 누르고 드래그 이동 · 우클릭 이동 · 셀 클릭 정보</div><div id="cellInfo" class="cell-info" hidden></div></article>
+          <article class="card live-stats"><div class="card-heading"><h2>전체 STC 합계</h2><span class="mini-tag" id="measureStatus">준비운전</span></div><div id="liveKpis"></div><div id="inventoryEquation" class="equation"></div><button id="exportSim" class="full-button">완료 작업 CSV ↓</button></article></div>
+          <div class="seek-row"><span>0</span><input type="range" id="simSeek" aria-label="시뮬레이션 시각 탐색" min="0" max="1000" value="0"><span id="simEnd"></span></div>
+          <div class="axis-live" id="liveAxes"></div><article class="card"><div class="card-heading"><h2>STC별 실시간 작업</h2><span class="muted">각 통로의 실제 계산 결과</span></div><div id="fleetTable" class="table-wrap"></div></article>
+          <div class="two-col"><article class="card"><div class="card-heading"><h2>대기 작업 · 랙 재고</h2><div class="legend"><span><i class="dot y"></i> 대기</span><span><i class="dot x"></i> 재고</span></div></div><div id="queueChart"></div></article><article class="card"><div class="card-heading"><h2>전체 크레인 상태 시간</h2><span class="muted">대수 × 측정시간 기준</span></div><div id="stateBars"></div></article></div>
+          <article class="card"><div class="card-heading"><h2>대기와 처리 현황</h2><span class="muted">현재 시각까지</span></div><div id="simMix" class="notice subtle"></div><div id="simDetails"></div><div id="simWarnings" class="notice subtle"></div></article>
+        </section>
+        <section data-panel="motion" hidden>
+          <article class="card motion-controls"><div class="card-heading"><div><span class="eyebrow">MOTION PROFILER</span><h2>주행 · 승강 · 포크 운동 선도</h2></div><span class="mini-tag">동일 운동 커널 · 연속 위치 보간</span></div>
+            <div class="toolbar"><div class="inline-field"><label for="motionAisle">STC</label><select id="motionAisle"></select></div><div class="inline-field"><label for="motionRoute">포트 조합</label><select id="motionRoute"></select></div><div class="inline-field"><label for="motionSource">경로</label><select id="motionSource"><option value="cell">실제 셀 선택</option><option value="fem">CASE P1·P2 적용점</option></select></div><div class="inline-field"><label for="previewKind">사이클</label><select id="previewKind"><option value="dc">DC · 입고 + 출고</option><option value="in">SC · 입고 / 복귀</option><option value="out">SC · 출고</option></select></div><div class="inline-field"><label for="previewBay">입고 Bay</label><input id="previewBay" type="number" min="1" value="20"></div><div class="inline-field"><label for="previewLevel">입고 Level</label><input id="previewLevel" type="number" min="1" value="7"></div><div class="inline-field"><label for="previewSide">입고 면</label><select id="previewSide"><option value="-1">A</option><option value="1">B</option></select></div><div class="inline-field"><label for="previewDepth">입고 깊이</label><select id="previewDepth"><option value="1">D1 · 앞열</option><option value="2">D2 · 뒷열</option></select></div><div class="inline-field"><label for="previewOutBay">출고 Bay</label><input id="previewOutBay" type="number" min="1" value="10"></div><div class="inline-field"><label for="previewOutLevel">출고 Level</label><input id="previewOutLevel" type="number" min="1" value="3"></div><div class="inline-field"><label for="previewOutSide">출고 면</label><select id="previewOutSide"><option value="1">B</option><option value="-1">A</option></select></div><div class="inline-field"><label for="previewOutDepth">출고 깊이</label><select id="previewOutDepth"><option value="1">D1 · 앞열</option><option value="2">D2 · 뒷열</option></select></div><div class="inline-field"><label for="femRoute">CASE 2 경로</label><select id="femRoute"><option value="0">기본 P1 → P2</option><option value="1">대칭 P1′ → P2′</option></select></div><button id="refreshMotion">지점 적용</button><div class="inline-field"><label for="graphMode">그래프</label><select id="graphMode"><option value="va">속도 + 가속도</option><option value="pv">위치 + 속도</option></select></div></div>
+            <p class="muted" id="previewDescription"></p>
+            <p id="motionPhase" class="muted" aria-live="off"></p>
+            <div class="motion-player"><button class="primary" id="motionPlay">▶ 동작 재생</button><button id="motionReset">↺</button><input id="motionSeek" type="range" min="0" max="1000" value="0" aria-label="운동 그래프 시각"><output id="motionClock">0.00 s</output><select id="motionSpeed" aria-label="동작 배속"><option value="1">1×</option><option value="2" selected>2×</option><option value="5">5×</option><option value="10">10×</option></select></div>
+          </article>
+          <div id="motionTimeline" class="card timeline-card"></div>
+          <div id="motionCharts" class="motion-charts"></div>
+          <article class="card"><div class="card-heading"><h2>축별 가속 · 정속 · 감속 시간</h2><span class="muted">선택 입고 셀까지의 적재 이동 / 포크 편도 / 캐리지 이재</span></div><div id="phaseTable" class="table-wrap"></div><p class="muted">짧은 거리는 최대속도에 도달하지 않는 삼각형 선도입니다. 음수는 복귀·하강·포크 반대쪽 동작이며, 주행과 승강 중 먼저 도착한 축은 정지합니다. 캐리지 이재는 포크 OUT 완료 후 승강 Y 그래프에 표시됩니다. 순간 가속도 전환 모델로 jerk 제한은 포함하지 않습니다.</p></article>
+        </section>
+        <section data-panel="experiments" hidden>
+          <article class="card"><div class="card-heading"><div><span class="eyebrow">EXPERIMENTER</span><h2>운전 모드별 반복 비교</h2></div><span class="mini-tag">동일 수요 시드로 비교</span></div><p>SC 복귀, SC 제자리 대기, DC 최대 페어링을 같은 설비·수요 조건에서 비교합니다. 지정 비율 모드를 적용한 경우 현재 SC/DC 비율도 함께 비교합니다. 반복마다 시드를 1씩 증가시키며, 평균과 95% 신뢰구간을 계산합니다.</p><div class="toolbar"><div class="inline-field"><label for="repCount">모드별 반복 수</label><select id="repCount"><option value="5">5회</option><option value="10" selected>10회</option><option value="20">20회</option><option value="30">30회</option></select></div><button id="runExperiments" class="primary">반복 실험 시작</button><button id="cancelExperiments" disabled>취소</button><button id="exportExperiments" disabled>실험 결과 JSON ↓</button></div><progress id="experimentProgress" value="0" max="100"></progress><p id="experimentStatus" class="muted">설정을 적용한 후 실행하세요.</p></article><article class="card"><div class="card-heading"><h2>비교 결과 · 전체 STC 합계</h2><span class="muted">완료된 반복 기준</span></div><div id="experimentResults" class="table-wrap"><p class="empty-state">실험을 실행하면 처리량, P95 대기, 종료 대기 작업이 표시됩니다.</p></div></article>
+        </section>
+        <section data-panel="guide" hidden>
+          <article class="card prose"><span class="eyebrow">MODEL &amp; ASSUMPTIONS</span><h2>계산 기준과 1차 구현 범위</h2>
+            <h3>1단 높이와 단간격</h3><p>바닥 기준의 1단 랙 이재 높이와 일정한 단간격을 입력합니다. k단의 Y = 1단 높이 + (k−1) × 단간격입니다. 단간격이 비어 있으면 H/단수, 1단 높이가 비어 있으면 단간격/2를 사용하여 이전 프로젝트의 셀 위치를 유지합니다. 전체 셀 평균, 실제 셀 운동 경로, 3D 랙과 재고, 모든 STC의 시뮬레이션에 동일한 높이를 사용합니다. CASE 기준 셀 계산의 P1·P2는 위 좌표의 화물 중심입니다. 비교용 이론 좌표는 H 기준으로 산출합니다.</p>
+            <h3>한 번의 움직임을 같은 기준으로</h3><p>속도 입력·표시는 기본 m/min이며, 계산과 프로젝트 JSON은 m, m/s, m/s², s를 사용합니다. 각 축은 정지 출발·정지 도착의 삼각형 또는 사다리꼴 속도 프로파일을 사용합니다. 가속도와 감속도를 독립 입력하며, 주행·승강은 동시에 출발합니다.</p>
+            <div class="formula">scrit = v² / 2 × (1/a + 1/d)<br>s &lt; scrit: vp = √[2s / (1/a + 1/d)], t = vp × (1/a + 1/d)<br>s ≥ scrit: t = s/v + v/2 × (1/a + 1/d)<br>이동시간 = max(tx, ty) + 정위치 시간 (실제 이동할 때 1회)</div>
+            <h3>사이클과 총 취급량</h3><p>SC 입고는 I/O 상차 → 랙 이동 → 랙 하차 → I/O 공차 복귀입니다. SC 출고는 I/O → 랙 공차 이동 → 랙 상차 → I/O 하차입니다. DC는 IN 상차 → 입고 셀 하차 → 출고 셀 상차 → OUT 하차 → IN 공차 복귀입니다. 상차는 포크 OUT → 캐리지 UP → 포크 IN, 하차는 OUT → 캐리지 DOWN → IN이며 이재 승하강량 기본값은 110 mm입니다. 포크 완전 신장 상태에서 승하강하고 안착 대기 후 인입합니다. 제어 지연은 사이클당 한 번입니다.</p><p>랙과 포트의 Y, P1·P2는 화물이 놓인 중심 위치입니다. 적재 이동은 그보다 이재 승하강량만큼 높은 위치에서 진행하며 하차 시 원래 중심으로 내려놓습니다. 재고와 작업 완료 수량은 각 포크 IN 완료 시 집계합니다.</p>
+            <div class="formula">p = DC 사이클 수 / 전체 사이클 수<br>Q = 3600(1+p) / [(1−p)Tsc + pTdc]<br>Qavailable = Q × 운전효율(%) / 100<br>운전효율 미입력 시: Qavailable = Q × A × Fₜ × E𝑤<br>필요 독립 통로 = ceil(피크 요구량 / (Qavailable × 목표 부하율))</div>
+            <p>DC 분석은 입·출고 구성으로 가능한 최대 p = min(입고, 출고) / max(입고, 출고)를 사용합니다. 전체 셀 평균은 모든 셀의 SC를 열거하고 DC의 서로 다른 셀 간 이동은 전수 또는 고정 시드 30,000쌍을 계산합니다. FEM 모드는 CASE 대표 경로의 평균입니다. 입출고 시간이 다른 경우 DC 페어링 후 남는 SC 작업의 입출고 비중으로 가중합니다. 재고·도착 제약으로 실제 DC 비율은 낮아질 수 있습니다. SC-stay 분석 카드는 SC-return 참고값을 표시하며 실제 동작은 시뮬레이션에서 계산합니다.</p>
+            <h3>시뮬레이션의 집계 경계</h3><p>입고는 랙 하차 완료, 출고 취급은 I/O 하차 완료로 집계합니다. 출하량은 출고 버퍼에서 외부로 반출된 수량입니다. 준비운전 중 동작과 재고는 이어지지만 통계 시간은 제외합니다. 측정 처리량은 측정구간 안에 완료된 작업 수 / 측정시간이며, 준비운전에서 넘어온 작업도 완료량에 포함됩니다.</p>
+            <p>평균·P95 대기는 측정구간에 서비스를 시작한 작업의 도착→배차 시간입니다. 종료 시 아직 대기 중인 작업은 별도의 대기 건수와 최장 경과시간으로 표시합니다. 버퍼 초과 시간, 출고 차단, 재고 부족 대기를 분리합니다. 출고 픽업 후 I/O에 도착하지 않은 화물은 크레인 위 출고 재고로 보존식에 포함합니다.</p>
+            <h3>FEM CASE 1~6</h3><p>FEM 9.851 (06.2003) §4.1~4.6의 포트 배치와 대표점 좌표를 사용합니다. CASE 2의 SC 출고 대표점은 OUT 기준으로 X를 대칭 이동하며, DC는 기본 경로와 대칭 경로의 평균입니다. CASE 3·4는 포트가 H/2·L/2를 넘을 때 대표점 식이 바뀝니다. CASE 5·6은 높이의 1/6을 대표점에 더합니다.</p><p>α=(H/L)×(vx/vy), 권고 범위 0.5&lt;α&lt;2를 벗어나면 주의 문구를 표시합니다. 기본 모드는 가까운 실제 화물 중심으로 옮겨 설계 계산합니다. 이론 좌표 비교 모드는 CASE 포트 조건을 검사하고 원래 연속 좌표를 사용합니다. 외부 포트 적용은 CASE 참조점에 실제 이동거리를 결합한 설계 확장입니다. 현장 측정과 규격 적합성 판정을 대신하지 않습니다.</p>
+            <h3>지정 SC/DC 비율과 복합 배치</h3><p>싱글과 듀얼 합계는 100%입니다. 사이클 비율 p의 경우 DC 1회는 화물 2개이며, 화물 기준 DC 비율 f는 p=f/(2−f)로 환산합니다. 분석 p는 입출고 비대칭에 따른 상한 min(IN,OUT)/max(IN,OUT) 이내로 적용합니다. 실제 운전은 재고·도착·버퍼 때문에 지정값과 다를 수 있으며 측정구간의 완료 사이클로 달성 비율을 표시합니다.</p><p>복합 조합의 배분율 합계는 STC마다 100%입니다. 조합 전환 평균은 각 조합과 SC 입출고 방향을 독립 선택한다고 가정한 공차시간입니다. 포트 복귀 사이클을 기준으로 하므로 실제 순서 의존성과 SC-stay는 DES를 확인하세요. 복합 배치는 FEM 참조 CASE를 조합한 설계 확장입니다.</p><h3>포트·다중 STC 및 집계</h3><p>X=주행, Y=승강, Z=포크 신장 방향입니다. Z는 각 통로 중심의 로컬 좌표이며, 통로 이동축을 뜻하지 않습니다. IN 상차·OUT 하차의 포크 거리는 각 포트의 |Z|, 랙 이재 거리는 선택한 앞열·뒷열 스트로크입니다. DC에는 OUT→IN 공차 복귀가 포함됩니다. 기본 좌표와 STC별 개별 좌표를 저장할 수 있습니다.</p><p>입력한 STC 수만큼 독립 통로와 실제 이벤트 엔진을 생성합니다. 전체 수요를 균등 배분하고 각 통로는 서로 다른 재고·도착 시드를 사용합니다. 화면 합계는 실제 관측량의 합, 가동률은 전체 대수의 시간 평균, P95 대기는 모든 배차 표본을 합쳐 계산합니다. 포트가 다른 설비의 필요 대수는 현재 입력 중 가장 낮은 능력을 기준으로 보수적으로 산정합니다.</p>
+            <h3>싱글딥·더블딥</h3><p>화물 보관 깊이는 SC/DC 운전 모드와 별개입니다. 더블딥은 각 번지·단·면에 D1(앞열), D2(뒷열)를 생성합니다. 앞열 스트로크는 통로 중심부터 앞열 중심, 뒷열 스트로크는 통로 중심부터 뒷열 중심까지의 총 거리입니다. 뒷열을 비우면 앞열의 2배를 설계 가정으로 사용하므로 실제 사양을 확인하여 입력하세요.</p><p>분석은 앞열·뒷열 50:50 이재시간 평균이며 FEM 결합은 설계 확장입니다. 시뮬레이션은 뒷열 우선 입고, 앞열이 비어 있을 때만 뒷열 접근, 접근 가능한 재고 내 FIFO를 적용합니다. 같은 번지·단·면의 앞열·뒷열은 하나의 DC로 묶지 않습니다. SKU 지정 출고와 재배치 작업은 포함하지 않습니다.</p><h3>지원 범위</h3><p>균등 셀 배치, Single / Double Deep, Single Fork, 통로당 STC 1대, STC별 CASE 1~6 및 최대 6개 I/O 조합을 지원합니다. 조합별 수요 배분, 동일 조합 DC 페어링, 좌표가 같은 동종 포트의 버퍼 공유를 적용합니다. IN과 OUT은 같은 좌표여도 서로 다른 대기 버퍼로 취급합니다. 모든 STC를 한 장면에서 재생하고 번지·단·면을 동일한 셀 데이터로 표시합니다. 공용 상하류 병목, 공유 레일 충돌, 통로 간 이동, 다중 깊이 재배치, jerk 제한, creep, 고장 이벤트는 포함하지 않습니다.</p>
+            <div class="notice">평균 사이클타임과 달성 가능한 처리량은 함께 검토해야 합니다. 물동량만으로 대기시간이나 설비 성능을 확정할 수 없습니다.</div>
+          </article>
+        </section>
+      </div>
+      <footer class="main-footer"><span>STC Studio 0.3.0 · 계산 / 시뮬레이션 / 운동 선도</span><span>예시 사양 · 공학 검토 모델</span></footer>
+    </main>
+  </div>
+  <div id="toast" role="status" hidden></div>
+  <dialog id="pdfOptions" aria-labelledby="pdfOptionsTitle">
+    <form id="pdfOptionsForm">
+      <h2 id="pdfOptionsTitle">제출용 PDF 보고서</h2>
+      <p class="muted">적용된 계산 결과로 A4 보고서를 만듭니다. 문서 정보는 선택 입력입니다.</p>
+      <div class="fields">
+        <div><label for="pdfDocumentNo">문서번호</label><input id="pdfDocumentNo" maxlength="80" placeholder="예: STC-2026-001"></div>
+        <div><label for="pdfRecipient">제출처</label><input id="pdfRecipient" maxlength="80"></div>
+        <div><label for="pdfAuthor">작성자</label><input id="pdfAuthor" maxlength="60"></div>
+        <div><label for="pdfReviewer">검토자</label><input id="pdfReviewer" maxlength="60"></div>
+      </div>
+      <label class="check-option"><input id="pdfIncludeGraphs" type="checkbox" checked>선택 경로 배치도와 주행·승강·포크 가감속 그래프 포함</label>
+      <label class="check-option"><input id="pdfIncludeSim" type="checkbox" checked>현재 시뮬레이션 결과 포함</label>
+      <p class="muted" id="pdfSimulationStatus"></p>
+      <p class="field-note">미리보기의 ‘PDF 저장 / 인쇄’를 누른 뒤 대상을 ‘PDF로 저장’, 용지를 A4로 선택하세요.</p>
+      <p id="pdfError" class="notice error" role="alert" hidden></p>
+      <div class="pdf-actions"><button type="button" id="pdfCancel">취소</button><button type="submit" class="primary" id="createPdfReport">보고서 미리보기</button></div>
+    </form>
+  </dialog>
+  <dialog id="routeDialog" aria-labelledby="routeTitle">
+    <div class="route-editor">
+      <div class="card-heading"><h2 id="routeTitle">복합 입·출고 포트 구성</h2><button type="button" id="closeRoutes">편집 닫기</button></div>
+      <p>한 STC가 여러 입·출고 조합을 함께 처리합니다. 행이 없는 STC는 기본 포트를 사용하고, 행이 있는 STC는 아래 조합만 사용합니다.</p>
+      <div class="toolbar"><label for="routeAisle">STC 번호</label><input id="routeAisle" type="number" value="1" min="1" max="100"><button type="button" id="addRoute">조합 추가</button><button type="button" id="sixRoutes">CASE 1~6 예제 추가</button></div>
+      <p class="muted">STC별 배분율 합계 100% · 입고·출고 각각에 같은 배분율 적용 · 최대 6개 조합. 추가/삭제 시 해당 STC 배분율을 자동 환산합니다. 빈 좌표는 CASE 참조 배치(H/2, L/2)를 사용하며 Z는 기본 포크 좌표를 따릅니다.</p>
+      <div class="table-wrap" id="routeTable"></div><p id="routeTotals" class="notice subtle" aria-live="polite"></p>
+      <p class="muted">동일 좌표의 IN끼리, OUT끼리는 버퍼를 공유합니다. IN/OUT 버퍼 용량과 반출 간격은 각 물리 포트에 적용합니다. 편집을 마친 후 <b>계산 및 설정 적용</b>을 눌러 반영하세요.</p>
+    </div>
+  </dialog>
+  <!-- LICENSE -->
+  <!-- SCRIPTS -->
+</body>
+</html>

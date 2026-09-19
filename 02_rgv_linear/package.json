@@ -1,0 +1,8 @@
+{
+  "name": "linear-rgv-studio",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Offline single-vehicle and separated-section Tandem RGV throughput simulator",
+  "scripts": {"build":"node scripts/build.js","test":"node --test tests/core.test.js","shipcheck":"node scripts/shipcheck.js"},
+  "engines": {"node": ">=18"}
+}

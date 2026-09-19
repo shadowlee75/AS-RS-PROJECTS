@@ -1,0 +1,32 @@
+{
+  "pdf": "LoopRGV_사용매뉴얼.pdf",
+  "html": "LoopRGV_사용매뉴얼.html",
+  "revision": "1.4",
+  "programVersion": "0.2.2",
+  "pages": 18,
+  "chapters": 14,
+  "pageCharacters": [
+    238,
+    524,
+    899,
+    588,
+    1229,
+    1137,
+    1080,
+    1028,
+    712,
+    806,
+    757,
+    1324,
+    1006,
+    731,
+    637,
+    1293,
+    787,
+    1217
+  ],
+  "images": 12,
+  "allChaptersPresent": true,
+  "pdfBytes": 1109467,
+  "htmlBytes": 2508040
+}

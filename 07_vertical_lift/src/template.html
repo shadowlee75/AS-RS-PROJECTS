@@ -1,0 +1,40 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>왕복식 리프트 물동량 워크스페이스</title><style>/* STYLES */</style></head><body>
+<aside class="sidebar">
+ <a class="brand" href="#"><span class="brandmark">↕</span><span>LOGISTICS LAB<small>VERTICAL LIFT / 07</small></span></a>
+ <div class="sideintro"><h2>리프트 설계 조건</h2><p>왕복식 · 다층 · 팔레트 / 박스 / 토트</p></div>
+ <div class="sideactions"><label>예제 불러오기<select id="preset"><option value="pallet">팔레트 · 3층</option><option value="box">박스 · 다중 적재</option><option value="tote">토트 · 다중 적재</option><option value="two">리프트 2대 · 양방향</option><option value="blocked">출구 정체 검토</option></select></label><button id="loadPreset">예제 적용</button><button id="undo">입력 변경 되돌리기</button></div>
+ <div id="settings"></div>
+ <div class="sidefoot">v1.0.0 · 오프라인 실행<br>내부 단위 m · m/s · s · kg</div>
+</aside>
+<main>
+ <header><div><div class="eyebrow">RECIPROCATING VERTICAL LIFT</div><h1>왕복식 리프트 물동량 워크스페이스</h1><p id="subtitle">층간 흐름을 계산하고, 승강 운전을 3D로 확인하세요.</p></div><span class="pill">7번째 장비 모듈</span></header>
+ <section class="filebar" aria-label="파일 작업"><button id="loadJson">프로젝트 열기</button><button id="saveJson">JSON 저장</button><span class="divider"></span><button id="loadExcel">엑셀 불러오기</button><button id="saveExcel">엑셀 저장</button><button id="saveReport">검토 보고서</button><button id="savePorts">통합 연동 JSON</button><input type="file" id="fileJson" accept=".json" hidden><input type="file" id="fileExcel" accept=".xlsx" hidden><input type="file" id="fileHistory" accept=".csv" hidden></section>
+ <div id="message" role="status" hidden></div><div id="errors" role="alert" hidden></div>
+ <div class="runbar"><div><strong id="inputStatus">입력 검토</strong><small id="inputHelp">기본값은 설명용 설계 가정입니다.</small></div><div class="runbuttons"><button id="compare" class="secondary">개선안 비교</button><button id="run" class="primary">계산 · 시뮬레이션 실행</button><button id="cancel" hidden>작업 취소</button></div></div>
+ <div class="kpis" id="kpis"></div>
+ <nav class="tabs" aria-label="주요 화면"><button data-tab="scene" class="active">3D 운전</button><button data-tab="layout">층 · OD 물동량</button><button data-tab="cargo">운반물 · 시간대</button><button data-tab="results">결과 · 개선안</button><button data-tab="help">계산 근거 · 사용법</button></nav>
+ <section class="pane active" id="tab-scene">
+  <div class="scenehead"><div><h2>수직 이송 시뮬레이션</h2><p>가감속 · 상하차 · 버퍼 대기 · 후단 인계</p></div><div class="viewtools"><select id="focusLift" aria-label="리프트 선택"></select><button id="focus">선택 리프트 보기</button><button data-view="iso">전체</button><button data-view="front">정면</button><button data-view="top">평면</button></div></div>
+  <div class="scene-wrap"><div id="scene"></div><div class="scene-badge">3D / 입력 사양 기반 개념 모델</div><div class="scene-legend"><span><i style="background:#0c9c94"></i>적재 승강</span><span><i style="background:#daa144"></i>차단 대기</span><span><i style="background:#c95f60"></i>계획 정지</span></div><div class="scene-hint">왼쪽 드래그 회전 · <b>휠 버튼 누르고 드래그 이동</b> · 휠 굴리기 확대/축소</div></div>
+  <div class="playbar"><button id="play" class="primary" disabled>재생</button><button id="rewind" disabled>처음</button><select id="playSpeed" aria-label="재생 속도"><option value="1">1×</option><option value="5">5×</option><option value="20" selected>20×</option><option value="60">60×</option><option value="120">120×</option></select><input id="seek" type="range" min="0" max="3600" step=".1" value="0" aria-label="운전 시각" disabled><output id="clock">00:00 / 60:00</output></div>
+  <div id="live" class="live">시뮬레이션을 실행하면 실제 계산 이력을 재생합니다.</div>
+  <p class="note">입·출력 버퍼는 층별 공용입니다. 3D 대기 화물은 층·방향별 최대 8개, 전체 최대 220개를 표시하며 전체 수량은 아래 상태표에 표시합니다. 상하차·도어는 입력 시간에 따른 개념 표현입니다.</p>
+ </section>
+ <section class="pane" id="tab-layout">
+  <div class="sectionhead"><div><h2>층 스테이션</h2><p>기준면에서의 절대 높이(m). 상하차 시간은 순수 화물 이재시간이며 도어·인터록 시간은 별도로 더합니다.</p></div><button id="addFloor">+ 층 추가</button></div><div class="tablewrap" id="floorsTable"></div>
+  <div class="sectionhead"><div><h2>OD 물동량</h2><p>출발층 → 도착층별 화물 개수/h. 신규 층을 추가하면 층간 조합을 물동량 0으로 생성합니다.</p></div><div><label class="inline"><input type="checkbox" id="activeOD">물동량 있는 행만</label><button id="autoOD">전체 층간 OD 생성</button><button id="addOD">+ OD 추가</button></div></div><div class="tablewrap" id="odTable"></div>
+  <p class="note">한 번의 운행에는 같은 OD의 같은 화물만 적재합니다. 물동량 0은 요청 없음입니다. 우선순위가 높은 작업을 먼저 검토하며, 같은 층 입력 버퍼에서는 선입선출을 유지합니다.</p>
+ </section>
+ <section class="pane" id="tab-cargo">
+  <div class="sectionhead"><div><h2>운반물</h2><p>유형별 치수·중량으로 실제 적재 가능한 개수를 제한합니다. 화물은 회전 배치하거나 겹쳐 쌓지 않습니다.</p></div><button id="addCargo">+ 화물 추가</button></div><div class="tablewrap" id="cargoTable"></div>
+  <div class="sectionhead"><div><h2>시간대별 물동량 비율</h2><p>운전 시작부터 분(min) 기준. 100% = 1배. 빈 표는 전체 100%입니다. 작업이력 모드에서는 적용하지 않습니다.</p></div><div><button id="autoPeriods">1시간 간격 자동 생성</button><button id="addPeriod">+ 시간대</button><button id="clearPeriods">전체 100%</button></div></div><div class="tablewrap" id="periodTable"></div>
+  <div class="sectionhead"><div><h2>계획 정지</h2><p>지정 리프트의 이동·상하차·도어 동작을 그 위치에서 일시정지 후 재개합니다. 시간은 min입니다.</p></div><button id="addStop">+ 정지 구간</button></div><div class="tablewrap" id="stopTable"></div>
+  <div class="sectionhead"><div><h2>실측 작업이력</h2><p>CSV 한 행 = 화물 1개. 헤더: id,release_s,flowId. 시간은 운전 시작 후 초(s).</p></div><div><button id="loadHistory">이력 CSV 열기</button><button id="saveHistory">이력 CSV 저장</button><button id="clearHistory">이력 비우기</button></div></div><div id="historyInfo" class="note"></div>
+ </section>
+ <section class="pane" id="tab-results"><div id="results"><p class="empty">계산 · 시뮬레이션 실행 후 결과가 표시됩니다.</p></div><div class="sectionhead"><div><h2>개선안 비교</h2><p>동일 수요·시드로 비교합니다. 대수 증설, 속도, 상하차, 버퍼, 후단 반출을 각각 바꾼 검토안입니다.</p></div><button id="compareAgain">비교 실행</button></div><div id="comparison" class="empty">개선안 비교를 실행하세요.</div></section>
+ <section class="pane" id="tab-help"><div id="help"></div></section>
+ <footer>왕복식 리프트 설계 검토 v1.0.0 · 참고자료 확인 2026-09-16 · <a href="리프트_사용매뉴얼.html" target="_blank" rel="noopener">사용 매뉴얼</a></footer>
+</main>
+<!-- LICENSE -->
+<!-- SCRIPTS -->
+</body></html>

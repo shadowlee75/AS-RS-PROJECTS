@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "rgv-linear/project@1",
+  "projectId": "rgv-19cb8fb3",
+  "deviceType": "rgv_linear",
+  "moduleVersion": "0.2.0",
+  "kernelVersion": "1.0.0",
+  "savedAt": "2026-09-11T03:03:48.738Z",
+  "units": {
+    "distance": "m",
+    "speed": "m/s",
+    "acceleration": "m/s²",
+    "time": "s"
+  },
+  "config": {
+    "name": "작업이력 재생 예시",
+    "length": 60,
+    "layout": "single",
+    "distanceUnit": "m",
+    "speedUnit": "m/min",
+    "unit": "PLT",
+    "batchSize": 1,
+    "emptyV": 2.5,
+    "emptyA": 0.6,
+    "emptyD": 0.6,
+    "loadedV": 2,
+    "loadedA": 0.5,
+    "loadedD": 0.5,
+    "handlingMode": "total",
+    "position": 0.5,
+    "interlock": 0.5,
+    "signal": 0,
+    "control": 0.5,
+    "stopDwell": 0,
+    "jerkMode": "none",
+    "accelScale": 0.9,
+    "jerkDelay": 0.3,
+    "creepDistance": 0,
+    "creepV": 0.15,
+    "dispatch": "fifo",
+    "parking": "home",
+    "peak": 1.2,
+    "targetUtil": 0.8,
+    "A": null,
+    "Ft": null,
+    "Ew": null,
+    "basis": "",
+    "basisNote": "",
+    "hours": 2,
+    "warmup": 0,
+    "seed": 20260911,
+    "arrival": "takt",
+    "jitter": 0.1,
+    "demandMode": "history",
+    "profile": [],
+    "history": [
+      {
+        "time": 0,
+        "from": "S1",
+        "to": "S2",
+        "quantity": 1
+      },
+      {
+        "time": 60,
+        "from": "S1",
+        "to": "S2",
+        "quantity": 1
+      },
+      {
+        "time": 120,
+        "from": "S2",
+        "to": "S1",
+        "quantity": 1
+      }
+    ],
+    "sections": [
+      {
+        "id": "R1",
+        "name": "RGV 01",
+        "start": 0,
+        "end": 60,
+        "home": 0,
+        "speedFactor": 1,
+        "vehicles": 1
+      }
+    ],
+    "stations": [
+      {
+        "id": "S1",
+        "name": "입고",
+        "x": 0,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0,
+        "stop": false
+      },
+      {
+        "id": "S2",
+        "name": "출고",
+        "x": 60,
+        "load": 6,
+        "unload": 6,
+        "buffer": 8,
+        "takeaway": 0,
+        "stop": false
+      }
+    ],
+    "ods": [
+      {
+        "id": "OD1",
+        "from": "S1",
+        "to": "S2",
+        "rate": 40
+      }
+    ],
+    "zones": [],
+    "handoffs": []
+  }
+}

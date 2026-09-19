@@ -1,0 +1,17 @@
+{
+  "name": "loop-rgv-studio",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node --test tests/core.test.js tests/excel.test.js",
+    "shipcheck": "node scripts/shipcheck.js",
+    "qa:browser": "node scripts/browser-check.js",
+    "qa:examples": "node scripts/examples.js",
+    "qa:legacy": "node scripts/legacy-check.js",
+    "qa:excel": "node scripts/excel-browser-check.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

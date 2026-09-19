@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "New Excel controls and version are visible",
+    "Microsoft Excel saved file and shared strings import",
+    "Excel edits to every table applied",
+    "Excel unit preferences and total-to-pure handling conversion",
+    "Station display restored in mm and pure handling seconds",
+    "Experiment range and repetitions restored",
+    "Excel conditions calculate through completion with conserved cargo",
+    "No JavaScript errors or runtime network requests"
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "138.0.3351.95"
+}

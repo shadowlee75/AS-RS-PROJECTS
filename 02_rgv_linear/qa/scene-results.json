@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "browser": "138.0.3351.95",
+  "checks": [
+    "offline WebGL canvas and scene initialized",
+    "one vehicle and two station models",
+    "static geometry batching under 70 initial draw calls",
+    "front top and perspective cameras are distinct",
+    "label visibility control",
+    "mouse drag rotates scene while paused",
+    "mouse wheel zooms",
+    "loading cargo visibly moves from station to vehicle",
+    "loaded travel mesh matches engine and camera tracks vehicle",
+    "3D playback advances",
+    "seek backwards restores initial engine position",
+    "Tandem has two independent vehicles and two directional buffers",
+    "blocked loaded vehicle and buffer occupancies match engine",
+    "select vehicle focuses downstream RGV",
+    "clicking a 3D vehicle updates selection",
+    "mobile canvas resizes without horizontal page overflow",
+    "WebGL context loss shows working 2D fallback",
+    "reapply disposes old scene and restores WebGL",
+    "no JavaScript errors or network requests"
+  ],
+  "errors": [],
+  "requests": [],
+  "testedAt": "2026-09-14T00:16:28.818Z"
+}

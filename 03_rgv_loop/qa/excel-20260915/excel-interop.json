@@ -1,0 +1,47 @@
+﻿{
+    "sheets":  [
+                   {
+                       "columns":  2,
+                       "name":  "안내",
+                       "rows":  16
+                   },
+                   {
+                       "columns":  5,
+                       "name":  "기본조건",
+                       "rows":  49
+                   },
+                   {
+                       "columns":  7,
+                       "name":  "설비스테이션",
+                       "rows":  5
+                   },
+                   {
+                       "columns":  4,
+                       "name":  "OD물동량",
+                       "rows":  5
+                   },
+                   {
+                       "columns":  3,
+                       "name":  "시간대비율",
+                       "rows":  3
+                   },
+                   {
+                       "columns":  3,
+                       "name":  "제한속도",
+                       "rows":  2
+                   },
+                   {
+                       "columns":  4,
+                       "name":  "작업이력",
+                       "rows":  2
+                   },
+                   {
+                       "columns":  3,
+                       "name":  "실험조건",
+                       "rows":  5
+                   }
+               ],
+    "openedWithoutException":  true,
+    "savedPath":  "G:\\내 드라이브\\02_ChatGPT\\5_통합 물동량 계산 프로그램\\03_rgv_loop\\qa\\excel-20260915\\Excel_수정후.xlsx",
+    "excelVersion":  "16.0"
+}

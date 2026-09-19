@@ -1,0 +1,54 @@
+{
+  "node": "v24.18.1",
+  "platform": "win32",
+  "rows": [
+    {
+      "scenario": "standard",
+      "hours": 1,
+      "fleet": 4,
+      "nodes": 40,
+      "paths": 41,
+      "tasks": 60,
+      "events": 321,
+      "elapsedMs": 72.91920000000002,
+      "throughput": 23,
+      "minSoc": 0.7000024387953991,
+      "failures": [],
+      "audit": true
+    },
+    {
+      "scenario": "standard",
+      "hours": 8,
+      "fleet": 4,
+      "nodes": 40,
+      "paths": 41,
+      "tasks": 480,
+      "events": 3533,
+      "elapsedMs": 246.7117,
+      "throughput": 22.375,
+      "minSoc": 0.1762858003506318,
+      "failures": [],
+      "audit": true
+    },
+    {
+      "scenario": "charging",
+      "hours": 24,
+      "fleet": 4,
+      "nodes": 40,
+      "paths": 41,
+      "tasks": 1440,
+      "events": 19805,
+      "elapsedMs": 1456.8269,
+      "throughput": 21.208333333333332,
+      "minSoc": 0,
+      "failures": [
+        {
+          "time": 79467.45617577761,
+          "vehicle": "V4",
+          "reason": "SOC 고갈 · 구조 필요"
+        }
+      ],
+      "audit": true
+    }
+  ]
+}

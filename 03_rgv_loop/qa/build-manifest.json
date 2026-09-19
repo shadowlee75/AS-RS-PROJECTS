@@ -1,0 +1,33 @@
+{
+  "version": "0.2.2",
+  "modules": {
+    "three.min": "9274bbcec8d96168626c732b5d31c775aa8cfb7eaa0599bec0c175908a2c1ce2",
+    "OrbitControls": "02bb4ade710f3e607329e37a21f098bc3ac70eb6e33daf8a65e79f4db785e7b2",
+    "motion": "8d8b913478de2716e5d7583cbc88f9275f4395cd03d588a41f11e80fd2f5d8ef",
+    "model": "0212e9257d41a8b9051876aafdb243c8db5504d045ad17d92b24e2be8d3932a8",
+    "tables": "07deb05824180abaf8361cd908ac9aa619beacaaea7328e6380d32dfebbf35a3",
+    "engine": "b5b80441af4be9659b2e0401f0d112701e4796d832c50ad6fb0763609adc0d89",
+    "view": "766419c8f9a17141ed3dac2f644172f97e94f4c54e0bd6b3e2575f0cddae6044",
+    "report": "08f2c8833c0c11c790731a76e0dec7ea06ca910b12f20267d80acfa6273caff0",
+    "xlsx": "aef098f0fa89e3364f23607509d8cf694c194bea2174d30314ef9b0a00fca176",
+    "excel": "18f11ad4df7c4e272d85be24d4af58f85cc367365d0f468aaccf89c4b0970397",
+    "scene": "628dd3a24806afc0ee10d1290370ab562c6d871f7947371b07dd4df4e48b4827",
+    "blender-models": "cc605f2e8cbfabc1f6cc86897a35eafd2ae78543e7cae7a7a691835e48901473",
+    "app": "3675672ee352a177b92238f9771f200a94738c041997f836bec7fcace743b0e8"
+  },
+  "sources": {
+    "three.min": "vendor/three.min.js",
+    "OrbitControls": "vendor/OrbitControls.js",
+    "motion": "src/motion.js",
+    "model": "src/model.js",
+    "tables": "src/tables.js",
+    "engine": "src/engine.js",
+    "view": "src/view.js",
+    "report": "src/report.js",
+    "xlsx": "src/xlsx.js",
+    "excel": "src/excel.js",
+    "scene": "src/scene.js",
+    "blender-models": "src/blender-models.js",
+    "app": "src/app.js"
+  }
+}

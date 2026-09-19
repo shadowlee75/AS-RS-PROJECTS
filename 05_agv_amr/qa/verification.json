@@ -1,0 +1,658 @@
+{
+  "date": "2026-09-14T09:42:57.855Z",
+  "engine": "0.3.0",
+  "passed": 47,
+  "checks": [
+    "T01 mm / m_min convert exactly once",
+    "T02 six motion golden values",
+    "T02 critical-distance continuity / zero / invalid inputs",
+    "T03 arbitrary collinear split preserves elapsed time and speed continuity",
+    "T04 speed reduction and mandatory stop boundary",
+    "T04 impossible boundary velocity rejected",
+    "T05 turn and pose share angular profile",
+    "T06 EG and minimum-cost-flow independent reference C",
+    "T06 residual rerouting beats greedy transportation",
+    "T06 zero demand transport / unbalanced unreachable",
+    "T07 initial fleet golden B",
+    "T08 handling and control counted once",
+    "T09 one vehicle deterministic handover cycle with explicit home",
+    "T10 T11 default run request/state/resource conservation",
+    "T12 T13 continuous reserved paths versus stationary vehicle envelopes",
+    "T14 conservative model never allows same-route following or overtaking",
+    "T15 finite buffer / postprocessing bottleneck",
+    "T16 closure prevents new fixed-route entry; dynamic uses alternate",
+    "T17 wait-cycle diagnostics report unresolved resource cycle",
+    "T18 charge queue and charger exclusivity",
+    "T19 battery energy reference D and full run balance",
+    "T19 rejects jobs exceeding charge-target energy budget",
+    "T20 analytic coefficients do not multiply DES throughput",
+    "T21 task history and demand multiplication cannot overlap",
+    "T21 piecewise demand integrates exact rates",
+    "T22 zero demand has 0 initial fleet and undefined lead-time",
+    "T22 incomplete tasks and due-overdue are not hidden",
+    "T23 seeds independent of fleet/policy random call ordering",
+    "T23 identical run deterministic event hash",
+    "T24 T25 replay query/seek never mutates engine state or results",
+    "T26 Excel table roundtrip / unit enforcement / atomic invalid row",
+    "T26 unexpected sheet and formula-like CSV cannot silently corrupt inputs",
+    "T27 JSON save/reopen with hash verification",
+    "T27 cloned scenario roundtrip",
+    "T28 observed throughput is never forced to linear/saturation curves",
+    "T29 independent 0.1s/0.05s position sampling finds no physical overlap",
+    "T30 planned outage keeps stationary physical position",
+    "T31 Y-up coordinate adapter and heading convention",
+    "T32 short battery trial cannot claim sustained capacity",
+    "T33 oversized load or narrow corridor rejected",
+    "T34 zero-control / zero-dock avoid infinite event loops",
+    "disabled stations and unreachable one-way OD blocked",
+    "missing charge source / duplicate IDs / invalid boundaries blocked",
+    "confidence uses Student t across independent replications",
+    "report includes assumptions / incomplete requests / reproducibility",
+    "warmup throughput uses completion window and separate release cohort",
+    "batch size changes do not affect execution"
+  ],
+  "scenarioResults": {
+    "golden": {
+      "metrics": {
+        "time": 3600,
+        "duration": 3600,
+        "throughput": 25,
+        "completedQty": 25,
+        "completedJobs": 25,
+        "totalCompleted": 25,
+        "released": 72,
+        "requestQty": 72,
+        "fulfillment": 0.3472222222222222,
+        "backlog": 47,
+        "overdue": 35,
+        "oldest": 2325,
+        "meanLead": 1208.7428571428575,
+        "p50": 1208.742857142858,
+        "p95": 2212.2171428571423,
+        "maxLead": 2323.7142857142853,
+        "onTime": 0.1,
+        "dueCount": 60,
+        "cohortCompleted": 25,
+        "cohortCount": 72,
+        "stateTimes": {
+          "idle": 25,
+          "empty": 166.42857142857105,
+          "pickup": 375,
+          "control": 100,
+          "loaded": 1329.9999999999984,
+          "dropoff": 375,
+          "returning": 1228.5714285714305
+        },
+        "states": {
+          "idle": 0.006944444444444444,
+          "empty": 0.04623015873015862,
+          "pickup": 0.10416666666666667,
+          "control": 0.027777777777777776,
+          "loaded": 0.369444444444444,
+          "dropoff": 0.10416666666666667,
+          "returning": 0.3412698412698418
+        },
+        "distances": {
+          "empty": 151.1479591836737,
+          "loaded": 1500,
+          "returning": 1650,
+          "toCharge": 0
+        },
+        "emptyRatio": 0.09154113557358065,
+        "consumed": 0,
+        "charged": 0,
+        "initialEnergy": 1275,
+        "finalEnergy": 1275,
+        "minSoc": 0.85,
+        "socTrend": 0,
+        "backlogGrowth": 12,
+        "resources": [
+          {
+            "id": "P1",
+            "type": "station",
+            "busy": 0.10416666666666667,
+            "wait": 0,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "D1",
+            "type": "station",
+            "busy": 0.10416666666666667,
+            "wait": 0,
+            "processBusy": 0,
+            "buffer": 0
+          }
+        ],
+        "failures": 0,
+        "chargeVisits": 0
+      },
+      "audit": {
+        "ok": true,
+        "errors": [],
+        "checks": [
+          "요청 보존",
+          "상태시간 연속성",
+          "에너지 수지",
+          "SOC 범위",
+          "이동/정지 외곽 예약",
+          "서비스 자원 단일 점유",
+          "화물 인계 순서",
+          "유한 버퍼"
+        ],
+        "model": "conservative-route-reservation@1"
+      },
+      "failures": []
+    },
+    "standard": {
+      "metrics": {
+        "time": 3600,
+        "duration": 3600,
+        "throughput": 23,
+        "completedQty": 23,
+        "completedJobs": 23,
+        "totalCompleted": 23,
+        "released": 60,
+        "requestQty": 60,
+        "fulfillment": 0.38333333333333336,
+        "backlog": 37,
+        "overdue": 27,
+        "oldest": 2175,
+        "meanLead": 1273.6922821405328,
+        "p50": 1299.2210798058422,
+        "p95": 2196.338573888148,
+        "maxLead": 2697.6721410567598,
+        "onTime": 0.1,
+        "dueCount": 50,
+        "cohortCompleted": 23,
+        "cohortCount": 60,
+        "stateTimes": {
+          "idle": 500,
+          "empty": 1188.7495809893805,
+          "pickup": 360,
+          "control": 96,
+          "traffic": 8236.253580233788,
+          "loaded": 2204.2956997054525,
+          "dropoff": 344.9999999999998,
+          "returning": 1469.701139071379
+        },
+        "states": {
+          "idle": 0.034722222222222224,
+          "empty": 0.08255205423537365,
+          "pickup": 0.025,
+          "control": 0.006666666666666667,
+          "traffic": 0.5719620541829019,
+          "loaded": 0.1530760902573231,
+          "dropoff": 0.023958333333333318,
+          "returning": 0.1020625791021791
+        },
+        "distances": {
+          "empty": 988,
+          "loaded": 1768,
+          "returning": 1437.1535376341926,
+          "toCharge": 0
+        },
+        "emptyRatio": 0.3584905660377358,
+        "consumed": 772.5168935244551,
+        "charged": 0,
+        "initialEnergy": 5100,
+        "finalEnergy": 4327.483106475545,
+        "minSoc": 0.7000024387953991,
+        "socTrend": -0.034227034531748135,
+        "backlogGrowth": 8,
+        "resources": [
+          {
+            "id": "P1",
+            "type": "station",
+            "busy": 0.0625,
+            "wait": 1020.2851523254528,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "P2",
+            "type": "station",
+            "busy": 0.0375,
+            "wait": 548.700130455061,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "D1",
+            "type": "station",
+            "busy": 0.05833333333333327,
+            "wait": 583.4485875239191,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "D2",
+            "type": "station",
+            "busy": 0.0375,
+            "wait": 725.9875357374096,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "C1",
+            "type": "charger",
+            "busy": 0,
+            "wait": 0,
+            "processBusy": 0,
+            "buffer": 0
+          }
+        ],
+        "failures": 0,
+        "chargeVisits": 0
+      },
+      "audit": {
+        "ok": true,
+        "errors": [],
+        "checks": [
+          "요청 보존",
+          "상태시간 연속성",
+          "에너지 수지",
+          "SOC 범위",
+          "이동/정지 외곽 예약",
+          "서비스 자원 단일 점유",
+          "화물 인계 순서",
+          "유한 버퍼"
+        ],
+        "model": "conservative-route-reservation@1"
+      },
+      "failures": []
+    },
+    "bottleneck": {
+      "metrics": {
+        "time": 7200,
+        "duration": 7200,
+        "throughput": 11.5,
+        "completedQty": 23,
+        "completedJobs": 23,
+        "totalCompleted": 23,
+        "released": 180,
+        "requestQty": 180,
+        "fulfillment": 0.12777777777777777,
+        "backlog": 157,
+        "overdue": 142,
+        "oldest": 7100,
+        "meanLead": 3116.407342149937,
+        "p50": 3109.450820410806,
+        "p95": 5831.950820410806,
+        "maxLead": 6134.450820410806,
+        "onTime": 0.012121212121212121,
+        "dueCount": 165,
+        "cohortCompleted": 23,
+        "cohortCount": 180,
+        "stateTimes": {
+          "idle": 320,
+          "empty": 811.3114255412572,
+          "pickup": 359.9999999999999,
+          "control": 96,
+          "loaded": 2435.875021299803,
+          "dropoff": 345,
+          "traffic": 20100.6981183383,
+          "returning": 1518.6400672148611,
+          "blocked": 2812.4753676058026
+        },
+        "states": {
+          "idle": 0.011111111111111112,
+          "empty": 0.028170535609071432,
+          "pickup": 0.012499999999999995,
+          "control": 0.0033333333333333335,
+          "loaded": 0.08457899379513205,
+          "dropoff": 0.011979166666666667,
+          "traffic": 0.6979409068867465,
+          "returning": 0.0527305578894049,
+          "blocked": 0.0976553947085348
+        },
+        "distances": {
+          "empty": 576,
+          "loaded": 2030.9795885980404,
+          "returning": 1474,
+          "toCharge": 0
+        },
+        "emptyRatio": 0.2209453432313816,
+        "consumed": 1014.3585950753337,
+        "charged": 0,
+        "initialEnergy": 5100,
+        "finalEnergy": 4085.641404924666,
+        "minSoc": 0.5897382848858311,
+        "socTrend": -0.020624267622127324,
+        "backlogGrowth": 19,
+        "resources": [
+          {
+            "id": "P1",
+            "type": "station",
+            "busy": 0.04999999999999998,
+            "wait": 3476.8135531589396,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "P2",
+            "type": "station",
+            "busy": 0,
+            "wait": 0,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "D1",
+            "type": "station",
+            "busy": 0.04791666666666667,
+            "wait": 2836.148396858825,
+            "processBusy": 0.9285484971651659,
+            "buffer": 1
+          },
+          {
+            "id": "D2",
+            "type": "station",
+            "busy": 0,
+            "wait": 0,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "C1",
+            "type": "charger",
+            "busy": 0,
+            "wait": 0,
+            "processBusy": 0,
+            "buffer": 0
+          }
+        ],
+        "failures": 0,
+        "chargeVisits": 0
+      },
+      "audit": {
+        "ok": true,
+        "errors": [],
+        "checks": [
+          "요청 보존",
+          "상태시간 연속성",
+          "에너지 수지",
+          "SOC 범위",
+          "이동/정지 외곽 예약",
+          "서비스 자원 단일 점유",
+          "화물 인계 순서",
+          "유한 버퍼"
+        ],
+        "model": "conservative-route-reservation@1"
+      },
+      "failures": []
+    },
+    "closure": {
+      "metrics": {
+        "time": 3600,
+        "duration": 3600,
+        "throughput": 21,
+        "completedQty": 21,
+        "completedJobs": 21,
+        "totalCompleted": 21,
+        "released": 60,
+        "requestQty": 60,
+        "fulfillment": 0.35,
+        "backlog": 39,
+        "overdue": 29,
+        "oldest": 2750,
+        "meanLead": 1394.2391350931885,
+        "p50": 1619.6687590634892,
+        "p95": 2123.2515027911236,
+        "maxLead": 2211.972191231783,
+        "onTime": 0.06,
+        "dueCount": 50,
+        "cohortCompleted": 21,
+        "cohortCount": 60,
+        "stateTimes": {
+          "idle": 500,
+          "empty": 1022.7701791149981,
+          "pickup": 345,
+          "control": 92,
+          "traffic": 8436.65442317418,
+          "loaded": 2112.532169272791,
+          "dropoff": 315,
+          "returning": 1576.0432284380292
+        },
+        "states": {
+          "idle": 0.034722222222222224,
+          "empty": 0.07102570688298598,
+          "pickup": 0.023958333333333335,
+          "control": 0.006388888888888889,
+          "traffic": 0.5858787793870958,
+          "loaded": 0.14670362286616606,
+          "dropoff": 0.021875,
+          "returning": 0.10944744641930759
+        },
+        "distances": {
+          "empty": 822,
+          "loaded": 1689.3885414415759,
+          "returning": 1582,
+          "toCharge": 0
+        },
+        "emptyRatio": 0.32730897128652153,
+        "consumed": 753.5027896306732,
+        "charged": 0,
+        "initialEnergy": 5100,
+        "finalEnergy": 4346.497210369327,
+        "minSoc": 0.6824020028061557,
+        "socTrend": -0.03621922351547702,
+        "backlogGrowth": 9,
+        "resources": [
+          {
+            "id": "P1",
+            "type": "station",
+            "busy": 0.05416666666666667,
+            "wait": 787.7589040988116,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "P2",
+            "type": "station",
+            "busy": 0.041666666666666664,
+            "wait": 596.8842641291908,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "D1",
+            "type": "station",
+            "busy": 0.05,
+            "wait": 372.53347382339877,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "D2",
+            "type": "station",
+            "busy": 0.0375,
+            "wait": 582.8827136226209,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "C1",
+            "type": "charger",
+            "busy": 0,
+            "wait": 0,
+            "processBusy": 0,
+            "buffer": 0
+          }
+        ],
+        "failures": 0,
+        "chargeVisits": 0
+      },
+      "audit": {
+        "ok": true,
+        "errors": [],
+        "checks": [
+          "요청 보존",
+          "상태시간 연속성",
+          "에너지 수지",
+          "SOC 범위",
+          "이동/정지 외곽 예약",
+          "서비스 자원 단일 점유",
+          "화물 인계 순서",
+          "유한 버퍼"
+        ],
+        "model": "conservative-route-reservation@1"
+      },
+      "failures": []
+    },
+    "charging": {
+      "metrics": {
+        "time": 14400,
+        "duration": 14400,
+        "throughput": 21,
+        "completedQty": 84,
+        "completedJobs": 84,
+        "totalCompleted": 84,
+        "released": 240,
+        "requestQty": 240,
+        "fulfillment": 0.35,
+        "backlog": 156,
+        "overdue": 146,
+        "oldest": 9350,
+        "meanLead": 5321.89085909106,
+        "p50": 5585.177881747074,
+        "p95": 9007.338428359704,
+        "maxLead": 9490.730086988533,
+        "onTime": 0.021739130434782608,
+        "dueCount": 230,
+        "cohortCompleted": 84,
+        "cohortCount": 240,
+        "stateTimes": {
+          "idle": 500,
+          "empty": 3700.472707858609,
+          "pickup": 1260,
+          "control": 336,
+          "traffic": 17259.169597347704,
+          "loaded": 8136.268352547471,
+          "dropoff": 1260,
+          "returning": 6310.506347435502,
+          "toCharge": 720.3430578429505,
+          "dock": 88,
+          "charging": 9435.126194386363,
+          "undock": 50,
+          "chargeWait": 8544.113742581401
+        },
+        "states": {
+          "idle": 0.008680555555555556,
+          "empty": 0.06424431784476752,
+          "pickup": 0.021875,
+          "control": 0.005833333333333334,
+          "traffic": 0.2996383610650643,
+          "loaded": 0.1412546588983936,
+          "dropoff": 0.021875,
+          "returning": 0.10955740186519969,
+          "toCharge": 0.012505955865329002,
+          "dock": 0.0015277777777777779,
+          "charging": 0.16380427420809657,
+          "undock": 0.0008680555555555555,
+          "chargeWait": 0.1483353080309271
+        },
+        "distances": {
+          "empty": 2905.1978102799135,
+          "loaded": 6560,
+          "returning": 6148,
+          "toCharge": 656
+        },
+        "emptyRatio": 0.30693471689779706,
+        "consumed": 2844.6149767409515,
+        "charged": 2858.6784284318187,
+        "initialEnergy": 560,
+        "finalEnergy": 574.0634516908585,
+        "minSoc": 0.027750455492751826,
+        "socTrend": 0.021149467207832895,
+        "backlogGrowth": 8,
+        "resources": [
+          {
+            "id": "P1",
+            "type": "station",
+            "busy": 0.052083333333333336,
+            "wait": 2518.4913076301937,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "P2",
+            "type": "station",
+            "busy": 0.035416666666666666,
+            "wait": 1803.8529715519949,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "D1",
+            "type": "station",
+            "busy": 0.052083333333333336,
+            "wait": 1556.09263883233,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "D2",
+            "type": "station",
+            "busy": 0.035416666666666666,
+            "wait": 1560.2847257393996,
+            "processBusy": 0,
+            "buffer": 0
+          },
+          {
+            "id": "C1",
+            "type": "charger",
+            "busy": 0.6648004301657197,
+            "wait": 497.0854470058398,
+            "processBusy": 0,
+            "buffer": 0
+          }
+        ],
+        "failures": 0,
+        "chargeVisits": 11
+      },
+      "audit": {
+        "ok": true,
+        "errors": [],
+        "checks": [
+          "요청 보존",
+          "상태시간 연속성",
+          "에너지 수지",
+          "SOC 범위",
+          "이동/정지 외곽 예약",
+          "서비스 자원 단일 점유",
+          "화물 인계 순서",
+          "유한 버퍼"
+        ],
+        "model": "conservative-route-reservation@1"
+      },
+      "failures": []
+    },
+    "sweep": [
+      {
+        "fleet": 1,
+        "throughput": 15
+      },
+      {
+        "fleet": 2,
+        "throughput": 21
+      },
+      {
+        "fleet": 3,
+        "throughput": 22
+      },
+      {
+        "fleet": 4,
+        "throughput": 23
+      },
+      {
+        "fleet": 5,
+        "throughput": 23
+      },
+      {
+        "fleet": 6,
+        "throughput": 24
+      }
+    ]
+  }
+}

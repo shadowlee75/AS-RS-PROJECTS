@@ -1,0 +1,29 @@
+{
+  "checks": 22,
+  "passed": [
+    "default single-deep project boots",
+    "rear stroke is hidden and disabled for single-deep",
+    "depth selector marks results stale and exposes rear input",
+    "invalid rear reach gives field-specific error",
+    "double-deep capacity and calculation assumptions visible",
+    "header badge follows selected depth",
+    "JSON persists depth and rear reach",
+    "MD includes depth, reach, capacity and access limits",
+    "3D uses every depth cell and expanded aisle clearance",
+    "rear cell can be selected by address",
+    "completed simulation preserves inventory and jobs",
+    "completed job CSV identifies depths",
+    "motion selector uses actual rear stroke and depth addresses",
+    "print report includes depth specifications and assumptions",
+    "print tables fit page width",
+    "switching back restores capacity and resets rear selections",
+    "saved project reload restores double-deep UI",
+    "FEM analysis includes rear depth average",
+    "FEM preview accepts D2",
+    "old projects migrate to single-deep",
+    "manual describes depth selection and access assumptions",
+    "offline execution has no JavaScript errors or network requests"
+  ],
+  "errors": [],
+  "network": []
+}

@@ -1,0 +1,26 @@
+{
+  "checks": [
+    "110 mm default input and independent settling dwell are shown",
+    "older projects initialize the newly specified 110 mm stroke",
+    "all requested STCs have independent real 3D carriages and forks",
+    "40 phase samples cover both STCs and all four transfer operations",
+    "cargo lifts with the fork and stays on the destination during retraction without duplication",
+    "full fleet simulation completes with preserved inventory and work counts",
+    "motion timeline identifies fork OUT/IN and carriage UP/DOWN 110 mm",
+    "phase table includes the 0.11 m carriage profile",
+    "pickup graph playback exposes the signed Y pulse and stopped fork",
+    "deposit graph playback exposes the signed Y pulse and stopped fork",
+    "saved project stores 0.11 m and SI speeds with m/min display",
+    "report contains both sequences and 110 mm input",
+    "editing lift in millimetres changes SI configuration to 0.15 m",
+    "speed unit conversion preserves lift input and SI distance",
+    "project reload restores the 110 mm setting",
+    "invalid lift shows a millimetre range error",
+    "new transfer fields fit the mobile document width",
+    "no JavaScript errors or runtime network requests"
+  ],
+  "errors": [],
+  "network": [],
+  "browser": "138.0.3351.95",
+  "testedAt": "2026-09-10T01:52:46.094Z"
+}

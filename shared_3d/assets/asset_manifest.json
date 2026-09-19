@@ -1,0 +1,55 @@
+{
+  "blenderVersion": "4.5.13 LTS",
+  "models": {
+    "cargo_pallet": {
+      "triangles": 3024,
+      "materials": 5
+    },
+    "lift": {
+      "triangles": 1748,
+      "materials": 4
+    },
+    "rgv_linear": {
+      "triangles": 7652,
+      "materials": 8
+    },
+    "rgv_loop": {
+      "triangles": 7652,
+      "materials": 8
+    },
+    "shuttle": {
+      "triangles": 6708,
+      "materials": 8
+    },
+    "stacker_base": {
+      "triangles": 1936,
+      "materials": 4
+    },
+    "stacker_carriage": {
+      "triangles": 1184,
+      "materials": 3
+    },
+    "stacker_fork": {
+      "triangles": 1420,
+      "materials": 3
+    },
+    "stacker_mast": {
+      "triangles": 2160,
+      "materials": 3
+    }
+  },
+  "files": {
+    "equipment_models.blend": {
+      "bytes": 2288570,
+      "sha256": "62b85efd38e952e2336f553fa0baaccf89ba31ad5c4791f0603fe3e06ee504e0"
+    },
+    "equipment_models.glb": {
+      "bytes": 1893964,
+      "sha256": "a9e935674c8da5f435028935c13f720c75a51ca8428d55122c589d7d22515497"
+    },
+    "mesh_library.json": {
+      "bytes": 2236731,
+      "sha256": "b7ec3406d7b6c0ef9a3ffbad925a3b6382eedb72b10b2257070e8f5f11f6e5b3"
+    }
+  }
+}

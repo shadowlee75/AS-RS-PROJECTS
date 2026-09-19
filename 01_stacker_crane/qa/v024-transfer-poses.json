@@ -1,0 +1,645 @@
+{
+  "observations": [
+    {
+      "aisle": 0,
+      "effect": "pickIn",
+      "stage": "out",
+      "time": 1.5416666666666667,
+      "y": 0.5,
+      "fork": -0.4,
+      "cargo": [
+        -1,
+        0.5,
+        -0.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "IN 상차 · 포크 OUT"
+    },
+    {
+      "aisle": 1,
+      "effect": "pickIn",
+      "stage": "out",
+      "time": 1.5416666666666667,
+      "y": 2,
+      "fork": 0.4,
+      "cargo": [
+        7,
+        2,
+        5.800000000000001
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "IN 상차 · 포크 OUT"
+    },
+    {
+      "aisle": 0,
+      "effect": "pickIn",
+      "stage": "lift",
+      "time": 2.8178541213245047,
+      "y": 0.5137499999999999,
+      "fork": -0.8,
+      "cargo": [
+        -1,
+        0.5137499999999999,
+        -0.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "IN 상차 · 캐리지 UP 110 mm"
+    },
+    {
+      "aisle": 1,
+      "effect": "pickIn",
+      "stage": "lift",
+      "time": 2.8178541213245047,
+      "y": 2.01375,
+      "fork": 0.8,
+      "cargo": [
+        7,
+        2.01375,
+        5.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "IN 상차 · 캐리지 UP 110 mm"
+    },
+    {
+      "aisle": 0,
+      "effect": "pickIn",
+      "stage": "lift",
+      "time": 3.286895697306848,
+      "y": 0.5962500000000001,
+      "fork": -0.8,
+      "cargo": [
+        -1,
+        0.5962500000000001,
+        -0.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "IN 상차 · 캐리지 UP 110 mm"
+    },
+    {
+      "aisle": 1,
+      "effect": "pickIn",
+      "stage": "lift",
+      "time": 3.286895697306848,
+      "y": 2.09625,
+      "fork": 0.8,
+      "cargo": [
+        7,
+        2.09625,
+        5.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "IN 상차 · 캐리지 UP 110 mm"
+    },
+    {
+      "aisle": 0,
+      "effect": "pickIn",
+      "stage": "settle",
+      "time": 4.021416485298019,
+      "y": 0.61,
+      "fork": -0.8,
+      "cargo": [
+        -1,
+        0.61,
+        -0.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "IN 상차 · 안착 대기"
+    },
+    {
+      "aisle": 1,
+      "effect": "pickIn",
+      "stage": "settle",
+      "time": 4.021416485298019,
+      "y": 2.11,
+      "fork": 0.8,
+      "cargo": [
+        7,
+        2.11,
+        5.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "IN 상차 · 안착 대기"
+    },
+    {
+      "aisle": 0,
+      "effect": "pickIn",
+      "stage": "in",
+      "time": 5.563083151964686,
+      "y": 0.61,
+      "fork": -0.39999999999999986,
+      "cargo": [
+        -1,
+        0.61,
+        -0.39999999999999986
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "IN 상차 · 포크 IN"
+    },
+    {
+      "aisle": 1,
+      "effect": "pickIn",
+      "stage": "in",
+      "time": 5.563083151964686,
+      "y": 2.11,
+      "fork": 0.39999999999999986,
+      "cargo": [
+        7,
+        2.11,
+        5.3999999999999995
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "IN 상차 · 포크 IN"
+    },
+    {
+      "aisle": 1,
+      "effect": "placeIn",
+      "stage": "out",
+      "time": 12.309458249656705,
+      "y": 3.11,
+      "fork": -0.6,
+      "cargo": [
+        5,
+        3.11,
+        4.4
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 입고 · 포크 OUT"
+    },
+    {
+      "aisle": 1,
+      "effect": "placeIn",
+      "stage": "lift",
+      "time": 13.918979037647876,
+      "y": 3.09625,
+      "fork": -1.2,
+      "cargo": [
+        5,
+        3.09625,
+        3.8
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 입고 · 캐리지 DOWN 110 mm"
+    },
+    {
+      "aisle": 1,
+      "effect": "placeIn",
+      "stage": "lift",
+      "time": 14.38802061363022,
+      "y": 3.01375,
+      "fork": -1.2,
+      "cargo": [
+        5,
+        3.01375,
+        3.8
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 입고 · 캐리지 DOWN 110 mm"
+    },
+    {
+      "aisle": 0,
+      "effect": "placeIn",
+      "stage": "out",
+      "time": 15.112999399342153,
+      "y": 3.11,
+      "fork": 0.6,
+      "cargo": [
+        5,
+        3.11,
+        0.6
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 입고 · 포크 OUT"
+    },
+    {
+      "aisle": 1,
+      "effect": "placeIn",
+      "stage": "settle",
+      "time": 15.12254140162139,
+      "y": 3,
+      "fork": -1.2,
+      "cargo": [
+        5,
+        3,
+        3.8
+      ],
+      "cargoVisible": false,
+      "rackScale": 1,
+      "label": "랙 입고 · 안착 대기"
+    },
+    {
+      "aisle": 0,
+      "effect": "placeIn",
+      "stage": "lift",
+      "time": 16.722520187333323,
+      "y": 3.09625,
+      "fork": 1.2,
+      "cargo": [
+        5,
+        3.09625,
+        1.2
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 입고 · 캐리지 DOWN 110 mm"
+    },
+    {
+      "aisle": 1,
+      "effect": "placeIn",
+      "stage": "in",
+      "time": 16.99754140162139,
+      "y": 3,
+      "fork": -0.6000000000000005,
+      "cargo": [
+        5,
+        3,
+        3.8
+      ],
+      "cargoVisible": false,
+      "rackScale": 1,
+      "label": "랙 입고 · 포크 IN"
+    },
+    {
+      "aisle": 0,
+      "effect": "placeIn",
+      "stage": "lift",
+      "time": 17.19156176331567,
+      "y": 3.0137499999999995,
+      "fork": 1.2,
+      "cargo": [
+        5,
+        3.0137499999999995,
+        1.2
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 입고 · 캐리지 DOWN 110 mm"
+    },
+    {
+      "aisle": 0,
+      "effect": "placeIn",
+      "stage": "settle",
+      "time": 17.926082551306838,
+      "y": 3,
+      "fork": 1.2,
+      "cargo": [
+        5,
+        3,
+        1.2
+      ],
+      "cargoVisible": false,
+      "rackScale": 1,
+      "label": "랙 입고 · 안착 대기"
+    },
+    {
+      "aisle": 0,
+      "effect": "placeIn",
+      "stage": "in",
+      "time": 19.801082551306838,
+      "y": 3,
+      "fork": 0.6000000000000005,
+      "cargo": [
+        5,
+        3,
+        1.2
+      ],
+      "cargoVisible": false,
+      "rackScale": 1,
+      "label": "랙 입고 · 포크 IN"
+    },
+    {
+      "aisle": 1,
+      "effect": "pickOut",
+      "stage": "out",
+      "time": 25.66356700471203,
+      "y": 1,
+      "fork": 0.6,
+      "cargo": [
+        1,
+        1,
+        6.199999999999999
+      ],
+      "cargoVisible": false,
+      "rackScale": 1,
+      "label": "랙 출고 · 포크 OUT"
+    },
+    {
+      "aisle": 1,
+      "effect": "pickOut",
+      "stage": "lift",
+      "time": 27.2730877927032,
+      "y": 1.0137500000000002,
+      "fork": 1.2,
+      "cargo": [
+        1,
+        1.0137500000000002,
+        6.2
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 출고 · 캐리지 UP 110 mm"
+    },
+    {
+      "aisle": 1,
+      "effect": "pickOut",
+      "stage": "lift",
+      "time": 27.742129368685543,
+      "y": 1.09625,
+      "fork": 1.2,
+      "cargo": [
+        1,
+        1.09625,
+        6.2
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 출고 · 캐리지 UP 110 mm"
+    },
+    {
+      "aisle": 0,
+      "effect": "pickOut",
+      "stage": "out",
+      "time": 28.46710815439748,
+      "y": 1,
+      "fork": 0.6,
+      "cargo": [
+        1,
+        1,
+        1.2
+      ],
+      "cargoVisible": false,
+      "rackScale": 1,
+      "label": "랙 출고 · 포크 OUT"
+    },
+    {
+      "aisle": 1,
+      "effect": "pickOut",
+      "stage": "settle",
+      "time": 28.476650156676715,
+      "y": 1.11,
+      "fork": 1.2,
+      "cargo": [
+        1,
+        1.11,
+        6.2
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 출고 · 안착 대기"
+    },
+    {
+      "aisle": 0,
+      "effect": "pickOut",
+      "stage": "lift",
+      "time": 30.076628942388652,
+      "y": 1.0137500000000002,
+      "fork": 1.2,
+      "cargo": [
+        1,
+        1.0137500000000002,
+        1.2
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 출고 · 캐리지 UP 110 mm"
+    },
+    {
+      "aisle": 1,
+      "effect": "pickOut",
+      "stage": "in",
+      "time": 30.351650156676715,
+      "y": 1.11,
+      "fork": 0.5999999999999994,
+      "cargo": [
+        1,
+        1.11,
+        5.6
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 출고 · 포크 IN"
+    },
+    {
+      "aisle": 0,
+      "effect": "pickOut",
+      "stage": "lift",
+      "time": 30.545670518370994,
+      "y": 1.09625,
+      "fork": 1.2,
+      "cargo": [
+        1,
+        1.09625,
+        1.2
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 출고 · 캐리지 UP 110 mm"
+    },
+    {
+      "aisle": 0,
+      "effect": "pickOut",
+      "stage": "settle",
+      "time": 31.280191306362166,
+      "y": 1.11,
+      "fork": 1.2,
+      "cargo": [
+        1,
+        1.11,
+        1.2
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 출고 · 안착 대기"
+    },
+    {
+      "aisle": 0,
+      "effect": "pickOut",
+      "stage": "in",
+      "time": 33.15519130636216,
+      "y": 1.11,
+      "fork": 0.6000000000000015,
+      "cargo": [
+        1,
+        1.11,
+        0.6000000000000015
+      ],
+      "cargoVisible": true,
+      "rackScale": 0.18000000715255737,
+      "label": "랙 출고 · 포크 IN"
+    },
+    {
+      "aisle": 0,
+      "effect": "placeOut",
+      "stage": "out",
+      "time": 39.90156640405418,
+      "y": 1.61,
+      "fork": 0.3999999999999986,
+      "cargo": [
+        -1,
+        1.61,
+        0.3999999999999986
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "OUT 하차 · 포크 OUT"
+    },
+    {
+      "aisle": 1,
+      "effect": "placeOut",
+      "stage": "out",
+      "time": 39.90156640405418,
+      "y": 0.11,
+      "fork": -0.3999999999999986,
+      "cargo": [
+        7,
+        0.11,
+        4.600000000000001
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "OUT 하차 · 포크 OUT"
+    },
+    {
+      "aisle": 0,
+      "effect": "placeOut",
+      "stage": "lift",
+      "time": 41.17775385871202,
+      "y": 1.5962499999999997,
+      "fork": 0.8,
+      "cargo": [
+        -1,
+        1.5962499999999997,
+        0.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "OUT 하차 · 캐리지 DOWN 110 mm"
+    },
+    {
+      "aisle": 1,
+      "effect": "placeOut",
+      "stage": "lift",
+      "time": 41.17775385871202,
+      "y": 0.09624999999999961,
+      "fork": -0.8,
+      "cargo": [
+        7,
+        0.09624999999999961,
+        4.2
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "OUT 하차 · 캐리지 DOWN 110 mm"
+    },
+    {
+      "aisle": 0,
+      "effect": "placeOut",
+      "stage": "lift",
+      "time": 41.64679543469436,
+      "y": 1.5137500000000004,
+      "fork": 0.8,
+      "cargo": [
+        -1,
+        1.5137500000000004,
+        0.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "OUT 하차 · 캐리지 DOWN 110 mm"
+    },
+    {
+      "aisle": 1,
+      "effect": "placeOut",
+      "stage": "lift",
+      "time": 41.64679543469436,
+      "y": 0.013750000000000165,
+      "fork": -0.8,
+      "cargo": [
+        7,
+        0.013750000000000165,
+        4.2
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "OUT 하차 · 캐리지 DOWN 110 mm"
+    },
+    {
+      "aisle": 0,
+      "effect": "placeOut",
+      "stage": "settle",
+      "time": 42.381316222685534,
+      "y": 1.5,
+      "fork": 0.8,
+      "cargo": [
+        -1,
+        1.5,
+        0.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "OUT 하차 · 안착 대기"
+    },
+    {
+      "aisle": 1,
+      "effect": "placeOut",
+      "stage": "settle",
+      "time": 42.381316222685534,
+      "y": 0,
+      "fork": -0.8,
+      "cargo": [
+        7,
+        0,
+        4.2
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "OUT 하차 · 안착 대기"
+    },
+    {
+      "aisle": 0,
+      "effect": "placeOut",
+      "stage": "in",
+      "time": 43.9229828893522,
+      "y": 1.5,
+      "fork": 0.40000000000000147,
+      "cargo": [
+        -1,
+        1.5,
+        0.8
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "OUT 하차 · 포크 IN"
+    },
+    {
+      "aisle": 1,
+      "effect": "placeOut",
+      "stage": "in",
+      "time": 43.9229828893522,
+      "y": 0,
+      "fork": -0.40000000000000147,
+      "cargo": [
+        7,
+        0,
+        4.2
+      ],
+      "cargoVisible": true,
+      "rackScale": null,
+      "label": "OUT 하차 · 포크 IN"
+    }
+  ],
+  "failures": []
+}

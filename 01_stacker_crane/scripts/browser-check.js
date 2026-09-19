@@ -1,0 +1,84 @@
+// Local UI verification fallback when the connected Browser is unavailable.
+// Requires Playwright in STC_PLAYWRIGHT_PATH or the isolated temp QA directory.
+const fs = require('node:fs');
+const path = require('node:path');
+const os = require('node:os');
+const assert = require('node:assert/strict');
+const { pathToFileURL } = require('node:url');
+const { chromium } = require(process.env.STC_PLAYWRIGHT_PATH || path.join(os.tmpdir(), 'stc-browser-check/node_modules/playwright'));
+const base = path.resolve(__dirname, '..');
+// Large screenshot writes can collide with Drive's virtual filesystem sync.
+// Verify locally first, then copy the finished evidence into the workspace.
+const qa = process.env.STC_QA_DIR || path.join(os.tmpdir(), 'stc-browser-check/results');
+fs.mkdirSync(qa, { recursive: true });
+(async () => {
+  const browser = await chromium.launch({ channel: 'msedge', headless: true, args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+  const context = await browser.newContext({ viewport: { width: 1480, height: 1080 }, acceptDownloads: true });
+  const page = await context.newPage(), errors = [], network = [], checks = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('request', request => { if (/^https?:/.test(request.url())) network.push(request.url()); });
+  await context.route(/^https?:\/\//, route => route.abort());
+  const check = (name, condition) => { assert.ok(condition, name); checks.push(name); console.log('PASS ' + name); };
+  try {
+    await page.goto(pathToFileURL(path.resolve(base, '../스태커크레인_실행.html')).href);
+    await page.locator('#analysisKpis .kpi').first().waitFor();
+    check('offline file opens with four analysis cards', await page.locator('#analysisKpis .kpi').count() === 4);
+    check('no initial validation error', await page.locator('#error').isHidden());
+    await page.screenshot({ path: path.join(qa, '01-overview.png'), fullPage: true });
+    const baseTheory = await page.locator('#analysisKpis .kpi-value').first().innerText();
+    await page.locator('#speedUnit').selectOption('m/s');
+    await page.locator('#speedUnit').selectOption('m/min');
+    check('m/s to m/min conversion updates input', await page.locator('#vx').inputValue() === '180');
+    await page.locator('#calculate').click();
+    check('unit switch preserves throughput', await page.locator('#analysisKpis .kpi-value').first().innerText() === baseTheory);
+    await page.locator('summary').filter({ hasText: '분석 보정계수' }).click();
+    await page.locator('#idealFactors').click(); await page.locator('#calculate').click();
+    check('explicit ideal factors produce adjusted capacity', !(await page.locator('#analysisKpis .kpi-value').nth(1).innerText()).includes('—'));
+    await page.locator('[data-tab="motion"]').click();
+    check('three axes each show velocity and acceleration charts', await page.locator('#motionCharts svg').count() === 6);
+    await page.locator('#motionPlay').click(); await page.waitForFunction(() => parseFloat(document.getElementById('motionClock').textContent.replace(/,/g, '')) > .5);
+    await page.locator('#motionPlay').click();
+    check('motion playback advances time', parseFloat(await page.locator('#motionClock').innerText()) > 0);
+    await page.locator('#motionSeek').evaluate(input => { input.value = 280; input.dispatchEvent(new Event('input', { bubbles: true })); });
+    await page.screenshot({ path: path.join(qa, '02-motion.png'), fullPage: true });
+    await page.locator('#graphMode').selectOption('pv'); check('position mode changes chart units', (await page.locator('#motionCharts').innerText()).includes('위치 / m'));
+    await page.locator('#graphMode').selectOption('va');
+    await page.locator('[data-tab="simulation"]').click();
+    await page.locator('#scene canvas').waitFor();
+    check('WebGL renderer is present', await page.locator('#scene canvas').count() === 1);
+    await page.locator('#simPlay').click();
+    await page.waitForFunction(() => document.getElementById('simClock').textContent !== '00:00:00');
+    await page.locator('#simPlay').click();
+    await page.screenshot({ path: path.join(qa, '03-simulation.png'), fullPage: true });
+    await page.locator('#simFinish').click();
+    await page.waitForFunction(() => document.getElementById('measureStatus').textContent === '측정 종료', null, { timeout: 30000 });
+    check('simulation completes with inventory conservation', (await page.locator('#inventoryEquation').innerText()).includes('✓'));
+    check('completed simulation has measured throughput', (await page.locator('#liveKpis').innerText()).includes('84.0'));
+    await page.screenshot({ path: path.join(qa, '04-simulation-complete.png'), fullPage: true });
+    const csvPromise = page.waitForEvent('download'); await page.locator('#exportSim').click(); const csvDownload = await csvPromise;
+    await csvDownload.saveAs(path.join(qa, 'completed-jobs.csv'));
+    check('completion CSV exported with records', fs.readFileSync(path.join(qa, 'completed-jobs.csv'), 'utf8').split('\n').length > 100);
+    const reportPromise = page.waitForEvent('download'); await page.locator('#report').click(); const reportDownload = await reportPromise;
+    await reportDownload.saveAs(path.join(qa, 'sample-report.md'));
+    check('Markdown report includes simulation provenance', fs.readFileSync(path.join(qa, 'sample-report.md'), 'utf8').includes('seed:'));
+    const savePromise = page.waitForEvent('download'); await page.locator('#saveProject').click(); const saved = await savePromise;
+    await saved.saveAs(path.join(qa, 'roundtrip-project.json'));
+    await page.locator('#length').fill('0'); await page.locator('#calculate').click();
+    check('invalid geometry blocks applying stale results', await page.locator('#error').isVisible());
+    await page.locator('#projectFile').setInputFiles(path.join(qa, 'roundtrip-project.json'));
+    await page.waitForFunction(() => document.getElementById('error').hidden && document.body.dataset.dirty === 'false');
+    check('project import restores numeric inputs', await page.locator('#length').inputValue() === '60');
+    await page.locator('[data-tab="experiments"]').click(); await page.locator('#repCount').selectOption('5'); await page.locator('#runExperiments').click();
+    await page.waitForFunction(() => document.getElementById('experimentStatus').textContent.startsWith('15회 완료'), null, { timeout: 60000 });
+    check('15 repeat runs finish across three operating modes', await page.locator('#experimentResults tbody tr').count() === 3);
+    await page.screenshot({ path: path.join(qa, '05-experiments.png'), fullPage: true });
+    await page.locator('#runExperiments').click(); await page.locator('#cancelExperiments').click();
+    check('experiment cancellation restores run button', await page.locator('#runExperiments').isEnabled());
+    await page.setViewportSize({ width: 390, height: 844 }); await page.locator('[data-tab="motion"]').click();
+    check('mobile page has no document horizontal overflow', await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
+    await page.screenshot({ path: path.join(qa, '06-mobile.png'), fullPage: true });
+    check('no JavaScript page errors', errors.length === 0);
+    check('no runtime HTTP requests', network.length === 0);
+    fs.writeFileSync(path.join(qa, 'browser-results.json'), JSON.stringify({ browser: await browser.version(), checks, errors, network, testedAt: new Date().toISOString() }, null, 2));
+  } finally { await browser.close(); }
+})().catch(error => { console.error(error); process.exitCode = 1; });

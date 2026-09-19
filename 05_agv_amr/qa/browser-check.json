@@ -1,0 +1,30 @@
+{
+  "passed": 21,
+  "checks": [
+    "offline file:// launch / Worker / KPI / no external requests",
+    "WebGL 3D canvas and vehicles render",
+    "replay step / forward / backward seek restores pose and KPI",
+    "play/pause and speed independent of full result",
+    "camera / actor selection / 2D fallback switch",
+    "3D capture PNG includes report context",
+    "JSON export/import preview roundtrip",
+    "native XLSX export/import previews all scenario tables",
+    "deflate-compressed XLSX import and CRC verification",
+    "invalid import does not overwrite existing settings",
+    "overweight input blocks calculation / stale results guard",
+    "exports cannot mix new inputs with a previous run while Worker calculates",
+    "2D layout node editing updates validated dimensions",
+    "2D pointer drag changes node coordinates on a 250mm grid",
+    "motion chart uses plan golden timing",
+    "fleet sweep calculates real alternative results",
+    "report / jobs / replay exports carry reproducible result",
+    "zero-demand preset renders no misleading zero-second P95",
+    "responsive 390px layout has no horizontal page overflow",
+    "no browser runtime errors",
+    "WebGL unavailable falls back to replayable 2D"
+  ],
+  "errors": [],
+  "requests": [],
+  "browser": "138.0.3351.95",
+  "fileUrl": "file:///G:/%EB%82%B4%20%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C/02.%20ChatGPT/5_%ED%86%B5%ED%95%A9%20%EB%AC%BC%EB%8F%99%EB%9F%89%20%EA%B3%84%EC%82%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/AGV_AMR_%EC%8B%A4%ED%96%89.html"
+}

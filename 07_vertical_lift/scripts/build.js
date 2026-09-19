@@ -1,0 +1,9 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
+const base=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(base,f),'utf8'),sha=x=>crypto.createHash('sha256').update(x).digest('hex');
+const vendor=JSON.parse(read('vendor/manifest.json'));for(const f of vendor.files)if(sha(fs.readFileSync(path.join(base,'vendor',f.file)))!==f.sha256)throw Error('Vendor hash mismatch: '+f.file);
+const worker=['motion','model','engine','worker'].map(n=>read('src/'+n+'.js')).join('\n');new vm.Script(worker);
+const modules=['vendor/three.min.js','vendor/OrbitControls.js',...['motion','model','engine','xlsx','io','scene','app'].map(n=>'src/'+n+'.js')],manifest={version:require('../package.json').version,workerHash:sha(worker),modules:{}};
+const scripts=modules.map(file=>{const code=read(file);new vm.Script(code,{filename:file});if(/<\/script/i.test(code))throw Error('Inline script ending in '+file);manifest.modules[file]=sha(code);return '<script data-module="'+path.basename(file,'.js')+'">\n'+code+'\n</script>';});scripts.splice(2,0,'<script>const LIFT_WORKER_SOURCE='+JSON.stringify(worker).replace(/</g,'\\u003c')+';</script>');
+const html=read('src/template.html').replace('/* STYLES */',read('src/style.css')).replace('<!-- SCRIPTS -->',scripts.join('\n')).replace('<!-- LICENSE -->','<!--\n'+read('vendor/LICENSE-three.txt')+'\n-->');
+const target=path.resolve(base,'../리프트_실행.html');fs.writeFileSync(target,html);manifest.bytes=Buffer.byteLength(html);manifest.htmlHash=sha(html);fs.writeFileSync(path.join(base,'qa/build-manifest.json'),JSON.stringify(manifest,null,2));const M=require('../src/model');for(const kind of ['pallet','box','tote','two','blocked'])fs.writeFileSync(path.join(base,'examples',kind+'.json'),JSON.stringify(M.pack(M.preset(kind)),null,2));console.log('Built '+target+' ('+manifest.bytes+' bytes)');

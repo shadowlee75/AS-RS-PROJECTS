@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사용 가이드 · 물류자동화 통합 계산</title>
+<style>
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2') format('woff2-variations');
+    font-weight: 45 920;
+  }
+  :root{
+    --bg:#05080F; --surface:#0C1420; --surface-2:#101A2A;
+    --border:#1E2A3F; --border-strong:#2C3B57;
+    --text-primary:#F2F5FA; --text-secondary:#92A1BC; --text-tertiary:#5C6B87;
+    --cyan:#00E5D8; --mono:'JetBrains Mono', ui-monospace, monospace;
+    --sans:'Pretendard', -apple-system, 'Malgun Gothic', system-ui, sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ background:var(--bg); color:var(--text-primary); font-family:var(--sans); }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:760px; margin:0 auto; padding:36px 28px 80px; }
+  .back{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:var(--mono); font-size:12px; color:var(--text-tertiary);
+    margin-bottom:28px;
+  }
+  .back:hover{ color:var(--cyan); }
+  h1{ font-size:26px; font-weight:700; margin-bottom:8px; }
+  .sub{ color:var(--text-secondary); font-size:14px; margin-bottom:36px; }
+  .group{ margin-bottom:28px; }
+  .group h2{
+    font-size:13px; font-family:var(--mono); color:var(--text-tertiary);
+    letter-spacing:0.06em; margin-bottom:12px; text-transform:uppercase;
+  }
+  .item{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:10px; padding:14px 16px; margin-bottom:8px;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .item:hover{ border-color:var(--cyan); background:var(--surface-2); }
+  .item-name{ font-size:14.5px; font-weight:600; }
+  .item-links{ display:flex; gap:14px; }
+  .item-links a{ font-size:12.5px; color:var(--cyan); font-weight:600; }
+  .item-links span.disabled{ font-size:12.5px; color:var(--text-tertiary); }
+  .note{
+    margin-top:36px; padding:14px 16px; border:1px solid var(--border);
+    border-radius:10px; font-size:12.5px; color:var(--text-tertiary); line-height:1.6;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">&larr; 메인으로</a>
+  <h1>사용 가이드</h1>
+  <p class="sub">각 계산 프로그램의 사용 매뉴얼입니다. 형식은 프로그램별로 다릅니다.</p>
+
+  <div class="group">
+    <h2>계산 프로그램별 매뉴얼</h2>
+
+    <div class="item">
+      <span class="item-name">스태커 크레인</span>
+      <div class="item-links">
+        <a href="스태커크레인_사용매뉴얼.html">매뉴얼 (HTML)</a>
+        <a href="스태커크레인_간편사용안내.md">간편 안내 (MD)</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="item-name">LOOP RGV</span>
+      <div class="item-links">
+        <a href="LoopRGV_사용매뉴얼.html">매뉴얼 (HTML)</a>
+        <a href="LoopRGV_사용매뉴얼.pdf">매뉴얼 (PDF)</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="item-name">직선 RGV</span>
+      <div class="item-links">
+        <a href="직선RGV_사용매뉴얼.md">매뉴얼 (MD)</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="item-name">AMR &amp; AGV</span>
+      <div class="item-links">
+        <a href="AGV_AMR_사용매뉴얼.md">매뉴얼 (MD)</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="item-name">셔틀</span>
+      <div class="item-links">
+        <a href="셔틀_사용매뉴얼.md">매뉴얼 (MD)</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="item-name">리프트</span>
+      <div class="item-links">
+        <a href="리프트_사용매뉴얼.html">매뉴얼 (HTML)</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="item-name">컨베이어</span>
+      <div class="item-links">
+        <a href="컨베이어_사용매뉴얼.md">매뉴얼 (MD)</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    MD 형식 매뉴얼은 브라우저에서 원문 텍스트로 표시됩니다. 통합 HTML 가이드는 아직 준비되지 않았습니다.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+2026-09-19 17:50:23,955 - mcp_cad_server - INFO - 启动 CAD MCP 服务器
+2026-09-19 17:50:23,958 - mcp_cad_server - INFO - 启动 CAD MCP 服务器
+2026-09-19 17:50:23,959 - mcp_cad_server - INFO - 配置文件加载成功
+2026-09-19 17:50:23,959 - cad_controller - INFO - CAD控制器已初始化
+2026-09-19 17:50:23,959 - nlp_processor - INFO - 自然语言处理器已初始化
+2026-09-19 17:50:23,959 - mcp_cad_server - INFO - CAD服务已初始化
+2026-09-19 23:25:33,786 - mcp_cad_server - INFO - 启动 CAD MCP 服务器
+2026-09-19 23:25:33,788 - mcp_cad_server - INFO - 启动 CAD MCP 服务器
+2026-09-19 23:25:33,788 - mcp_cad_server - INFO - 配置文件加载成功
+2026-09-19 23:25:33,788 - cad_controller - INFO - CAD控制器已初始化
+2026-09-19 23:25:33,788 - nlp_processor - INFO - 自然语言处理器已初始化
+2026-09-19 23:25:33,788 - mcp_cad_server - INFO - CAD服务已初始化
+2026-09-19 23:36:11,455 - mcp_cad_server - INFO - 启动 CAD MCP 服务器
+2026-09-19 23:36:11,457 - mcp_cad_server - INFO - 启动 CAD MCP 服务器
+2026-09-19 23:36:11,458 - mcp_cad_server - INFO - 配置文件加载成功
+2026-09-19 23:36:11,458 - cad_controller - INFO - CAD控制器已初始化
+2026-09-19 23:36:11,458 - nlp_processor - INFO - 自然语言处理器已初始化
+2026-09-19 23:36:11,458 - mcp_cad_server - INFO - CAD服务已初始化

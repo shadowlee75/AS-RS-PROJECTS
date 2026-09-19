@@ -1,0 +1,14 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),base=path.resolve(__dirname,'..');
+const sha=data=>crypto.createHash('sha256').update(data).digest('hex'),vendor=JSON.parse(fs.readFileSync(path.join(base,'vendor/manifest.json'),'utf8'));
+for(const entry of vendor.files)if(sha(fs.readFileSync(path.join(base,'vendor',entry.file)))!==entry.sha256)throw Error('라이브러리 무결성 오류: '+entry.file);
+const read=f=>fs.readFileSync(path.join(base,f),'utf8'),modules=['motion','model','engine','io','report','view','scene','app'];
+const worker=['motion','model','engine','worker'].map(n=>read('src/'+n+'.js')).join('\n');
+let html=read('src/template.html').replace('/* STYLES */',read('src/style.css')),manifest={version:require('../package.json').version,workerHash:sha(worker),modules:{}};
+const sources=['vendor/three.min.js','vendor/OrbitControls.js',...modules.map(n=>'src/'+n+'.js')];
+const scripts=sources.map(file=>{const code=read(file);if(/<\/script/i.test(code))throw Error('인라인 종료 태그 금지: '+file);manifest.modules[file]=sha(code);return '<script data-module="'+path.basename(file,'.js')+'">\n'+code+'\n</script>';});
+scripts.splice(2,0,'<script>const AGV_WORKER_SOURCE='+JSON.stringify(worker).replace(/</g,'\\u003c')+';</script>');
+html=html.replace('<!-- SCRIPTS -->',scripts.join('\n')).replace('<!-- LICENSE -->','<!--\n'+read('vendor/LICENSE-three.txt')+'\n-->');
+const target=path.resolve(base,'../AGV_AMR_실행.html');fs.writeFileSync(target,html);manifest.htmlHash=sha(html);manifest.bytes=Buffer.byteLength(html);fs.writeFileSync(path.join(base,'qa/build-manifest.json'),JSON.stringify(manifest,null,2));
+const Model=require('../src/model');for(const kind of ['standard','golden','bottleneck','closure','charging','zero'])fs.writeFileSync(path.join(base,'examples',kind+'.json'),JSON.stringify(Model.pack(Model.preset(kind)),null,2));
+console.log('Built '+target+' / '+manifest.bytes+' bytes');

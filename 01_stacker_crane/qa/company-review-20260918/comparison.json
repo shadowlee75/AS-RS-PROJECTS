@@ -1,0 +1,278 @@
+{
+  "scope": "Restored v0.3.2. Comparison only: original motion kernel with identical physical specifications and fixed company representative points. No app code changes.",
+  "original": {
+    "sc": 62.90910104885168,
+    "dc": 100.27736876437002,
+    "scIdeal": 57.22542430235081,
+    "dcIdeal": 71.8008468782067,
+    "scAtSameEfficiency": 48.64161065699819,
+    "dcAtSameEfficiency": 61.03071984647569
+  },
+  "originalParts": {
+    "sc": {
+      "move": 46.292500000000004,
+      "position": 1,
+      "fork": 15.116601048851672,
+      "control": 0.5
+    },
+    "dc": {
+      "move": 68.04416666666668,
+      "position": 1.5,
+      "fork": 30.233202097703344,
+      "control": 0.5
+    }
+  },
+  "alignedOriginal": {
+    "sc": 80.13674163577555,
+    "dc": 131.9404832715511,
+    "scIdeal": 44.92321407778386,
+    "dcIdeal": 54.57005932880691,
+    "scAtSameEfficiency": 38.18473196611628,
+    "dcAtSameEfficiency": 46.38455042948588
+  },
+  "company": {
+    "sc": 86.29929775068783,
+    "dc": 143.47059550137567,
+    "scIdeal": 41.715287306278306,
+    "dcIdeal": 50.18449930341972,
+    "scAtSameEfficiency": 35.45799421033656,
+    "dcAtSameEfficiency": 42.65682440790676
+  },
+  "efficiency": 0.85,
+  "alignedInputs": {
+    "name": "스태커크레인 설계 검토",
+    "length": 103.48,
+    "height": 20.67,
+    "bays": 106,
+    "levels": 14,
+    "sides": 2,
+    "rackDepth": "single",
+    "rearStroke": null,
+    "firstLevelHeight": 0,
+    "levelPitch": 1.59,
+    "ioX": -1.195,
+    "ioY": 0,
+    "ioZ": null,
+    "outX": -1.195,
+    "outY": 0,
+    "outZ": null,
+    "ports": [],
+    "method": "fem",
+    "femCase": 1,
+    "pointMode": "cell",
+    "vx": 3,
+    "ax": 0.5,
+    "dx": 0.5,
+    "vy": 0.8333333333333334,
+    "ay": 0.2777777777777778,
+    "dy": 0.2777777777777778,
+    "stroke": 2.5825,
+    "vf": 1,
+    "af": 0.3333333333333333,
+    "df": 0.3333333333333333,
+    "transferLift": 0.15,
+    "forkDwell": 1.5,
+    "position": 1.5,
+    "control": 0,
+    "loadedFactor": 1,
+    "inbound": 20,
+    "outbound": 20,
+    "peak": 1.2,
+    "cranes": 1,
+    "targetUtil": 0.8,
+    "A": null,
+    "Ft": null,
+    "Ew": null,
+    "basis": "",
+    "basisNote": "",
+    "mode": "mixed",
+    "dcRatio": 0,
+    "ratioBasis": "cycles",
+    "routes": [],
+    "storage": "random",
+    "retrieval": "fifo",
+    "arrival": "takt",
+    "jitter": 0.1,
+    "initialFill": 0.5,
+    "inBuffer": 8,
+    "outBuffer": 8,
+    "takeaway": 0,
+    "hours": 2,
+    "warmup": 10,
+    "seed": 20260909,
+    "unit": "PLT",
+    "speedUnit": "m/min"
+  },
+  "representativePoints": {
+    "p1": {
+      "x": 20.696,
+      "y": 13.780000000000001,
+      "z": -2.5825,
+      "side": -1
+    },
+    "p2": {
+      "x": 68.98666666666666,
+      "y": 4.134,
+      "z": -2.5825,
+      "side": -1
+    },
+    "home": {
+      "x": -1.195,
+      "y": 0,
+      "z": -2.5825,
+      "side": -1,
+      "port": "in"
+    }
+  },
+  "movement": [
+    {
+      "name": "Home-P1",
+      "distances": {
+        "x": 21.891000000000002,
+        "y": 13.780000000000001
+      },
+      "originalAxisWithSameAllowance": {
+        "x": 14.797,
+        "y": 21.036
+      },
+      "companyAxis": {
+        "x": 16.965981481481485,
+        "y": 21.831000000000003
+      },
+      "axisDifference": {
+        "x": 2.1689814814814845,
+        "y": 0.7950000000000017
+      },
+      "originalSimultaneous": 21.036,
+      "companySimultaneous": 21.831000000000003
+    },
+    {
+      "name": "Home-P2",
+      "distances": {
+        "x": 70.18166666666666,
+        "y": 4.134
+      },
+      "originalAxisWithSameAllowance": {
+        "x": 30.893888888888885,
+        "y": 9.4608
+      },
+      "companyAxis": {
+        "x": 33.06287037037036,
+        "y": 10.2558
+      },
+      "axisDifference": {
+        "x": 2.1689814814814774,
+        "y": 0.7949999999999999
+      },
+      "originalSimultaneous": 30.893888888888885,
+      "companySimultaneous": 33.06287037037036
+    },
+    {
+      "name": "P1-P2",
+      "distances": {
+        "x": 48.29066666666667,
+        "y": 9.646
+      },
+      "originalAxisWithSameAllowance": {
+        "x": 23.59688888888889,
+        "y": 16.075200000000002
+      },
+      "companyAxis": {
+        "x": 25.765870370370372,
+        "y": 16.8702
+      },
+      "axisDifference": {
+        "x": 2.168981481481481,
+        "y": 0.7949999999999982
+      },
+      "originalSimultaneous": 23.59688888888889,
+      "companySimultaneous": 25.765870370370372
+    }
+  ],
+  "fork": {
+    "originalOneWay": 5.566866263886713,
+    "companyOneWay": 6.201356845079365,
+    "originalLift": 1.469693845669907,
+    "companyLift": 1.8,
+    "commonAllowance": 1.5,
+    "originalTotal": 14.103426373443332,
+    "companyTotal": 15.702713690158731
+  },
+  "timeGapDecomposition": {
+    "movementApproach": {
+      "sc": 2.963981481481479,
+      "dc": 5.13296296296296
+    },
+    "forkApproach": {
+      "sc": 2.5379623247706107,
+      "dc": 5.075924649541221
+    },
+    "carriageLift": {
+      "sc": 0.6606123086601863,
+      "dc": 1.3212246173203726
+    },
+    "total": {
+      "sc": 6.162556114912277,
+      "dc": 11.530112229824567
+    }
+  },
+  "oneAtATimeSensitivities": [
+    {
+      "name": "Original JSON",
+      "sc": 62.90910104885168,
+      "dc": 100.27736876437002,
+      "deltaSc": 0,
+      "deltaDc": 0
+    },
+    {
+      "name": "Travel deceleration converted from 6 s",
+      "sc": 63.40910104885168,
+      "dc": 101.27736876437002,
+      "deltaSc": 0.5,
+      "deltaDc": 1
+    },
+    {
+      "name": "Hoist high speed and acceleration time",
+      "sc": 67.71421829588782,
+      "dc": 105.80560325844232,
+      "deltaSc": 4.8051172470361365,
+      "deltaDc": 5.528234494072294
+    },
+    {
+      "name": "Fork stroke",
+      "sc": 72.12576771551835,
+      "dc": 118.71070209770336,
+      "deltaSc": 9.216666666666669,
+      "deltaDc": 18.433333333333337
+    },
+    {
+      "name": "Fork high speed and acceleration time",
+      "sc": 67.08803381765989,
+      "dc": 108.63523430198647,
+      "deltaSc": 4.17893276880821,
+      "deltaDc": 8.357865537616448
+    },
+    {
+      "name": "Carriage lift distance",
+      "sc": 62.98339023002067,
+      "dc": 100.42594712670801,
+      "deltaSc": 0.07428918116898586,
+      "deltaDc": 0.14857836233798594
+    },
+    {
+      "name": "Allowance convention",
+      "sc": 65.40910104885168,
+      "dc": 104.77736876437002,
+      "deltaSc": 2.5,
+      "deltaDc": 4.5
+    },
+    {
+      "name": "All common motion specifications",
+      "sc": 82.08135274688667,
+      "dc": 134.03987216044,
+      "deltaSc": 19.172251698034984,
+      "deltaDc": 33.76250339606999
+    }
+  ],
+  "note": "The app cannot express the company continuous representative points plus exterior common port in its old UI. Fixed points here are passed directly to its unchanged motion kernel solely to isolate time equations. Sensitivities depend on the starting conditions and must not be summed."
+}

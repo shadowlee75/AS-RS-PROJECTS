@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "vertical-lift/project@1",
+  "deviceType": "vertical_lift",
+  "moduleVersion": "1.0.0",
+  "units": {
+    "distance": "m",
+    "speed": "m/s",
+    "acceleration": "m/s2",
+    "time": "s",
+    "weight": "kg",
+    "quantity": "handling-unit"
+  },
+  "configHash": "e6e99f70",
+  "config": {
+    "schemaVersion": "vertical-lift/project@1",
+    "moduleId": "LIFT-01",
+    "name": "출구 버퍼 정체 검토",
+    "basis": "설명용 가정값. 현장 승인 사양으로 교체하세요.",
+    "lifts": 1,
+    "homeFloor": "F1",
+    "parking": "stay",
+    "dispatch": "fifo",
+    "horizon": 3600,
+    "warmup": 300,
+    "seed": 20260916,
+    "arrival": "periodic",
+    "demandMode": "rates",
+    "speedUnit": "m/min",
+    "platformLength": 1.6,
+    "platformWidth": 1.4,
+    "clearHeight": 2.2,
+    "payload": 1500,
+    "maxBatch": 1,
+    "cargoGap": 0.1,
+    "loadedV": 1,
+    "emptyV": 1.2,
+    "upFactor": 1,
+    "downFactor": 1,
+    "loadedA": 0.5,
+    "loadedD": 0.5,
+    "emptyA": 0.6,
+    "emptyD": 0.6,
+    "position": 0.5,
+    "doorOpen": 1,
+    "doorClose": 1,
+    "interlock": 0.5,
+    "control": 0.3,
+    "batchWait": 0,
+    "availability": 1,
+    "targetUtil": 0.85,
+    "cargo": [
+      {
+        "id": "PLT",
+        "name": "팔레트",
+        "kind": "pallet",
+        "length": 1.2,
+        "width": 1,
+        "height": 1.4,
+        "weight": 700,
+        "color": "#b88e58"
+      },
+      {
+        "id": "BOX",
+        "name": "박스",
+        "kind": "box",
+        "length": 0.6,
+        "width": 0.4,
+        "height": 0.4,
+        "weight": 20,
+        "color": "#d8a76a"
+      },
+      {
+        "id": "TOTE",
+        "name": "토트",
+        "kind": "tote",
+        "length": 0.6,
+        "width": 0.4,
+        "height": 0.32,
+        "weight": 30,
+        "color": "#4c9fba"
+      }
+    ],
+    "floors": [
+      {
+        "id": "F1",
+        "name": "F1 층",
+        "height": 0.6,
+        "load": 6,
+        "unload": 6,
+        "inBuffer": 8,
+        "outBuffer": 8,
+        "takeaway": 4,
+        "peerType": "none",
+        "peerId": ""
+      },
+      {
+        "id": "F2",
+        "name": "F2 층",
+        "height": 4.6,
+        "load": 6,
+        "unload": 6,
+        "inBuffer": 8,
+        "outBuffer": 1,
+        "takeaway": 120,
+        "peerType": "none",
+        "peerId": ""
+      },
+      {
+        "id": "F3",
+        "name": "F3 층",
+        "height": 8.6,
+        "load": 6,
+        "unload": 6,
+        "inBuffer": 8,
+        "outBuffer": 8,
+        "takeaway": 4,
+        "peerType": "none",
+        "peerId": ""
+      }
+    ],
+    "ods": [
+      {
+        "id": "OD1",
+        "from": "F1",
+        "to": "F2",
+        "cargoId": "PLT",
+        "rate": 130,
+        "priority": 1
+      },
+      {
+        "id": "OD2",
+        "from": "F1",
+        "to": "F3",
+        "cargoId": "PLT",
+        "rate": 0,
+        "priority": 1
+      },
+      {
+        "id": "OD3",
+        "from": "F2",
+        "to": "F1",
+        "cargoId": "PLT",
+        "rate": 0,
+        "priority": 1
+      },
+      {
+        "id": "OD4",
+        "from": "F2",
+        "to": "F3",
+        "cargoId": "PLT",
+        "rate": 0,
+        "priority": 1
+      },
+      {
+        "id": "OD5",
+        "from": "F3",
+        "to": "F1",
+        "cargoId": "PLT",
+        "rate": 0,
+        "priority": 1
+      },
+      {
+        "id": "OD6",
+        "from": "F3",
+        "to": "F2",
+        "cargoId": "PLT",
+        "rate": 0,
+        "priority": 1
+      }
+    ],
+    "periods": [],
+    "stops": [],
+    "history": []
+  }
+}
